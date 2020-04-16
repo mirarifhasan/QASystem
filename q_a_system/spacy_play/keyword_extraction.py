@@ -1,7 +1,8 @@
 import spacy
+from q_a_system.global_pack import strings
 
 def printAllKeywords(question):
-    nlp = spacy.load('en')
+    nlp = spacy.load(strings.lang)
     question = nlp(question)
 
     print("\nKeyword:")

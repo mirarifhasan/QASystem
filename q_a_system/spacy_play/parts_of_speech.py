@@ -1,7 +1,8 @@
 import spacy
+from q_a_system.global_pack import strings
 
 def printAllWordDetails(question):
-    nlp = spacy.load('en')
+    nlp = spacy.load(strings.lang)
     question = nlp(question)
 
     for token in question:

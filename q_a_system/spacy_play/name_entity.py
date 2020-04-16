@@ -1,5 +1,5 @@
 import spacy
-
+from q_a_system.global_pack import strings
 
 class NameEntity:
     def __init__(self, text, label_):
@@ -8,7 +8,7 @@ class NameEntity:
 
 
 def getNameEntity(question):
-    nlp = spacy.load('en')
+    nlp = spacy.load(strings.lang)
     sentence = nlp(question)
     array = []
 
