@@ -12,4 +12,3 @@ def printAllKeywords(question):
         if (word.is_stop == False) and ((word.pos_) != 'PUNCT') and ((word.text) != '\n'):
             keyword.append(word.text)
     print(keyword)
-    print("\n\n")
