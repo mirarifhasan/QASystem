@@ -2,8 +2,8 @@ from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech,ke
 from q_a_system.input_output import input
 from q_a_system.api_sevice import api_dbpedia
 
-#question = input.getUserQuestion()
-question = 'When was Obama born?'
+question = input.getUserQuestion()
+# question = 'When was Obama born?'
 
 nameEntityArray = name_entity.getNameEntity(question)
 
