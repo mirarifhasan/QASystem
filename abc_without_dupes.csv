@@ -1,0 +1,2852 @@
+equipment,equipment.1
+numberOfClubs,number of clubs
+numberOfPeopleLicensed,number of licensed
+numberOfPlayers,number of players
+numberOfProfessionals,number of professionals
+endYearOfSales,end year of sales
+equipment,equipment
+model,model
+numberSold,number sold
+startYearOfSales,start year of sales
+usSales,US sales
+currentWorldChampion,current world champion
+firstOlympicEvent,first olympic event
+footedness,Footedness
+abbreviation,abbreviation
+abstract,has abstract
+access,access
+accessDate,access date
+activeYearsEndDate,active years end date
+activeYearsEndYear,active years end year
+activeYearsStartDate,active years start date
+activeYearsStartYear,active years start year
+administrativeStatus,administrative status
+affiliation,affiliation
+ageRange,age range
+agglomerationPopulationTotal,agglomeration population total
+aitaCode,aita code
+album,album
+alias,alias
+alongside,alongside
+alternativeName,alternative name
+animal,animal
+anthem,anthem
+apcPresident,apc president
+appearance,appearance
+appointer,appointer
+area,area
+areaMetro,area metro
+asWikiText,Contains a WikiText representation of this thing
+ascent,ascent
+associate,associate
+associateStar,associateStar
+associatedBand,associated band
+associatedMusicalArtist,associated musical artist
+atcCode,ATC code
+atcPrefix,ATC prefix
+atcSuffix,ATC suffix
+authority,authority
+autonomy,autonomy
+average,average
+averageSpeed,average speed
+award,award
+awayColourHexCode,colour hex code of away jersey or its parts
+background,background
+battery,battery
+battle,battle
+bibsysId,BIBSYS Id
+biome,biome
+blazon,blazon
+blazonLink,blazon link
+blazonRatio,blazon ratio
+bnfId,BNF Id
+book,name
+border,border
+bpnId,BPN Id
+budget,budget
+builder,builder
+buildingEndDate,building end date
+buildingStartDate,building start date
+calculationNeeds,its calculation needs
+callSign,call sign
+capacity,capacity
+casNumber,CAS number
+casSupplemental,CAS supplemental
+category,category
+chain,chain
+chairLabel,chair label
+chairman,chairman
+chancellor,chancellor
+channel,channel
+chiefPlace,chief place
+city,city
+class,class
+classification,classification
+closingDate,closing date
+closingYear,closing year
+coach,coach
+coachedTeam,coached team
+coatOfArms,coat of arms image
+code,code
+collectionSize,country
+colour,colour
+colourHexCode,colour hex code
+colourName,colour name
+commandant,commandant
+commander,commander
+comment,comment
+committee,committee
+commonName,common name
+company,company
+conflict,conflict
+connotation,connotation
+constituencyDistrict,constituency district
+cosparId,COSPAR id
+cost,cost
+country,country
+county,county
+courseArea,course area
+cpu,CPU
+creationYear,year of creation
+creator,creator (agent)
+crest,crest
+criteria,criteria
+cuisine,cuisine
+currency,currency
+currentCity,current city
+currentStatus,current status
+date,date
+dateBudget,date budget
+dateOfAbandonment,date of abandonment
+dc:creator,creator (literal)
+dc:identifier,identifier
+dc:language,language (literal)
+dc:rights,rights
+dc:subject,subject
+dc:title,title
+dc:type,type (literal)
+dct:created,Date or range when this object was created
+dct:dateSubmitted,date submitted
+dct:description,Description
+dct:extent,medium
+dct:format,format (literal)
+dct:medium,medium
+dct:modified,modified
+dct:spatial,spatial
+dct:subject,subject
+dct:temporal,temporal
+dct:type,type
+deFactoLanguage,de facto language
+deliveryDate,delivery date
+demonym,demonym
+density,density
+depictionDescription,depiction description (caption)
+deputy,deputy
+description,description
+designCompany,designer company
+designer,designer
+destructionDate,destruction date
+developer,developer
+diameter,diameter
+diocese,diocese
+discoverer,discoverer
+disease,disease
+distance,distance
+distributor,distributor
+division,division
+documentDesignation,String designation of the WrittenWork describing the resource
+draft,draft
+draftYear,draft year
+drugbank,DrugBank
+duration,duration
+dynasty,dynasty
+editor,editor
+einecsNumber,EINECS number
+electionMajority,election majority
+elementAbove,element above
+endOccupation,end occupation
+endYear,end year
+engineer,engineer
+era,era
+ethnicGroupsInYear,ethnic groups in year
+event,event
+executiveProducer,executive producer
+exhibition,exhibition
+existence,existence
+extinctionDate,extinction date
+failedLaunches,failed launches
+fdaUniiCode,FDA UNII code
+feastDay,"feast day, holiday"
+fighter,fighter
+filmPolskiId,FilmPolski.pl id
+firstLeader,firstLeader
+firstOwner,first owner
+firstPlace,first place
+firstPopularVote,firstPopularVote
+flag,flag (image)
+flagBorder,flag border
+flagLink,flag Link
+floodingDate,flooding date
+foaf:based_near,based near
+foaf:depiction,depiction from http://xmlns.com/foaf/spec/#term_depiction
+foaf:familyName,family name
+foaf:gender,gender
+foaf:givenName,given name
+foaf:img,image
+foaf:isPrimaryTopicOf,A document that this thing is the primary topic of.
+foaf:logo,logo
+foaf:mbox,Email address (mbox)
+foaf:name,name
+foaf:nick,nickname
+foaf:page,A page or document about this thing.
+foaf:phone,Telephone (phone) number
+foaf:surname,surname
+foaf:thumbnail,thumbnail
+foaf:topic,A topic of some page or document.
+focus,focus
+followedBy,followed by
+follows,follows
+forces,forces
+format,format (object)
+formerName,former name
+foundedBy,founded by
+founder,founder
+foundingDate,founding date
+foundingYear,founding year
+frequency,frequency
+fuel,fuel
+fuelType,fuel type
+gameModus,Modus the game can be played in
+gender,gender
+genre,genre
+geology,geology
+governmentType,government type
+governor,governor
+governorGeneral,governor general
+greekName,name in ancient Greek
+hasChannel,has channel
+hasInput,has input
+hasSurfaceForm,undefined
+hasVariant,variant or variation
+height,height
+highestMountain,highest mountain
+highestPlace,highest place
+highestPosition,highest position
+highschool,highschool
+homeArena,home arena
+homeColourHexCode,colour hex code of home jersey or its parts
+homeStadium,home stadium
+honours,honours
+imageSize,image size (px)
+imdbId,IMDB id
+incumbent,incumbent
+individualisedGnd,individualised GND number
+influenced,influenced
+influencedBy,influenced by
+inscription,inscription
+institution,institution
+intercommunality,intercommunality
+introduced,introduced
+isPartOf,is part of
+isPartOfName,is part of (literal)
+isniId,ISNI Id
+jureLanguage,jure language
+jurisdiction,jurisdiction
+keyPerson,key person
+kinOfLanguage,kindOfLanguage
+knownFor,known for
+language,language
+languageRegulator,language regulator or academy
+latinName,name in latin
+lccnId,LCCN Id
+leader,leader
+league,league
+length,length
+licensee,licensee
+lieutenant,lieutenant
+listItemOf,list item
+localAuthority,local authority
+location,location
+locationName,locationName
+logo,logo
+longName,longName
+mainInterest,main interest
+majorityFloorLeader,majority floor leader
+majorityLeader,majority leader
+management,management
+managementElevation,management elevation
+managementMountain,management mountain
+managementPlace,management place
+managementPosition,management position
+managerYearsEndYear,manager years end year
+managerYearsStartYear,manager years start year
+mandate,political mandate
+manufactory,manufactory
+manufacturer,manufacturer
+mascot,mascot
+mass,mass
+material,material
+max,max
+maximumDischarge,maximum discharge
+mayor,mayor
+mayorCouncillor,mayor councillor
+mbaId,MBA Id
+meaning,meaning
+mediaItem,media item
+medlinePlus,MedlinePlus
+meltingPoint,melting point
+memberOfParliament,Member of Parliament
+militaryGovernment,military government
+militaryUnitSize,military unit size
+min,min
+minimumDischarge,minimum discharge
+minister,minister
+minorityFloorLeader,minority floor leader
+minorityLeader,minority leader
+mission,mission
+monarch,monarch
+month,month
+motto,motto
+mouthElevation,mouth elevation
+municipality,municipality
+name,name
+nameAsOf,so named since
+nameInCantoneseChinese,name in Yue Chinese
+nameInHangulKorean,name in Hangul-written Korean
+nameInHanjaKorean,name in Hanja-written (traditional) Korean
+nameInJapanese,name in Japanese
+nameInMindongyuChinese,name in Mindongyu Chinese
+nameInMinnanyuChinese,name in Minnanyu Chinese
+nameInPinyinChinese,name in Pinyin Chinese
+nameInSimplifiedChinese,name in Simplified Chinese
+nameInTraditionalChinese,name in Traditional Chinese
+nameInWadeGilesChinese,name in the Wade-Giles transscription of Chinese
+namedAfter,named after
+ndlId,NDL id
+newspaper,newspaper
+nlaId,NLA Id
+nominee,nominee
+notableWork,notable work
+notes,notes
+numberOfClasses,numberOfClasses
+numberOfClassesWithResource,numberOfClassesWithResource
+numberOfDisambiguates,numberOfDisambiguates
+numberOfIndegree,number of all indegrees in dbpedia (same ourdegrees are counting repeatedly)
+numberOfOutdegree,numberOfOutdegree
+numberOfPixels,number of pixels (millions)
+numberOfPredicates,numberOfPredicates
+numberOfProperties,numberOfProperties
+numberOfPropertiesUsed,numberOfPropertiesUsed
+numberOfRedirectedResource,numberOfRedirectedResource
+numberOfResource,numberOfResource
+numberOfResourceOfClass,number of all resource / entities of a class
+numberOfResourceOfType,number of resource / entities for concrete type of subject
+numberOfResourceWithType,nmberOfResourceWithType
+numberOfSports,number of sports
+numberOfSportsEvents,number of sports events
+numberOfTriples,numberOfTriples
+numberOfUniqeResources,numberOfUniqeResources
+numberOfUseOfProperty,number of use of a property
+numberOfVisitors,number of visitors
+occupation,occupation
+odor,Odor
+office,(political) office
+openingDate,opening date
+openingYear,opening year
+operator,operator
+orbits,orbits
+orcidId,ORCID Id
+orderInOffice,order in office
+organisation,organisation
+origin,origin
+originalName,original name
+originallyUsedFor,originally used for
+orogeny,orogeny
+owl:differentFrom,An owl:differentFrom statement indicates that two URI references refer to different individuals
+owl:sameAs,same as
+owner,owner
+owningCompany,owning company
+owningOrganisation,owning organisation
+parentCompany,parent company
+parliament,parliament
+part,part
+partialFailedLaunches,partial failed launches
+party,party
+partyNumber,party number
+pastMember,past member
+patronSaint,patron saint
+pccSecretary,pcc secretary
+percentage,percentage
+percentageOfAreaWater,percentage of area water
+period,event period
+picture,picture
+pictureDescription,picture description
+picturesCommonsCategory,pictures Commons category
+playRole,play role
+playingTime,playing time
+pole,pole
+populationTotal,population total
+portfolio,portfolio
+position,position
+postalCode,postal code
+predecessor,predecessor
+prefix,prefix
+president,president
+price,price
+primeMinister,prime minister
+produces,produces
+productionEndDate,production end date
+productionEndYear,production end year
+productionStartDate,production start date
+productionStartYear,production start year
+prominence,prominence
+pronunciation,pronunciation
+provides,provides
+publicationDate,publication date
+publiclyAccessible,publicly accessible
+purpose,purpose
+quotation,quotation
+race,race
+raceHorse,race horse
+rank,rank
+rating,rating
+rdf:type,undefined
+rdfs:comment,undefined
+rdfs:label,undefined
+rdfs:seeAlso,is used to indicate a resource that might provide additional information about the subject resource
+rdfs:subClassOf,subclass of
+rebuildDate,rebuild date
+recordLabel,record label
+region,region
+registry,registry
+related,related
+releaseDate,release date
+religion,religion
+religiousHead,religious head
+reopened,reopened
+requirement,requirement
+restoreDate,restore date
+restriction,restriction
+retired,retired
+ridId,RID Id
+rkdArtistsId,RKDartists id
+role,role
+royalAnthem,royal anthem
+runningMate,running mate
+sales,sales
+score,score
+secondLeader,secondLeader
+secondPlace,second place
+secondPopularVote,secondPopularVote
+selibrId,SELIBR Id
+senator,senator
+seniority,seniority
+series,series
+sessionNumber,session number
+setupTime,setup time
+show,show
+similar,similar
+siren,siren number
+sizeBlazon,size blazon
+sizeLogo,size logo
+sizeMap,size map
+sizeThumbnail,size thumbnail
+skills,skills
+skos:broader,broader
+skos:prefLabel,prefLabel
+skos:related,related
+slogan,slogan
+soundRecording,sound recording
+source,source
+sourceConfluenceElevation,source confluence elevation
+sourceDistrict,source district
+sourceElevation,source elevation
+sourceMountain,source mountain
+sourcePlace,source place
+sourcePosition,source position
+sourceRegion,source region
+sourceState,source state
+sourceText,sourceText
+speaker,speaker
+specialist,specialist
+specialization,specialization
+sport,sport
+sportGoverningBody,sport governing body
+stadium,Stadium
+startOccupation,start occupation
+startYear,start year
+statName,stat name
+statValue,stat value
+state,state
+stateDelegate,state delegate
+status,status
+subdivision,subdivision
+subdivisions,subdivisions
+sublimationPoint,sublimation point
+subtitle,subtitle
+successfulLaunches,successful launches
+successor,successor
+sudocId,SUDOC id
+surfaceFormOccurrenceOffset,position in which a surface occurs in a text
+surfaceType,type of surface
+synonym,synonym
+systemRequirements,minimum system requirements
+tag,tag
+taoiseach,taoiseach
+team,team
+teamSize,team size
+televisionSeries,television series
+temperature,temperature
+tennisSurfaceType,type of tennis surface
+termPeriod,term period
+thirdPlace,third place
+thumbnail,thumbnail
+thumbnailCaption,thumbnail caption
+time,time
+timeInSpace,total time person has spent in space
+title,title
+topSpeed,top speed
+totalLaunches,total launches
+tradeMark,TradeMark
+translatedMotto,translated motto
+type,type
+ulanId,ULAN id
+university,university
+updated,updated
+uses,uses
+usk,approved rating of the Entertainment Software Self-Regulation Body in Germany
+value,value
+variantOf,variant or variation
+vehicle,vehicle
+viafId,VIAF Id
+viceChancellor,vice chancellor
+vicePresident,vice president
+vicePrimeMinister,vice prime minister
+victim,victim (resource)
+victims,victims (string)
+voice,voice
+volume,volume
+webcast,webcast
+websiteLabel,label of a website
+weight,weight
+width,width
+wikiPageCharacterSize,Character size of wiki page
+wikiPageDisambiguates,Wikipage disambiguates
+wikiPageEditLink,Link to the Wikipage edit URL
+wikiPageExternalLink,Link from a Wikipage to an external page
+wikiPageExtracted,extraction datetime
+wikiPageHistoryLink,Link to the Wikipage history URL
+wikiPageID,Wikipage page ID
+wikiPageInDegree,Wiki page in degree
+wikiPageInterLanguageLink,Link from a Wikipage to a Wikipage in a different language about the same or a related subject.
+wikiPageLength,page length (characters) of wiki page
+wikiPageModified,Wikipage modification datetime
+wikiPageOutDegree,Wiki page out degree
+wikiPageRedirects,Wikipage redirect
+wikiPageRevisionID,Wikipage revision ID
+wikiPageRevisionLink,Link to the Wikipage revision URL
+wikiPageUsesTemplate,wiki page uses template
+wikiPageWikiLink,Link from a Wikipage to another Wikipage
+wikiPageWikiLinkText,Text used to link from a Wikipage to another Wikipage
+wikidataSplitIri,Wikidata IRI slit
+wins,wins
+year,year
+zodiacSign,zodiac sign
+age,age
+artPatron,patron (art)
+championships,championships
+denomination,denomination
+discipline,discipline
+generalCouncil,general council
+hometown,home town
+ideology,ideology
+juniorSeason,junior season
+managerSeason,manager season
+nationalSelection,national selection
+owns,owns
+playerSeason,player season
+regionalCouncil,regional council
+roleInEvent,A Person's role in an event
+season,season
+familyMember,family member
+headOfFamily,family head
+lastFamilyMember,last family member
+primogenitor,"primogenitor, first forebear"
+mainFamilyBranch,main branch
+otherFamilyBranch,other branch
+yearElevationIntoNobility,year of elevation into the nobility
+affiliate,affiliate
+colorChart,colorChart
+comic,comic
+drama,drama
+enemy,enemy
+entourage,entourage
+episode,episode
+eyes,eyes
+feature,feature
+firstAppearance,first appearance
+free,free
+freeLabel,freeLabel
+hairs,hairs
+lastAppearance,last appearance
+novel,novel
+performer,performer
+portrayer,portrayer
+power,power
+work,work
+mythology,mythology
+administrator,administrator
+ceo,chief executive officer
+chairperson,chairperson
+chaplain,chaplain
+childOrganisation,child organisation
+endowment,endowment
+formationDate,formation date
+formationYear,formation year
+foundationPlace,foundation place
+headquarter,headquarter
+leaderFunction,leaderFunction
+legalForm,legal form
+locationCity,location city
+mainOrgan,main organ
+membership,membership
+mergedWith,merged with
+numberOfEmployees,number of employees
+numberOfLocations,number of locations
+numberOfStaff,number of staff
+numberOfVolunteers,number of volunteers
+organisationMember,organisation member
+parentOrganisation,parent organisation
+product,product
+ranking,ranking
+regionServed,region served
+revenue,revenue
+secretaryGeneral,secretary
+service,service
+staff,staff
+superintendent,superintendent
+trustee,trustee
+analogChannel,analog channel
+broadcastArea,broadcast area
+broadcastNetwork,broadcast network
+broadcastRepeater,broadcast repeater
+broadcastStationClass,broadcast station class
+broadcastTranslator,broadcast translator
+callsignMeaning,call sign meaning
+digitalChannel,digital channel
+digitalSubChannel,digital sub channel
+effectiveRadiatedPower,effectiveRadiatedPower
+firstAirDate,first air date
+formerBroadcastNetwork,former broadcast network
+formerCallsign,former call sign
+formerChannel,former channel
+heightAboveAverageTerrain,height above average terrain
+lastAirDate,last air date
+network,network
+otherChannel,other channel
+pictureFormat,picture format
+programmeFormat,programme format
+shareDate,share date
+shareOfAudience,share of audience
+shareSource,share source
+sisterStation,sister station
+virtualChannel,virtual channel
+airDate,airdate
+facilityId,facility id
+radioStation,radio station
+timeshiftChannel,timeshift channel
+assetUnderManagement,asset under management
+assets,assets
+codeStockExchange,code Stock Exchange
+defunct,undefined
+equity,equity
+fate,fate
+groundsForLiquidation,grounds for termination of activities
+industry,industry
+internationally,internationally
+marketCapitalisation,market capitalisation
+netIncome,net income
+operatingIncome,operating income
+production,production
+registration,registration
+stockExchange,Registered at Stock Exchange
+subsidiary,subsidiary
+tradingName,trading name
+numberOfLawyers,number of lawyers
+numberOfOffices,number of offices
+destination,destination
+importantStation,important station
+numberOfLines,number of lines
+numberOfVehicles,number of vehicles
+reportingMark,reporting mark
+vehiclesInFleet,vehicle types in fleet
+alliance,alliance
+hubAirport,hub airport
+iataAirlineCode,IATA code
+icaoAirlineCode,ICAO code
+lounge,lounge
+targetAirport,target airport
+distributingCompany,distributing company
+distributingLabel,distributing label
+actingHeadteacher,acting headteacher
+alumni,alumni
+assistantPrincipal,assistant principal
+brinCode,BRIN code
+campusType,campus type
+closed,closed
+custodian,custodian
+dean,dean
+educationSystem,education system
+facultySize,faculty size
+head,head
+nationalRanking,national ranking
+numberOfAcademicStaff,number of academic staff
+numberOfGraduateStudents,number of graduate students
+numberOfStudents,number of students
+numberOfUndergraduateStudents,number of undergraduate students
+offeredClasses,offered classes
+officialSchoolColour,official school colour
+principal,principal
+rector,rector
+sisterCollege,sister college
+isil,International Standard Identifier for Libraries and Related Organizations (ISIL)
+numberOfCollectionItems,number of items in collection
+actScore,ACT score
+averageClassSize,average class size
+barPassRate,bar pass rate
+campusSize,campus size
+ceeb,ceeb
+classes,classes
+dfE,DfE
+executiveHeadteacher,executive headteacher
+fees,fees
+grades,grades
+headLabel,head label
+headteacher,head teacher
+lowerAge,lower age
+nobelLaureates,nobel laureates
+numberOfClassrooms,number of classrooms
+oversight,oversight
+ratio,ratio
+religiousHeadLabel,religious head label
+rivalSchool,rival
+satScore,SAT score
+schoolBoard,school board
+schoolCode,school code
+schoolNumber,school number
+schoolPatron,school patron
+sixthFormStudents,sixth form students
+teachingStaff,teaching staff
+teamName,team name
+testaverage,testaverage
+tuition,tuition
+uRN,unique reference number (URN)
+upperAge,upper age
+vicePrincipal,vice principal
+vicePrincipalLabel,vice principal label
+athletics,athletics
+campus,campus
+numberOfDoctoralStudents,number of doctoral students
+numberOfPersonFromUniversity,number of entities of Person class who graduated from the university
+numberOfPostgraduateStudents,number of postgraduate students
+officerInCharge,officer in charge
+other,other
+provost,provost
+bandMember,band member
+formerBandMember,former band member
+committeeInLegislature,committee in legislature
+electionDateLeader,election date leader
+house,house
+lastElectionDate,last election date
+legislativePeriodName,legislative period name
+meetingBuilding,meeting building
+meetingCity,meeting city
+numberOfMembers,number of members
+politicalPartyInLegislature,political party in legislature
+politicalPartyOfLeader,political party of leader
+aircraftAttack,aircraft attack
+aircraftBomber,aircraft bomber
+aircraftElectronic,aircraft electronic
+aircraftFighter,aircraft fighter
+aircraftHelicopter,aircraft helicopter
+aircraftHelicopterAttack,aircraft helicopter attack
+aircraftHelicopterCargo,aircraft helicopter cargo
+aircraftHelicopterMultirole,aircraft helicopter multirole
+aircraftHelicopterObservation,aircraft helicopter observation
+aircraftHelicopterTransport,aircraft helicopter transport
+aircraftHelicopterUtility,aircraft helicopter utility
+aircraftInterceptor,aircraft interceptor
+aircraftPatrol,aircraft patrol
+aircraftRecon,aircraft recon
+aircraftTrainer,aircraft trainer
+aircraftTransport,aircraft transport
+anniversary,anniversary
+battleHonours,battle honours
+commandStructure,command structure
+disbanded,disbanded
+flyingHours,flying hours
+fourthCommander,fourth commander
+garrison,garrison
+identificationSymbol,identification symbol
+march,march
+notableCommander,notable commander
+patron,patron
+secondCommander,second commander
+thirdCommander,third commander
+europeanAffiliation,european affiliation
+europeanParliamentGroup,european parliament group
+internationalAffiliation,international affiliation
+nationalAffiliation,national affiliation
+numberOfMembersAsOf,number of members as of
+numberOfSeatsInParliament,number of seats in parliament
+splitFromParty,split from party
+spokesperson,spokesperson
+youthWing,youth wing
+chairmanTitle,chairman title
+clubsRecordGoalscorer,clubs record goalscorer
+dissolved,dissolved
+fansgroup,fansgroup
+firstGame,first game
+ground,ground
+largestWin,largest win
+managerTitle,manager title
+numberOfSoccerPlayerInCountryRepre,number of SoccerPlayers in Country Repre
+numberOfSoccerPlayersInTeam,number of SoccerPlayers in entity of SoccerClub
+worstDefeat,worst defeat
+currentSeason,current season
+numberOfTeams,number of teams
+circuitLength,circuit length
+circuitName,circuit name
+numberOfLaps,number of laps
+raceLength,race length
+currentMember,current member
+currentTeamMember,current team member
+generalManager,general manager
+manager,manager
+playerInTeam,player in team
+uciCode,UCI code
+presidentGeneralCouncil,president general council
+presidentRegionalCouncil,president regional council
+achievement,achievement
+activeYears,active years
+activeYearsEndDateMgr,active years end date manager
+activeYearsEndYearMgr,active years end year manager
+activeYearsStartDateMgr,active years start date manager
+activeYearsStartYearMgr,active years start year manager
+activity,activity
+affair,affair
+agency,agency
+allegiance,allegiance
+almaMater,alma mater
+announcedFrom,announcedFrom
+approach,approach
+arrestDate,arrest date
+artisticFunction,artistic function
+astrologicalSign,astrological sign
+awardName,awardName
+badGuy,bad guy
+bestLap,best lap
+bigPoolRecord,big pool record
+birthDate,birth date
+birthName,birth name
+birthPlace,birth place
+birthSign,birth sign
+birthYear,birth year
+bloodGroup,blood group
+bloodType,blood type
+board,board
+bodyDiscovered,body discovered
+britishWins,british wins
+bustSize,bust size
+bustWaistHipSize,bust-waist-hip Size
+careerStation,career station
+case,case
+catch,catch
+causeOfDeath,cause of death
+child,child
+circumcised,circumcised
+citizenship,citizenship
+clothSize,cloth size
+clothingSize,clothing size
+coalition,coalition
+collaboration,collaboration
+colleague,colleague
+college,college
+competitionTitle,competition title
+complexion,complexion
+contest,contest
+continentalTournament,continental tournament
+continentalTournamentBronze,continental tournament bronze
+continentalTournamentGold,continental tournament gold
+continentalTournamentSilver,continental tournament silver
+convictionDate,conviction date
+copilote,copilote
+cousurper,cousurper
+created,created
+currentTeamManager,current team manager
+danseCompetition,danse competition
+danseScore,danse score
+dateOfBurial,date of burial
+deadInFightDate,dead in fight date
+deadInFightPlace,dead in fight place
+deathAge,death age
+deathCause,death cause
+deathDate,death date
+deathPlace,death place
+deathYear,death year
+debutWork,debutWork
+decoration,decoration
+derivedWord,derived word
+detractor,detractor
+diploma,diploma
+dubber,dubber
+education,education
+educationPlace,education place
+electionDate,election date
+employer,employer
+endCareer,end career
+endReign,end reign
+escalafon,escalafon
+ethnicity,ethnicity
+expedition,expedition
+externalOrnament,external ornament
+eyeColor,eye color
+eyeColour,eye colour
+feat,feat
+federation,federation
+filmNumber,film number
+foot,foot
+freeDanseScore,free danse score
+freeProgCompetition,free prog competition
+freeProgScore,free prog score
+freeScoreCompetition,free score competition
+friend,friend
+fullCompetition,full competition
+fullScore,full score
+grave,grave
+gymApparatus,gym apparatus
+hairColor,hair color
+hairColour,hair colour
+hand,hand
+handedness,handedness
+handisport,handisport
+hasNaturalBust,has natural bust
+hipSize,hip size
+homage,homage
+idNumber,id number
+iihfHof,lihf hof
+imposedDanseCompetition,imposed danse competition
+imposedDanseScore,imposed danse score
+individualisedPnd,individualised PND number
+juniorYearsEndYear,junior years end year
+juniorYearsStartYear,junior years start year
+jutsu,jutsu
+killedBy,killed by
+lahHof,lah hof
+leadership,leadership
+leagueManager,league manager
+linguisticsTradition,linguistics tradition
+littlePoolRecord,little pool record
+livingPlace,livingPlace
+mainDomain,main domain
+mastersWins,masters wins
+matchPoint,match point
+measurements,measurements
+media,media
+member,member
+militaryService,military service
+mood,mood
+mount,mount
+movie,movie
+nationalTeamMatchPoint,national team match point
+nationalTeamYear,national team year
+nationalTournament,National tournament
+nationalTournamentBronze,national tournament bronze
+nationalTournamentGold,national tournament gold
+nationalTournamentSilver,national tournament silver
+nationality,nationality
+networth,networth
+nndbId,NNDB id
+nonProfessionalCareer,non professional career
+notableIdea,notableIdea
+noteOnRestingPlace,note on resting place
+numberOfRun,number of run
+olympicGames,olympic games
+olympicGamesBronze,olympic games bronze
+olympicGamesGold,olympic games gold
+olympicGamesSilver,olympic games silver
+olympicGamesWins,olympic games wins
+opponent,opponent
+orientation,orientation
+originalDanseCompetition,original danse competititon
+originalDanseScore,original danse score
+otherActivity,other activity
+otherFunction,other function
+otherMedia,other media
+otherOccupation,other occupation
+parent,parent
+parliamentaryGroup,parliamentary group
+particularSign,particular sign
+partner,partner
+patent,patent
+penisLength,penis length
+personFunction,person function
+pgaWins,pga wins
+philosophicalSchool,philosophicalSchool
+piercing,piercing
+placeOfBurial,place of burial
+playerStatus,player status
+podium,podium
+polePosition,pole position
+politicalFunction,political function
+profession,profession
+project,project
+pseudonym,pseudonym
+publication,publication
+raceWins,race wins
+radio,radio
+reign,reign
+reignName,reign name
+relatedFunctions,related functions
+relation,relation
+relative,relative
+residence,residence
+restingDate,resting date
+restingPlace,resting place
+restingPlacePosition,resting place position
+retirementDate,retirement date
+salary,salary
+scene,scene
+school,school
+seasonManager,season manager
+second,second
+seiyu,seiyu
+sentence,sentence
+sex,sex
+sexualOrientation,sexual orientation
+shoeNumber,shoe number
+shoeSize,shoe size
+shoot,shoot
+shortProgCompetition,short prog competition
+shortProgScore,short prog score
+sibling,sibling
+signature,signature
+significantProject,significant project
+skinColor,skin color
+specialTrial,special trial
+speciality,speciality
+sportDiscipline,sport discipline
+sportsFunction,sports function
+spouse,spouse
+spouseName,spouse name
+startCareer,start career
+startReign,start reign
+startWct,start xct
+startWqs,start wqs
+stateOfOrigin,state of origin
+statusManager,status manager
+student,student
+tattoo,tattoo
+teamManager,team manager
+temple,temple
+templeYear,temple year
+tessitura,tessitura
+third,third
+titleDate,title date
+tvShow,tvShow
+usopenWins,usopen wins
+usurper,usurper
+victory,victory
+victoryAsMgr,victory as manager
+victoryPercentageAsMgr,victory percentage as manager
+waistSize,waist size
+weddingParentsDate,Parents Wedding Date
+world,world
+worldTournament,world tournament
+worldTournamentBronze,world tournament bronze
+worldTournamentGold,world tournament gold
+worldTournamentSilver,world tournament silver
+architecturalMovement,architectural movement
+significantBuilding,significant building
+significantDesign,significant design
+academyAward,Academy Award
+afiAward,AFI Award
+associatedAct,associated act
+baftaAward,BAFTA Award
+cesarAward,Cesar Award
+disciple,disciple
+dutchRKDCode,Dutch RKD code
+emmyAward,Emmy Award
+field,field
+filmFareAward,Film Fare Award
+gaudiAward,Gaudí Award
+goldenGlobeAward,Golden Globe Award
+goyaAward,Goya Award
+grammyAward,Grammy Award
+instrument,instrument
+mentor,mentor
+movement,movement
+polishFilmAward,Polish Film Award
+style,style
+tonyAward,Tony Award
+training,training
+voiceType,voice type
+arielAward,Ariel Award
+geminiAward,Gemini Award
+goldenCalfAward,Golden Calf Award
+goldenRaspberryAward,Golden Raspberry Award
+iftaAward,IFTA Award
+laurenceOlivierAward,Laurence Olivier Award
+naacpImageAward,NAACP Image Award
+nationalFilmAward,National Film Award
+screenActorsGuildAward,Screen Actors Guild Award
+numberOfFilms,number of films
+americanComedyAward,American Comedy Award
+britishComedyAwards,British Comedy Awards
+olivierAward,Olivier Award
+peabodyAward,Peabody Award
+musicBand,Music Band
+numberOfAlbums,number of albums
+numberOfLiveAlbums,number of live albums
+numberOfStudioAlbums,number of studio albums
+selection,selection
+asiaChampionship,asia championship
+athleticsDiscipline,athletics discipline
+backhand,backhand
+battingSide,batting side
+bowlingSide,bowling side
+britishOpen,britishOpen
+club,club
+coachClub,coach club
+coachSeason,coach season
+collegeHof,college hof
+currentLeague,current league
+currentTeam,current team
+debutTeam,debut team
+draftLeague,draft league
+draftPosition,draft position
+draftTeam,draft team
+espnId,ESPN id
+europeanChampionship,european championship
+fedCup,fed cup
+fibahof,fibahof
+finalLostTeam,final lost team
+firstProMatch,first pro match
+formerTeam,former team
+heightAgainst,height against
+heightAttack,height attack
+heisman,heisman
+hof,hof
+hopmanCup,hopman cup
+horseRidingDiscipline,horse riding discipline
+ithfDate,ithf date
+juniorTeam,junior team
+lastProMatch,last pro match
+laterality,laterality
+managerClub,manager club
+mvp,mvp
+nationalChampionship,national championship
+nationalTeam,national team
+ncaaSeason,ncaa season
+ncaaTeam,ncaa team
+ncbhof,ncbhof
+nflCode,nfl code
+nflSeason,nfl season
+nflTeam,nfl team
+number,number
+oldTeamCoached,old team coached
+otherSportsExperience,otherSportsExperience
+probowlPick,pro bowl pick
+qatarClassic,qatar classic
+selectionPoint,selection point
+selectionYear,selection year
+sportCountry,sport country
+sportSpecialty,sport specialty
+stateOfOriginPoint,state of origin point
+stateOfOriginTeam,state of origin team
+stateOfOriginYear,state of origin year
+superbowlWin,superbowl win
+supplementalDraftRound,supplemental draft round
+teamCoached,team coached
+teamPoint,team point
+teamTitle,team title
+tournamentOfChampions,tournament of champions
+trainer,trainer
+worldChampionTitleYear,year of world champion title
+worldOpen,world open
+worldTeamCup,world team cup
+youthClub,youth club
+statisticLabel,statistic label
+statisticValue,statistic value
+statisticYear,statistic year
+throwingSide,throwing side
+amateurDefeat,amateur defeat
+amateurFight,amateur fight
+amateurKo,amateur ko
+amateurNoContest,amateur no contest
+amateurTie,amateur tie
+amateurTitle,amateur title
+amateurVictory,amateur victory
+boxerStyle,boxing style
+defeat,defeat
+fight,fight
+ko,ko
+noContest,no contest
+tie,tie
+elo,ELO rating
+eloRecord,maximum ELO rating
+fc,FC
+fcRuns,FC runs
+winsAtAlpg,wins at ALPG
+winsAtAsia,wins at ASIA
+winsAtAus,wins at AUS
+winsAtChallenges,wins at challenges
+winsAtChampionships,wins at championships
+winsAtJLPGA,wins at JLPGA
+winsAtJapan,wins at japan
+winsAtKLPGA,wins at KLPGA
+winsAtLAGT,wins at LAGT
+winsAtLET,wins at LET
+winsAtLPGA,wins at LPGA
+winsAtMajors,wins at majors
+winsAtNWIDE,wins at NWIDE
+winsAtOtherTournaments,wins at other tournaments
+winsAtPGA,wins at pga
+winsAtProTournaments,wins at pro tournaments
+winsAtSenEuro,wins at Senior Euro
+winsAtSun,wins at sun
+winsInEurope,wins in Europe
+bbr,BBR
+draftPick,draft pick
+draftRound,draft round
+supplementalDraftYear,supplemental draft year
+undraftedYear,undrafted year
+carNumber,car number
+careerPoints,career points
+fastestLap,fastest lap
+firstRace,first race
+firstWin,first win
+lastPosition,last position
+lastRace,last race
+lastSeason,last season
+lastWin,last win
+podiums,podiums
+poles,poles
+races,races
+formerHighschool,former highschool
+bestWsopRank,best wsop rank
+bestYearWsop,best year wsop
+eptFinalTable,ept final table
+eptItm,ept itm
+eptTitle,ept title
+wptFinalTable,wpt final table
+wptItm,wpt itm
+wptTitle,wpt title
+wsopItm,wsop itm
+wsopWinYear,wsop win year
+wsopWristband,wsop wristband
+bestFinish,best ranking finish
+centuryBreaks,century breaks
+currentRank,current rank
+highestBreak,highest break
+highestRank,highest rank
+otherWins,other wins
+rankingWins,ranking wins
+appearancesInLeague,appearances in league
+appearancesInNationalTeam,appearances in national team
+goalsInLeague,goals in league
+goalsInNationalTeam,goals in national team
+managerYears,manager years
+nationalYears,national years
+trainerClub,trainer club
+trainerYears,trainer years
+years,years
+youthYears,youth years
+swimmingStyle,Swimming style
+australiaOpenDouble,australia open double
+australiaOpenMixed,australia open mixed
+australiaOpenSingle,australia open single
+bestRankDouble,best rank double
+bestRankSingle,best rank single
+bronzeMedalDouble,bronze medal double
+bronzeMedalMixed,bronze medal mixed
+bronzeMedalSingle,bronze medal single
+careerPrizeMoney,career prize money
+davisCup,davis cup
+finalLost,final lost
+finalLostDouble,final lost double
+finalLostSingle,final lost single
+goldMedalDouble,gold medal double
+goldMedalMixed,gold medal mixed
+goldMedalSingle,gold medal single
+plays,plays
+racketCatching,racket catching
+rankingsDoubles,doubles rankings
+rankingsSingles,single rankings
+rolandGarrosDouble,roland garros double
+rolandGarrosMixed,roland garros mixed
+rolandGarrosSingle,roland garros single
+silverMedalDouble,silver medal double
+silverMedalMixed,silver medal mixed
+silverMedalSingle,silver medal single
+titleDouble,title double
+titleSingle,title single
+usOpenDouble,us open double
+usOpenMixed,us open mixed
+usOpenSingle,us open single
+wimbledonDouble,wimbledon double
+wimbledonMixed,wimbledon mixed
+wimbledonSingle,wimbledon single
+block,block
+spike,spike
+choreographer,choreographer
+currentPartner,current partner
+formerChoreographer,former choreographer
+formerCoach,former coach
+formerPartner,former partner
+hallOfFame,hall of fame
+khlDraft,khl draft year
+khlDraftTeam,khl draft team
+khlDraftYear,khl draft year
+lchfDraft,lchf draft year
+lchfDraftTeam,lchf draft team
+lchfDraftYear,lchf draft year
+prospectLeague,prospect league
+prospectTeam,prospect team
+shoots,shoots
+whaDraft,wha draft
+whaDraftTeam,wha draft team
+whaDraftYear,wha draft year
+billed,billed
+debut,debut
+abbeychurchBlessing,abbey church blessing
+abbeychurchBlessingCharge,abbey church blessing charge
+consecration,consecration
+reigningPope,reigning pope
+ordination,Ordination
+beatifiedBy,beatified by
+beatifiedDate,beatified date
+beatifiedPlace,beatified place
+canonizedBy,canonized by
+canonizedDate,canonized date
+canonizedPlace,canonized place
+iconographicAttributes,iconographic attributes
+majorShrine,major shrine
+suppreddedDate,suppredded date
+veneratedIn,venerated in
+defeatAsMgr,defeat as team manager
+bowlRecord,bowl record
+coachingRecord,coaching record
+currentRecord,current record
+overallRecord,overall record
+tournamentRecord,tournament record
+apprehended,apprehended
+convictionPenalty,conviction penalty
+criminalCharge,criminal charge
+kindOfCriminal,kind of criminal
+kindOfCriminalAction,kind of criminal action
+motive,motive
+brother,brother
+father,father
+son,son
+uncle,uncle
+codeIndex,code on index
+codeListOfHonour,code on List of Honour
+dutchNAIdentifier,Identifier for Duch National Archive
+participatingIn,participates/participated in
+army,army
+command,command
+militaryBranch,military branch
+militaryCommand,military command
+militaryFunction,military function
+militaryRank,military rank
+militaryUnit,military unit
+noteOnPlaceOfBurial,note on place of burial
+serviceEndDate,service end date
+serviceEndYear,service end year
+serviceNumber,service number
+serviceStartDate,service start date
+serviceStartYear,service start year
+war,wars
+coemperor,coemperor
+heir,heir
+regentOf,regent of
+otherParty,other party
+squadNumber,squad number
+prefect,prefect
+mayorMandate,mayorMandate
+coronationDate,coronation date
+academicAdvisor,academic advisor
+doctoralAdvisor,doctoral advisor
+doctoralStudent,doctoral student
+notableStudent,notable student
+aunt,aunt
+daughter,daughter
+mother,mother
+sister,sister
+dbnlCodeDutch,Digital Library code NL
+artery,artery
+branchFrom,branch from
+branchTo,branch to
+dorlandsId,DorlandsID
+dorlandsPrefix,Dorlands prefix
+dorlandsSuffix,Dorlands suffix
+drainsFrom,drains from
+drainsTo,drains to
+grayPage,Gray page
+graySubject,Gray subject
+lymph,lymph
+meshName,MeSH name
+meshNumber,MeSH number
+nerve,nerve
+organSystem,organ system
+precursor,precursor
+vein,vein
+supplies,supplies
+brainInfoNumber,brain info number
+brainInfoType,brain info type
+component,component
+isPartOfAnatomicalStructure,is part of anatomical structure
+origo,origo
+innervates,innervates
+ecNumber,EC number
+ensembl,ensemble
+entrezgene,EntrezGene
+hgncid,HGNCid
+mgiid,mgiid
+omim,OMIM id
+refseqmrna,refseq mRNA
+refseqprotein,refseq protein
+symbol,Symbol
+uniprot,UniProt
+geneLocation,Gene Location
+orthologousGene,Orthologous Gene
+arm,arm
+band,band
+chromosome,chromosome
+locusSupplementaryData,locus supplementary data
+pdb,PDB ID
+refseq,RefSeq
+blazonCaption,Blazon caption
+tempPlace,Temporary Placement in the Music Charts
+aggregation,Aggregation
+boilingPoint,boiling point
+carcinogen,carcinogen
+chEMBL,ChEMBL
+chemSpiderId,ChemSpider Id
+chemicalFormula,chemical formula
+flashPoint,flash point
+formula,formula
+kegg,KEGG
+lethalOnChickens,lethal when given to chickens
+lethalOnMice,lethal when given to mice
+lethalOnRabbits,lethal when given to rabbits
+lethalOnRats,lethal when given to rats
+molarMass,molar mass
+molecularWeight,molecular weight
+notSolubleIn,not soluble in
+partitionCoefficient,Partition coefficient
+pubchem,PubChem
+solubility,solubility
+solvent,solvent
+solventWithBadSolubility,solvent with bad solubility
+solventWithGoodSolubility,solvent with good solubility
+solventWithMediocreSolubility,solvent with mediocre solubility
+unNumber,UN number
+vaporPressure,vapor pressure
+inchi,The IUPAC International Chemical Identifier
+inn,INN
+smiles,SMILES
+atomicNumber,atomic number
+elementBlock,element block
+elementGroup,element group
+elementPeriod,element period
+relativeAtomicMass,atomic weight
+bioavailability,Bioavailability
+chEBI,ChEBI
+drugs.com,drugs.com
+iupacName,IUPAC name
+cmykCoordinateBlack,black coordinate in the CMYK space
+cmykCoordinateCyanic,cyanic coordinate in the CMYK space
+cmykCoordinateMagenta,magenta coordinate in the CMYK space
+cmykCoordinateYellow,yellow coordinate in the CMYK space
+hsvCoordinateHue,hue coordinate in the HSV colour space
+hsvCoordinateSaturation,saturation coordinate in the HSV colour space
+hsvCoordinateValue,value coordinate in the HSV colour space
+rgbCoordinateBlue,bluecoordinate in the RGB space
+rgbCoordinateGreen,green coordinate in the RGB space
+rgbCoordinateRed,red coordinate in the RGB space
+wavelength,wavelength
+usingCountry,using country
+powerOutput,power output
+acceleration,acceleration
+automobileModel,automobile model
+blockAlloy,block alloy
+co2Emission,CO2 emission
+compressionRatio,compression ratio
+configuration,configuration
+coolingSystem,cooling system
+cylinderBore,cylinder bore
+displacement,displacement
+endYearOfInsertion,end year of insertion
+fuelConsumption,fuel consumption
+fuelSystem,fuel system
+headAlloy,head alloy
+note,note
+oilSystem,oil system
+pistonStroke,piston stroke
+redline,redline
+startYearOfInsertion,start year of insertion
+torqueOutput,torque output
+valvetrain,valvetrain
+musicians,musicians
+numberOfMusicalArtistInstrument,number of all MuscialArtist playing the instrument
+usedInWar,used in war
+aoCloassification,AO
+complications,complications
+differentialDiagnosis,differential diagnosis
+diseasesDB,DiseasesDB
+diseasesDb,diseasesDb
+eMedicineSubject,eMedicine subject
+eMedicineTopic,eMedicine topic
+geneReviewsId,geneReviewsId
+geneReviewsName,geneReviewsName
+gradName,GARDName
+gradNum,GARDNum
+icd1,ICD1
+icd10,ICD10
+icd9,ICD9
+icdo,ICDO
+medicalCause,medical cause
+medicalDiagnosis,medical diagnosis
+medicalSpecialty,medical specialty
+medication,medication
+meshId,MeSH ID
+nciId,NCI
+nord,NORD
+orpha,ORPHA
+symptom,symptoms
+treatment,treatment
+populationPlace,population place
+totalPopulation,total population
+causedBy,caused by
+damage,damage amount
+endDate,end date
+endDateTime,end date and time
+followingEvent,following event
+nextEvent,next event
+numberOfPeopleAttending,number of people attending
+participant,participant
+previousEvent,previous event
+startDate,start date
+startDateTime,start date and time
+activeCases,Active Cases
+confirmedCases,Confirmed Cases
+fatalityRate,Fatality Rate
+pendamicDeaths,Deaths
+recoveryCases,Recovery Cases
+severeCases,Severe Cases
+suspectedCases,Suspected Cases
+totalIliCases,Total Pandemic Cases
+penaltiesTeamA,Penalties Team A
+penaltiesTeamB,Penalties Team B
+penaltyScore,penalty score
+perpetrator,perpetrator
+popularVote,Number of votes given to candidate
+closingFilm,closing film
+film,film
+openingFilm,opening film
+causalties,causalties
+combatant,combatant
+isPartOfMilitaryConflict,is part of military conflict
+opponents,opponents
+place,place of military conflict
+result,result
+strength,strength
+booster,booster
+cmpEvaDuration,CMP EVA duration
+commandModule,command module
+crewMember,crew member
+crewSize,crew size
+distanceTraveled,distance traveled
+landingDate,landing date
+landingSite,landing site
+landingVehicle,landing vehicle
+launchDate,launch date
+launchPad,launch pad
+launchSite,launch site
+launchVehicle,launch vehicle
+lunarEvaTime,lunar EVA time
+lunarLandingSite,lunar landing site
+lunarModule,lunar module
+lunarOrbitTime,lunar orbit time
+lunarRover,lunar rover
+lunarSampleMass,lunar sample mass
+lunarSurfaceTime,lunar surface time
+missionDuration,mission duration
+nextMission,next mission
+numberOfOrbits,number of orbits
+orbitalInclination,orbital inclination
+previousMission,previous mission
+satcat,SATCAT
+serviceModule,service module
+shuttle,shuttle
+spacecraft,spacecraft
+spacestation,spacestation
+spacewalkBegin,spacewalk begin
+spacewalkEnd,spacewalk end
+stationEvaDuration,station EVA duration
+stationVisitDuration,station visit duration
+bronzeMedalist,bronze medalist
+champion,champion
+championInDouble,champion in double
+championInDoubleFemale,champion in double female
+championInDoubleMale,champion in double male
+championInMixedDouble,champion in mixed double
+championInSingle,champion in single
+championInSingleFemale,champion in single female
+championInSingleMale,champion in single male
+goldMedalist,gold medalist
+medalist,medalist
+mostSuccessfulPlayer,most successful player
+raceTrack,race track
+silverMedalist,siler medalist
+course,course
+distanceLaps,distance laps
+fastestDriver,fastest driver
+fastestDriverCountry,fastest driver country
+fastestDriverTeam,fastest driver team
+firstDriver,first driver
+firstDriverCountry,first driver country
+firstDriverTeam,winning team
+poleDriver,pole driver
+poleDriverCountry,pole driver country
+poleDriverTeam,pole driver team
+secondDriver,second driver
+secondDriverCountry,second driver country
+secondTeam,second team
+thirdDriver,third driver
+thirdDriverCountry,third driver country
+thirdTeam,third team
+numberOfNewlyIntroducedSports,number of newly introduced sports
+numberOfParticipatingAthletes,number of participating athletes
+numberOfParticipatingFemaleAthletes,number of participating female athletes
+numberOfParticipatingMaleAthletes,number of participating male athletes
+numberOfParticipatingNations,number of participating nations
+officialOpenedBy,official opened by
+olympicOathSwornBy,olympic oath sworn by
+olympicOathSwornByAthlete,olympic oath sworn by athlete
+olympicOathSwornByJudge,olympic oath sworn by judge
+torchBearer,torch bearer
+firstWinner,first winner
+mostWins,most wins
+raceResult,race result
+recentWinner,recent winner
+soccerTournamentClosingSeason,closing season
+soccerTournamentLastChampion,last champion
+soccerTournamentMostSteady,most steady
+soccerTournamentMostSuccesfull,most successfull
+soccerTournamentOpeningSeason,opening season
+soccerTournamentThisSeason,this season
+soccerTournamentTopScorer,top scorer
+brand,brand
+promotion,promotion
+flagCaption,flag caption
+flagSize,flagSize
+approximateCalories,approximate calories
+carbohydrate,carbohydrate
+complexity,complexity
+creatorOfDish,creator of dish
+fat,fat
+glycemicIndex,glycemic index
+ingredient,ingredient
+ingredientName,ingredient name (literal)
+maxTime,maximum preparation time
+minTime,minimum preparation time
+percentageFat,percentage of fat
+productShape,product shape
+protein,protein
+servingSize,serving size
+servingTemperature,serving temperature
+taste,taste or flavour
+typeOfGrain,type of grain (wheat etc.)
+typeOfStorage,type of storage
+typeOfYeast,type of yeast
+discontinued,discontinued
+percentageAlcohol,percentage of alcohol
+geneLocationEnd,gene location end
+geneLocationStart,gene location start
+genomeDB,Genome DB
+onChromosome,on chromosome
+galicianSpeakersDate,galicianSpeakersDate
+galicianSpeakersPercentage,galicianSpeakersPercentage
+iso6391Code,ISO 639-1 code
+iso6392Code,ISO 639-2 code
+iso6393Code,ISO 639-3 code
+languageCode,language code
+languageFamily,family
+numberOfSpeakers,number of speakers
+silCode,SIL code
+spokenIn,spoken in
+assembly,assembly
+dischargeAverage,discharge average
+enginePower,engine power
+engineType,engine type
+introductionDate,introduction date
+modelEndDate,model end date
+modelEndYear,model end year
+modelLineVehicle,type series
+modelStartDate,model start date
+modelStartYear,model start year
+numberOfCrew,number of crew
+numberOfLaunches,number of launches
+numberOfSeats,number of seats
+powerType,power type
+range,range
+rebuilder,rebuilder
+relatedMeanOfTransportation,related mean of transportation
+version,version
+aircraftType,aircraft type
+aircraftUser,aircraft user
+ceiling,ceiling
+gun,aircraft gun
+numberBuilt,number built
+productionYears,production years
+programCost,program cost
+unitCost,unit cost
+wingArea,wing area
+wingspan,wingspan
+numberOfBombs,number of bombs
+numberOfRockets,number of rockets
+automobilePlatform,automobile platform
+bodyStyle,body style
+engine,engine
+fuelCapacity,fuel capacity
+layout,layout
+numberOfDoors,number of doors
+transmission,transmission
+wheelbase,wheelbase
+boiler,boiler
+boilerPressure,boiler pressure
+cylinderCount,cylinder count
+comparable,comparable
+countryOrigin,country origin
+finalFlight,final flight
+lowerEarthOrbitPayload,lower earth orbit payload
+maidenFlight,maiden flight
+rocketFunction,rocket function
+rocketStages,number of rocket stages
+unknownOutcomes,unknown outcomes
+acquirementDate,date of acquirement
+captureDate,capture date
+christeningDate,date of christening
+commissioningDate,commissioning date
+decommissioningDate,decommissioning date
+homeport,homeport
+layingDown,laying down
+maidenVoyage,maiden voyage
+numberOfPassengers,number of passengers
+orderDate,order date
+recommissioningDate,recommissioning date
+shipBeam,ship beam
+shipCrew,crew
+shipDisplacement,displacement
+shipDraft,ship draft
+shipLaunch,ship launched
+contractAward,contract award
+crews,crews
+firstFlight,first flight
+firstFlightEndDate,first flight end date
+firstFlightStartDate,first flight start date
+issDockings,iss dockings
+lastFlight,last flight
+lastFlightEndDate,last flight end date
+lastFlightStartDate,last flight start date
+mirDockings,mir dockings
+missions,missions
+satellitesDeployed,satellites deployed
+nssdcId,NSSDC ID
+cargoFuel,cargo fuel
+cargoGas,cargo gas
+cargoWater,cargo water
+crew,crew
+decay,decay
+dockedTime,docked time
+dryCargo,dry cargo
+freeFlightTime,free flight time
+inclination,inclination
+launch,launch
+regime,regime
+rocket,rocket
+targetSpaceStation,target space station station
+totalCargo,total cargo
+totalMass,total mass
+locomotive,locomotive
+wagon,train carriage
+nameDay,name day
+functionEndDate,function end date
+functionEndYear,function end year
+functionStartDate,function start date
+functionStartYear,function start year
+numberOfPersonInOccupation,number of person in one occupation
+person,person
+personName,personName
+politician,politician
+address,address
+altitude,altitude
+annualTemperature,annual temperature
+areaCode,area code
+areaDate,area date
+areaLand,area land
+areaOfCatchmentQuote,area of catchment quote
+areaQuote,area quote
+areaRank,area rank
+areaTotal,area total
+areaWater,area water
+artificialSnowArea,artificial snow area
+authorityMandate,authority mandate
+averageDepth,average depth
+averageDepthQuote,average depth quote
+avifaunaPopulation,avifauna population
+biggestCity,biggest city
+bioclimate,bioclimate
+bird,bird
+blackLongDistancePisteNumber,long distance piste number
+blackSkiPisteNumber,black ski piste number
+blueLongDistancePisteNumber,blue long distance piste number
+blueSkiPisteNumber,blue ski piste number
+budgetYear,budget year
+cableCar,cable car
+cannonNumber,cannon number
+capitalCoordinates,capital coordinates
+cityLink,city link
+climate,climate
+climbUpNumber,clip up number
+closeTo,is close to
+coastLength,length of a coast
+codeMunicipalMonument,monument code (municipal)
+codeNationalMonument,monument code (national)
+codeProvincialMonument,monument code (provinciall)
+countryCode,country code
+currencyCode,currency code
+dateAgreement,date of an agreement
+daylightSavingTimeZone,daylight saving time zone
+depth,depth
+depthQuote,depth quote
+depths,depths
+district,district
+eastPlace,east place
+elevation,elevation
+elevationQuote,elevation quote
+endPoint,end point
+endangeredSince,endangered since
+eventDate,event date
+fauna,fauna
+flora,flora
+flower,flower
+foresterDistrict,foresterDistrict
+frontierLength,length of a frontier
+geolocDual,geolocdual
+geologicPeriod,geologic period
+governingBody,governing body
+greenLongDistancePisteNumber,green long distance piste number
+greenSkiPisteNumber,green ski piste number
+gridReference,grid reference
+grossDomesticProductPerPeople,gross domestic product per people
+grossDomesticProductRank,gross domestic product rank
+hasInsidePlace,has inside place
+hasOutsidePlace,has outside place
+heritageRegister,heritage register
+highestAltitude,highest altitude
+historicalMap,historical map
+historicalName,historical name
+humanDevelopmentIndexRank,human development index rank
+information,information
+informationName,information name
+isRouteStop,is route stop
+iso31661Code,ISO 3166-1 code
+isoCode,iso code of a place
+kindOfCoordinate,kind of coordinate
+kindOfRock,kind of rock
+lake,vastest lake
+land,land
+landArea,area of a land
+landPercentage,land percentage of a place
+lawCountry,law country
+lengthQuote,length quote
+limit,limit
+linkedSpace,linked space
+locatedInArea,located in area
+longDistancePisteKilometre,long distance piste kilometre
+longDistancePisteNumber,long distance piste number
+lowest,lowest
+lowestAltitude,lowest altitude
+lowestMountain,lowest mountain
+lowestPlace,lowest place
+lowestPosition,lowest position
+mainIsland,main island
+map,map
+mapCaption,map caption
+mapDescription,map description
+maximumArea,maximum area
+maximumAreaQuote,maximum area quote
+maximumDepth,maximum depth
+maximumDepthQuote,maximum depth quote
+maximumElevation,maximum elevation
+mayorArticle,mayor article
+mergerDate,merger date
+minimumArea,minimum area
+minimumAreaQuote,minimum area quote
+minimumElevation,minimum elevation
+municipalityCode,municipality code
+namedByLanguage,named by language
+nationalTopographicSystemMapNumber,National Topographic System map number
+nearestCity,nearest city
+neighbourRegion,neighbour region
+nextEntity,next entity
+northEastPlace,north-east place
+northPlace,north place
+northWestPlace,north-west place
+numberOfIsland,number of islands
+numberOfPersonBornInPlace,number of entities of Person class born in the place
+numberOfSoccerPlayersBornInPlace,number of SoccerPlayers born in Place
+nutsCode,NUTS code
+output,output
+parliamentType,parliament type
+perimeter,perimeter
+pisciculturalPopulation,piscicultural population
+plant,plant
+politicalLeader,political leader
+populationQuote,population quote
+presidentGeneralCouncilMandate,mandate of the president of the general council
+presidentRegionalCouncilMandate,mandate of the president council of the regional council
+previousEntity,previous entity
+protectionStatus,monument protection status
+province,province
+provinceLink,province link
+quote,quote
+rankAgreement,rank of an agreement
+redLongDistancePisteNumber,red long distance piste number
+redSkiPisteNumber,red ski piste number
+refcul,reference for cultural data
+refgen,reference for general data
+refgeo,reference for geographic data
+refpol,reference for politic data
+regency,regency
+regionLink,region link
+regionType,region type
+regionalPrefecture,regional prefecture
+relatedPlaces,related places
+relief,relief
+representative,number of representatives
+retentionTime,relation time
+river,river
+route,route
+scale,scale
+sea,sea
+settlement,settlement
+skiLift,ski lift
+skiPisteKilometre,ski piste kilometre
+skiPisteNumber,ski piste number
+skiTow,ski tow
+snowParkNumber,snow park number
+southEastPlace,south-east place
+southPlace,south place
+southWestPlace,south-west place
+sovereignCountry,sovereign country
+startPoint,start point
+statusYear,status year
+subPrefecture,subprefecture
+subdivisionLink,subdivision link
+subregion,subregion
+subsystem,subsystem
+subsystemLink,subsystem link
+supply,supply
+timeZone,time zone
+tree,tree
+typeCoordinate,type coordinate
+unesco,unesco
+unloCode,UN/LOCODE
+utcOffset,UTC offset
+vehicleCode,vehicle code
+volumeQuote,volume quote
+water,water
+waterArea,area of water
+waterPercentage,water percentage of a place
+westPlace,west place
+wholeArea,whole area
+widthQuote,width quote
+yearOfConstruction,year of construction
+architect,architect
+architectualBureau,architectual bureau
+architecturalStyle,architectural style
+buildingEndYear,building end year
+buildingStartYear,building start year
+construction,construction
+constructionMaterial,construction material
+currentlyUsedFor,currently used for
+demolitionDate,demolition date
+demolitionYear,demolition year
+features,features
+initiallyUsedFor,initally used for
+maintainedBy,maintained by
+rebuildingDate,rebuilding date
+rebuildingYear,rebuilding year
+reopeningDate,reopening date
+reopeningYear,reopening year
+tenant,tenant
+visitorStatisticsAsOf,visitor statistics as of
+visitorsPerDay,visitors per day
+visitorsPerYear,visitors per year
+visitorsPercentageChange,visitor percentage change
+visitorsTotal,visitors total
+buildingType,buildingType
+elevatorCount,elevator count
+floorArea,floor area
+floorCount,floor count
+numberOfRooms,number of rooms
+seatingCapacity,seating capacity
+security,security
+space,space
+structuralSystem,structural system
+towerHeight,tower height
+workArea,work area
+pastor,pastor
+bedCount,bed count
+numberOfParkingSpaces,number of parking spaces
+numberOfRestaurants,number of restaurants
+numberOfSuites,number of suites
+starRating,star rating
+collection,collection
+curator,curator
+museumType,museumType
+bishopric,bishopric
+cemetery,cemetery
+eparchy,eparchy
+organ,organ
+relics,relics
+enshrinedDeity,enshrined deity
+mainBuilding,main building
+chef,chef
+dressCode,dress code
+headChef,head chef
+reservations,reservations
+numberOfStores,number of sores
+cityRank,city rank
+continentRank,continent rank
+contractor,contractor
+countryRank,country rank
+highestBuildingInYear,highest building in year
+roofHeight,roof height
+topFloorHeight,top floor height
+currentProduction,current production
+caterer,caterer
+iataLocationIdentifier,IATA Location Identifier
+numberOfTracks,number of tracks
+passengersPerDay,passengers per day
+passengersPerYear,passengers per year
+previousInfrastructure,previous infrastructure
+road,road
+subsequentInfrastructure,subsequent infrastructure
+airportUsing,Different usage of an airport
+faaLocationIdentifier,FAA Location Identifier
+icaoLocationIdentifier,ICAO Location Identifier
+locationIdentifier,Location Identifier
+runwayDesignation,designation of runway
+runwayLength,length of runway
+runwaySurface,surface of runway
+runwayWidth,width of runway
+associatedRocket,associated rocket
+firstLaunchDate,first launch date
+firstLaunchRocket,first launch rocket
+lastLaunchDate,last launch date
+lastLaunchRocket,last launch rocket
+launches,launches
+maximumInclination,maximum inclination
+minimumInclination,minimum inclination
+numberOfPads,number of pads
+averageAnnualGeneration,average annual gross power generation
+capacityFactor,capacity factor
+fuelTypeName,fuel type
+generationUnits,generation units
+installedCapacity,installed capacity
+otherFuelType,secondary/other fuel type
+primaryFuelType,primary fuel type
+numberOfReactors,number of reactors
+fillingStation,filling station
+parkingLotsCars,number of parking lots for cars
+parkingLotsTrucks,number of parking lots for trucks
+lengthReference,length reference
+lineLength,line length
+numberOfLanes,number of lanes
+numberOfStations,number of stations
+railGauge,rail gauge
+railwayRollingStock,railway rolling stock
+routeDirection,route direction
+routeEnd,route end
+routeEndDirection,road end direction
+routeEndLocation,route end location
+routeJunction,route junction
+routeNumber,route number
+routeStart,route start
+routeStartDirection,road start direction
+routeStartLocation,route start location
+routeTypeAbbreviation,route type abbreviation
+speedLimit,speed limit
+toll,toll
+trackLength,track length
+trackWidth,track width
+typeOfElectrification,type of electrification
+vehiclesPerDay,vehicles per day
+voltageOfElectrification,voltage of electrification
+bridgeCarries,bridge carries
+crosses,crosses
+loadLimit,load limit
+mainspan,mainspan
+numberOfPiersInWater,number of piers in water
+numberOfSpans,number of spans
+unitedStatesNationalBridgeId,United States National Bridge ID
+railwayLineUsingTunnel,railway line using tunnel
+addressInRoad,address in road
+beltwayCity,beltway city
+highwaySystem,highway system
+ruralMunicipality,rural municipality
+spurOf,spur of
+spurType,spur type
+meetingRoad,meeting road
+waterwayThroughTunnel,waterway through tunnel
+agencyStationCode,agency station code
+availableSmartCard,available smart card
+bicycleInformation,bicycle information
+canBaggageChecked,can baggage checked
+fareZone,fare zone
+isHandicappedAccessible,is handicapped accessible
+numberOfPlatformLevels,number of platform levels
+otherServingLines,other serving lines
+parkingInformation,parking information
+passengersUsedSystem,passengers used system
+railwayPlatforms,railway platforms
+servingRailwayLine,serving railway line
+stationStructure,station structure
+yearOfElectrification,year of electrification
+routeActivity,route activity
+routeLine,line
+routeNext,route next stop
+routePrevious,route previous stop
+ableToGrind,able to grind
+grindingCapability,grinding capability
+millSpan,mill span
+millType,mill type
+millsCodeBE,mill code BE
+millsCodeDutch,mill code NL
+millsCodeNL,mill code NL
+millsCodeNLVerdwenen,mill dissapeared code NL
+millsCodeNLWindmotoren,millsCodeNLWindmotoren
+dateUnveiled,date unveiled
+groupCommemorated,group commemorated
+inCemetery,in cemetery
+codeMemorial,memorial ID number
+numberOfHoles,number of holes
+numberOfTurns,number of turns
+numberOfLifts,number of lifts
+numberOfTrails,number of trails
+linkedTo,linked to
+massif,massif
+absoluteMagnitude,absolute magnitude
+apoapsis,apoapsis
+apofocus,apofocus
+constellation,constellation
+discovered,discovery date
+maxAbsoluteMagnitude,maximum absolute magnitude
+maxApparentMagnitude,maximum apparent magnitude
+messierName,Messier name
+ngcName,NGC name
+orbitalEccentricity,orbital eccentricity
+periapsis,periapsis
+perifocus,perifocus
+rightAscension,right ascension
+stellarClassification,stellar classification
+vonKlitzingConstant,von Klitzing electromagnetic constant (RK)
+declination,declination
+neighbourConstellations,neighbour constellations
+numberOfStars,number of stars
+cluster,cluster
+definition,definition
+explorer,explorer
+notableFeatures,notable features
+albedo,albedo
+apparentMagnitude,apparent magnitude
+detectionMethod,Method of discovery
+epoch,epoch
+escapeVelocity,escape velocity
+maximumTemperature,maximum temperature
+meanRadius,mean radius
+meanTemperature,mean temperature
+minimumTemperature,minimum temperature
+orbitalPeriod,orbital period
+rotationPeriod,rotation period
+satellite,satellite
+surfaceArea,surface area
+surfaceGravity,surface gravity
+radius_ly,Radius_ly
+v_hb,V_hb
+credit,credit
+dec,dec
+dist_ly,dist_ly
+dist_pc,dist_pc
+names,names
+ra,ra
+size_v,size_v
+numberOfGraves,number of graves
+gasChambers,gas chambers
+liberationDate,date of liberation
+numberOfDeaths,number of deaths
+eventDescription,event description
+nrhpReferenceNumber,NRHP Reference Number
+nrhpType,NRHP type
+numberOfVisitorsAsOf,number of visitors as of
+frozen,frozen
+inflow,inflow
+island,island
+outflow,outflow
+shoreLength,shore length
+areaOfCatchment,area of catchment
+discharge,discharge
+sourceCountry,source country
+watershed,watershed
+dateAct,date act
+dateClosed,date closed
+dateCompleted,date completed
+dateConstruction,date construction
+dateExtended,date extended
+dateUse,date use
+hasJunctionWith,has junction with
+maximumBoatBeam,maximum boat beam
+maximumBoatLength,maximum boat length
+originalEndPoint,original end point
+originalMaximumBoatBeam,original maximum boat beam
+originalMaximumBoatLength,original maximum boat length
+originalStartPoint,original start point
+principalEngineer,principal engineer
+leftTributary,left tributary
+mouthCountry,mouth country
+mouthDistrict,mouth district
+mouthMountain,mouth mountain
+mouthPlace,mouth place
+mouthPosition,mouth position
+mouthRegion,mouth region
+mouthState,mouth state
+rightTributary,right tributary
+riverBranch,branch
+riverBranchOf,branch of
+riverMouth,river mouth
+sourceConfluence,source confluence
+sourceConfluenceCountry,source confluence country
+sourceConfluenceMountain,source confluence mountain
+sourceConfluencePlace,source confluence place
+sourceConfluencePosition,source confluence position
+sourceConfluenceRegion,source confluence region
+sourceConfluenceState,source confluence state
+numberOfEntrances,number of entrances
+alpsGroup,Alps group
+alpsMainPart,Alps main part
+alpsMajorSector,Alps major sector
+alpsSection,Alps section
+alpsSoiusaCode,Alps SOIUSA code
+alpsSubgroup,Alps subgroup
+alpsSubsection,Alps subsection
+alpsSupergroup,Alps supergroup
+firstAscentPerson,person that first ascented a mountain
+firstAscentYear,year of first ascent
+mountainRange,mountain range
+parentMountainPeak,parent mountain peak
+highest,highest
+eruptionYear,eruption date
+administrativeHeadCity,head city
+agglomeration,agglomeration
+agglomerationArea,agglomeration area
+agglomerationDemographics,agglomeration demographics
+apskritis,apskritis
+areaRural,area rural
+areaTotalRanking,total area ranking
+areaUrban,area urban
+arrondissement,arrondissement
+barangays,barangays
+borough,borough
+capital,capital
+catholicPercentage,catholic percentage
+ccaState,cca state
+censusYear,census year
+ceremonialCounty,Ceremonial County
+circle,region
+citySince,city since
+cityType,city type
+colonialName,colonial name
+commissionerDate,commissioner date
+communityIsoCode,iso code of a community
+councilArea,Council area
+countySeat,county seat
+delegateMayor,delegate mayor
+delegation,delegation
+deme,deme
+demographics,demographics
+demographicsAsOf,demographics as of
+department,department
+departmentPosition,geolocDepartment
+disappearanceDate,date disappearance of a populated place
+ekatteCode,EKATTE code
+emblem,emblem
+ethnicGroup,ethnic group
+fipsCode,fips code
+firstMention,first mention
+foundation,foundation
+gdpPerCapita,gross domestic product (GDP) per capita
+giniCoefficient,gini coefficient
+giniCoefficientAsOf,gini coefficient as of
+giniCoefficientCategory,gini coefficient category
+giniCoefficientRanking,gini coefficient ranking
+gnisCode,gnis code
+gnl,gnl
+governorate,governorate
+grossDomesticProduct,gross domestic product (GDP)
+grossDomesticProductAsOf,gross domestic product as of
+grossDomesticProductNominalPerCapita,gross domestic product nominal per capita
+grossDomesticProductPurchasingPowerParityPerCapita,gross domestic product purchasing power parity per capita
+historicalRegion,historical region
+hraState,hra state
+humanDevelopmentIndex,Human Development Index (HDI)
+humanDevelopmentIndexAsOf,human development index as of
+humanDevelopmentIndexRankingCategory,human development index (HDI) category
+illiteracy,illiteracy
+income,income
+infantMortality,infant mortality
+internationalPhonePrefix,international phone prefix
+internationalPhonePrefixLabel,international phone prefix label
+ist,ist
+istat,code istat
+largestCity,largest city
+largestSettlement,largest settlement
+latestElection,date of latest election
+leaderName,leader name
+leaderParty,leader party
+leaderTitle,leader title
+legislature,legislature
+licenceNumber,licence number
+licenceNumberLabel,licence number label
+lieutenancy,lieutenancy
+lieutenancyArea,Lieutenancy area
+lifeExpectancy,life expectancy
+localPhonePrefix,local phone prefix
+localizationThumbnail,thumbnail localization
+localizationThumbnailCaption,legend thumbnail localization
+metropolitanBorough,metropolitan borough
+nation,nation
+neighboringMunicipality,neighboring municipality
+nisCode,NIS code
+numberOfCantons,Number Of Cantons
+numberOfCapitalDeputies,Number Of Capital Deputies
+numberOfCounties,number of counties
+numberOfFederalDeputies,Number Of Federal Deputies
+numberOfMunicipalities,Number Of Municipalities
+numberOfStateDeputies,Number Of State Deputies
+officialLanguage,official language
+okatoCode,okato code
+oldDistrict,old district
+oldName,old name
+oldProvince,old province
+otherName,other name
+outskirts,outskirts
+parish,parish
+peopleName,peopleName
+perCapitaIncome,per capita income
+perCapitaIncomeAsOf,per capita income as of
+perCapitaIncomeRank,per capital income rank
+percentageLiteracyMen,"percentage of a place's male population that is literate, degree of analphabetism"
+percentageLiteracyWomen,"percentage of a place's female population that is literate, degree of analphabetism"
+percentageLiterate,"percentage of a place's population that is literate, degree of analphabetism"
+phonePrefix,phone prefix
+pluviometry,pluviometry
+policeName,police name
+politicGovernmentDepartment,politic government department
+population,population
+populationAsOf,population as of
+populationDensity,population density
+populationMetro,population metro
+populationMetroDensity,population metro density
+populationPctChildren,population percentage under 12 years
+populationPctMen,population percentage male
+populationPctWomen,population percentage female
+populationRural,population rural
+populationRuralDensity,population density rural
+populationTotalRanking,total population ranking
+populationUrban,population urban
+populationUrbanDensity,population urban density
+populationYear,population year
+previousDemographics,previous demographics
+previousName,previous name
+previousPopulation,previous population
+previousPopulationTotal,previous population total
+principalArea,principal area
+protestantPercentage,protestant percentage
+provinceIsoCode,iso code of a province
+purchasingPowerParity,purchasing power parity
+purchasingPowerParityRank,purchasing power parity rank
+purchasingPowerParityYear,purchasing power parity year
+rankArea,rank of an area
+rankPopulation,rank of a population
+regionalLanguage,regional language
+saint,saint
+senior,senior
+seniunija,seniunija
+sharingOutPopulation,sharing out population
+sharingOutPopulationYear,sharing out year
+sheading,sheading
+simcCode,SIMC code
+termOfOffice,term of office
+terytCode,TERYT code
+topic,topic
+touristicSite,touristic site
+unitaryAuthority,unitary authority
+viceLeader,vice leader
+viceLeaderParty,vice leader party
+watercourse,watercourse
+zipCode,zip code
+numberOfCity,number of contries inside en continent
+numberOfDependency,number of dependency
+continent,continent
+europeanUnionEntranceDate,european union entrance date
+numberOfMinistries,number of ministries
+numberOfMusicalArtistEntities,number of MuscialArtist class (entities) in DBpedia
+numberOfPersonEntities,number of Person class (entities) in DBpedia
+numberOfSettlementsInCountry,number of entities of Settlement class in country
+topLevelDomain,country top level (tld)
+twinCountry,twin country
+wordBefore,word before the country
+shape,intercommunality shape
+archipelago,archipelago
+building,building
+capitalCountry,capital country
+capitalDistrict,capital district
+capitalElevation,capital elevation
+capitalMountain,capital mountain
+capitalPlace,capital place
+capitalPosition,capital position
+capitalRegion,capital region
+discovery,date when the island has been discovered
+eruption,eruption
+government,government
+governmentCountry,government country
+governmentElevation,government elevation
+governmentMountain,government mountain
+governmentPlace,government place
+governmentPosition,government position
+governmentRegion,government region
+highestPointIsland,highest point of the island
+highestRegion,highest region
+highestState,highest state
+leftChild,left child
+localization,localization of the island
+lowestRegion,lowest region
+lowestState,lowest state
+mainIslands,main islands
+majorIsland,major island
+managementCountry,management country
+managementRegion,management region
+numberOfIslands,number of islands
+observatory,observatory
+rightChild,right child
+subdivisionName,subdivision name of the island
+volcanicActivity,volcanic activity
+volcanicType,volcanic type
+volcanoId,volcano id
+dutchCOROPCode,Dutch COROP code
+administrativeCenter,administrative center
+congressionalDistrict,congressional district
+landeshauptmann,landeshauptmann
+landtag,austrian land tag
+landtagMandate,austrian land tag mandate
+numberOfCountries,number of countries
+seatNumber,number of seats in the land parlement
+placeOfWorship,place of worship
+numberOfArrondissement,number of arrondissement
+numberOfCanton,number of canton
+numberOfDistrict,number of district
+numberOfIntercommunality,number of intercommunality
+numberOfSettlement,number of settlement
+prefecture,prefecture
+subprefecture,subprefecture
+numberOfVillages,number of villages
+amsterdamCode,Amsterdam Code
+departmentCode,code of the department
+hasAbsorbedMunicipality,the previous municipality from which this one has been created or enlarged
+municipalityRenamedTo,a municipality's new name
+municipalityType,type of municipality
+municipalityAbsorbedBy,absorbed by
+presentMunicipality,present municipality
+presentName,a municipality's present name
+numberOfDistricts,number of districts
+subMunicipalityType,type of municipality
+adjacentSettlement,adjacent settlement of a switzerland settlement
+administrativeCollectivity,administrative collectivity
+administrativeDistrict,administrative district
+agglomerationPopulation,agglomeration population
+agglomerationPopulationYear,agglomerationPopulationYear
+associationOfLocalGovernment,association of local government
+bourgmestre,bourgmestre
+canton,canton
+coastLine,coast line
+codeSettlement,settlement code
+collectivityMinority,collectivity minority
+commune,commune
+daira,daira
+day,day
+distanceToBelfast,distance to Belfast
+distanceToCapital,distance to capital
+distanceToCardiff,distance to Cardiff
+distanceToCharingCross,distance to Charing Cross
+distanceToDouglas,distance to Douglas
+distanceToDublin,distance to Dublin
+distanceToEdinburgh,distance to Edinburgh
+distanceToLondon,distance to London
+distanceToNearestCity,distance to nearest city
+employersCelebration,employer's celebration
+federalState,federal state
+frazioni,frazioni
+geolocDepartment,geolocDepartment
+highestPoint,highest point
+inseeCode,INSEE code
+isCityState,is a city state
+isoCodeRegion,ISO region code
+jointCommunity,joint community
+landRegistryCode,land registry code
+largestMetro,largest metro
+locality,locality of a switzerland settlement
+lowestPoint,lowest point
+mergedSettlement,merged settlement
+minority,minority
+officialName,official name
+ofsCode,ofs code of a settlement
+ons,ONS ID (Office national des statistiques) Algeria
+otherInformation,other information of a settlement
+otherLanguage,other language of a settlement
+phonePrefixLabel,phone prefix label of a settlement
+politicalMajority,political majority
+politicalSeats,political seats
+populationTotalReference,total population reference
+provCode,prove code
+reffBourgmestre,referent bourgmestre
+sameName,same name
+settlementAttached,settlement attached
+summerTemperature,summer temperature
+twinTown,twin city
+urbanArea,urban area
+wilaya,wilaya
+winterTemperature,winter temperature
+crownDependency,crown dependency
+codeDistrict,City district code
+iucnCategory,iucn category
+numberOfHouses,number of houses present)
+areaOfSearch,area of search
+interest,interest
+notifyDate,notify date
+growingGrape,growing grape
+isPartOfWineRegion,is part of wine region
+numberOfVineyards,number of vineyards
+numberOfWineries,number of wineries
+varietals,varietals
+wineProduced,wine produced
+wineYear,wine year
+id,id
+binomial,binomial
+binomialAuthority,binomial authority
+clade,clade
+classis,classis
+conservationStatus,conservation status
+conservationStatusSystem,conservation status system
+domain,domain
+extinctionYear,extinction year
+family,family
+fossil,fossil
+genus,genus
+kingdom,kingdom
+order,order (taxonomy)
+parentheses,parentheses
+phylum,phylum
+redListIdNL,red list ID NL
+scientificName,scientific name
+species,species
+subClassis,sub-classis
+subFamily,sub-family
+subGenus,subgenus
+subOrder,sub-order
+subTribus,subtribus
+superFamily,super-family
+superOrder,super-order
+superTribus,supertribus
+taxon,has taxon
+tribus,tribus
+woRMS,WoRMS
+breeder,breeder
+dam,dam
+damsire,damsire
+foalDate,foal date
+grandsire,grandsire
+sire,sire
+jockey,jockey
+cultivatedVariety,cultivar
+hybrid,hybrid
+notableWine,notable wine
+wineRegion,wine region
+competition,competition
+numberOfBronzeMedalsWon,number of bronze medals won
+numberOfGoldMedalsWon,number of gold medals won
+numberOfSilverMedalsWon,number of silver medals won
+flagBearer,flag bearer
+games,games
+nationalOlympicCommittee,National Olympic Committee
+numberOfCompetitors,number of competitors
+numberOfOfficials,number of officials
+oldcode,oldcode
+otherAppearances,other appearances
+rankInFinalMedalCount,rank in final medal count
+summerAppearances,summer appearances
+winterAppearances,winter appearances
+soccerLeaguePromoted,promoted
+soccerLeagueRelegated,relegated teams
+soccerLeagueSeason,season
+soccerLeagueWinner,league champion
+statistic,statistic
+end,end
+start,start
+numberOfGoals,number of goals scored
+numberOfMatches,number of matches or caps
+countryWithFirstAstronaut,country with first astronaut
+countryWithFirstSatellite,country with first satellite
+countryWithFirstSatelliteLaunched,country with first satellite launched
+countryWithFirstSpaceflight,country with first spaceflight
+firstLaunch,first launch
+lastLaunch,last launch
+maidenFlightRocket,maiden flight rocket
+orbitalFlights,orbital flights
+retiredRocket,retired rocket
+suborbitalFlights,suborbital flights
+totalTravellers,total travellers
+derivative,derivative
+musicFusionGenre,music fusion genre
+musicSubgenre,music subgenre
+numberOfMusicalArtistStyle,number of all MuscialArtist playing the style
+stylisticOrigin,stylistic origin
+believers,Believers
+established,Established
+establishment,Establishment
+primate,Primite
+theology,Theology
+procedure,procedure
+attorneyGeneral,attorney general
+codeBook,code book
+judge,judge
+legalArticle,legal article
+ruling,ruling
+solicitorGeneral,solicitor general
+systemOfLaw,system of law
+argueDate,argue date
+decideDate,decide date
+projectEndDate,project end date
+projectKeyword,project keyword
+projectObjective,project objective
+projectStartDate,project start date
+fundedBy,funded by
+projectBudgetFunding,project budget funding
+projectBudgetTotal,project budget total
+projectCoordinator,project coordinator
+projectParticipant,project participant
+projectReferenceID,project reference ID
+projectType,project type
+templateName,template name
+alternativeTitle,alternative title
+author,author
+basedOn,based on
+bibo:pages,pages
+chiefEditor,chief editor
+cites,cites
+commissioner,commissioner
+completionDate,completion date
+composer,composer
+coverArtist,cover artist
+dc:description,description
+dc:publisher,publisher
+dcc,Dewey Decimal Classification
+dct:references,references
+dct:source,source
+fileSize,size
+filename,filename
+license,license
+mainCharacter,main character
+musicComposer,music composer
+narrator,narrator
+originalLanguage,original language
+originalTitle,original title
+previousWork,previous work
+producer,producer
+productionCompany,production company
+publisher,publisher
+releaseLocation,release location
+runtime,runtime
+skos:notation,notation
+starring,starring
+subjectTerm,subject term
+subsequentWork,subsequent work
+translator,translator
+writer,writer
+dutchArtworkCode,Dutch artwork code
+museum,museum
+painter,painter
+technique,technique
+animator,animator
+dateLastUpdated,Date Last Updated
+documentNumber,document number
+galleryItem,gallery item
+hasAnnotation,Indicates an annotation associated with this document
+registryNumber,registry number
+fileExtension,The extension of this file
+fileURL,The URL at which this file can be downloaded
+hasKMLData,Has KML data associated with it (usually because of KML overlays)
+afdbId,afdb id
+allcinemaId,allcinema id
+amgid,amgId
+bgafdId,bgafd id
+cinematography,cinematography
+costumeDesigner,costume designer
+director,film director
+eTeatrId,e-teatr.pl id
+editing,editing
+egafdId,egafd id
+eurobabeIndexId,eurobabe index id
+filmAudioType,film audio type
+filmColourType,film colour type
+filmRuntime,film runtime
+firstBroadcast,first broadcast
+gross,gross
+iafdId,iafd id
+idAllocine,Allocine ID
+makeupArtist,makeup artist
+producedBy,produced by
+quebecerTitle,quebecer title
+setDesigner,set designer
+specialEffects,special effects
+titleLanguage,title language
+artist,performer
+lyrics,lyrics
+musicType,musicType
+musicalKey,musical key
+recordDate,record date
+recordedIn,recorded in
+albumRuntime,album duration
+compiler,compiler
+longtype,longtype
+musicFormat,musicFormat
+review,review
+totalDiscs,total discs
+totalTracks,total tracks
+musicBy,music by
+libretto,libretto
+aSide,a side
+bSide,b side
+certification,certification
+certificationDate,certification date
+musicalArtist,musical artist
+musicalBand,musical band
+trackNumber,track number
+aspectRatio,Aspect Ratio
+computingInput,Computing input
+computingMedia,Computing Media
+computingPlatform,computing platform
+frequentlyUpdated,frequently updated
+latestPreviewDate,latest preview date
+latestPreviewVersion,latest preview version
+latestReleaseDate,latest release date
+latestReleaseVersion,latest release version
+operatingSystem,operating system
+programmingLanguage,programming language
+resolution,resolution
+gameArtist,game artist
+gameEngine,Game Engine
+episodeNumber,episode number
+guest,guest
+photographer,photographer
+seasonNumber,season number
+coExecutiveProducer,co executive producer
+coProducer,co producer
+creativeDirector,creative director
+endingTheme,ending theme
+numberOfEpisodes,number of episodes
+numberOfSeasons,number of seasons
+openingTheme,opening theme
+presenter,presenter
+showJudge,showJudge
+storyEditor,story editor
+tvComId,tv.com id
+foaf:homepage,homepage
+circulation,circulation
+coden,CODEN
+dutchPPNCode,Dutch PPN code
+filmVersion,film version
+firstPublicationDate,first publication date
+firstPublisher,first publisher
+illustrator,illustrator
+isbn,ISBN
+lastPublicationDate,last publication date
+lcc,LCC
+lccn,LCCN
+literaryGenre,literary genre
+magazine,magazine
+mediaType,media type
+nonFictionSubject,non-fiction subject
+numberOfPages,number of pages
+numberOfVolumes,number of volumes
+oclc,OCLC
+prefaceBy,author of preface
+atPage,page number
+atRowNumber,row number
+connectsReferencedTo,connects referenced to
+reference,reference
+approvedByLowerParliament,date of approval by lower parliament
+approvedByUpperParliament,date of approval by upper parliament
+unicode,unicode
+umbrellaTitle,umbrella title
+volumes,volumes
+finalPublicationDate,final publication date
+finalPublicationYear,final publication year
+firstPublicationYear,first publication year
+frequencyOfPublication,frequency of publication
+issn,issn
+openAccessContent,open access content
+zdb,zdb
+academicDiscipline,academic discipline
+impactFactor,impact factor
+impactFactorAsOf,impact factor as of
+isPeerReviewed,is peer reviewed
+jstor,JSTOR
+editorTitle,editor title
+previousEditor,previous editor
+associateEditor,associate editor
+managingEditor,managing editor
+sisterNewspaper,sister newspaper
+dutchWinkelID,Dutch PPN code
+characterInPlay,character in play
+chorusCharacterInPlay,chorus character in play
+ibdbId,IBDB ID
+iobdbId,IOBDB ID
+muteCharacterInPlay,mute character in play
+premiereDate,premiere date
+premierePlace,premiere place
+premiereYear,premiere year
+settingOfPlay,setting of play
+subjectOfPlay,subject of play
+abstentions,abstentions
+votesAgainst,Votes against the resolution
+votesFor,Number of votes in favour of the resolution
+foaf:primaryTopic,The primary topic of some page or document.
+geo:lat,latitude
+geo:long,longitude
+georss:point,point
