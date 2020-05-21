@@ -11,7 +11,8 @@ class Property:
 
 
 def getPageProperties(url):
-    page = urllib.request.urlopen(url)
+    baseUrl = 'http://dbpedia.org/page/'
+    page = urllib.request.urlopen(baseUrl + url)
     soup = BeautifulSoup(page, 'html.parser')
 
     rows = soup.find('table').find_all('td', class_="property")
@@ -24,6 +25,3 @@ def getPageProperties(url):
         propertyArray.append(Property(temp[0], temp[1]))
 
     return propertyArray
-
-
-getPageProperties("http://dbpedia.org/page/Donald_Trump")
