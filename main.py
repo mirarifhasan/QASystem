@@ -1,4 +1,4 @@
-from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech,keyword_extraction
+from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech,keyword_extraction,anwer_type_extraction
 from q_a_system.input_output import input
 from q_a_system.api_sevice import api_dbpedia
 from q_a_system.spacy_play.keyword_extraction import removeNounChunks, getActualProperty
@@ -9,6 +9,9 @@ question = 'When was Obama born?'
 
 
 nameEntityList = name_entity.getNameEntity(question)
+#print(nameEntityList)
+#parts_of_speech.printAllWordDetails(question)
+#print(keyword_extraction.AllKeywords(question))
 
 if len(nameEntityList) > 0:
     resourceList = resource_name.getResourceName(nameEntityList)
@@ -18,8 +21,8 @@ if len(nameEntityList) > 0:
         keywordList = removeNounChunks(question, keywordList)
 
         propertyList = getPageProperties(resourceList[0])
-
         propertyListIndex = getActualProperty(keywordList, propertyList)
 
-
         api_dbpedia.getQueryResult(resourceList[0])
+
+        anwer_type_extraction.printAnswerType(question)
