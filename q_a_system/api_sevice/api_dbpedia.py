@@ -1,6 +1,6 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 from q_a_system.global_pack import strings
-
+answer_array=[]
 #resource = "Donald_Trump"
 def getQueryResult(propertyList, resourceList):
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
@@ -18,4 +18,6 @@ def getQueryResult(propertyList, resourceList):
         results = sparql.query().convert()
 
         for result in results["results"]["bindings"]:
-            print(result["label"]["value"])
+            answer_array.append(result["label"]["value"])
+
+    return answer_array

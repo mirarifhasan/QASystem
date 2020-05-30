@@ -1,4 +1,4 @@
-from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech,keyword_extraction,anwer_type_extraction
+from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech,keyword_extraction,anwer_type_extraction, answer_validation
 from q_a_system.input_output import input
 from q_a_system.api_sevice import api_dbpedia
 from q_a_system.spacy_play.keyword_extraction import removeNounChunks, getActualProperty
@@ -28,7 +28,13 @@ if len(nameEntityList) > 0:
         print(propertyList)
 
         print("Step 5: All possible answer finding")
-        api_dbpedia.getQueryResult(propertyList, resourceList)
+        answer_array = api_dbpedia.getQueryResult(propertyList, resourceList)
+        print(answer_array)
 
-        print("Step 6: Answer type matching")
-        anwer_type_extraction.printAnswerType(question)
+        print("Step 6: Answer type extraction")
+        type = anwer_type_extraction.printAnswerType(question)
+        print(print("Expected Answer Type : " + type))
+
+        print("Step 7: Answer type validation")
+        answer = answer_validation.answer_validation(answer_array,type)
+        print("Actual Answer  : " + answer)
