@@ -7,22 +7,28 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 # question = input.getUserQuestion()
 question = 'When was Obama born?'
 
-
+print("Step 1: Name Entity finding")
 nameEntityList = name_entity.getNameEntity(question)
-#print(nameEntityList)
-#parts_of_speech.printAllWordDetails(question)
-#print(keyword_extraction.AllKeywords(question))
+print(nameEntityList)
 
 if len(nameEntityList) > 0:
+    print("Step 2: Resource Name finding")
     resourceList = resource_name.getResourceName(nameEntityList)
+    print(resourceList)
 
     if len(resourceList) > 0:
+        print("Step 3: Keywords finding")
         keywordList = keyword_extraction.getAllKeywords(question)
         keywordList = removeNounChunks(question, keywordList)
+        print(keywordList)
 
+        print("Step 4: Property finding")
         propertyList = getPageProperties(resourceList[0])
-        propertyListIndex = getActualProperty(keywordList, propertyList)
+        propertyList = getActualProperty(keywordList, propertyList)
+        print(propertyList)
 
-        api_dbpedia.getQueryResult(resourceList[0])
+        print("Step 5: All possible answer finding")
+        api_dbpedia.getQueryResult(propertyList, resourceList)
 
+        print("Step 6: Answer type matching")
         anwer_type_extraction.printAnswerType(question)

@@ -23,24 +23,25 @@ def removeNounChunks(question, keywordList):
     sentence = nlp(question)
 
     for chunk in sentence.noun_chunks:
-        print(chunk.text)
         keywordList.remove(chunk.text)
     return keywordList
 
 
 def getActualProperty(keywordList, propertyList):
     nlp = spacy.load(strings.lang)
-    keyword = nlp(keywordList[0])
 
-    actualPropIndex = 0
-    maxSimilarity = 0
+    minSimilarity = 0.55
+    array = []
 
-    i = 0
-    for property in propertyList:
-        prop = nlp(property.label)
+    for keyword in keywordList:
+        keyword = nlp(keyword)
 
-        if maxSimilarity < keyword.similarity(prop):
-            actualPropIndex = i
-            maxSimilarity = keyword.similarity(prop)
-        i = i + 1
-    return actualPropIndex
+        for property in propertyList:
+            propertyLabel = nlp(property.label)
+
+            if minSimilarity < keyword.similarity(propertyLabel):
+                # print(propertyLabel)
+                # print(keyword.similarity(propertyLabel))
+                array.append(property)
+
+    return array
