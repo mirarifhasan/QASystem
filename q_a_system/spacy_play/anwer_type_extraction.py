@@ -6,7 +6,7 @@ import spacy
 from q_a_system.global_pack import strings
 from q_a_system.spacy_play import parts_of_speech, keyword_extraction as k
 
-def printAnswerType(ques):
+def printAnswerType(ques, keyword):
     nlp = spacy.load(strings.lang)
     question = nlp(ques)
 
@@ -15,19 +15,20 @@ def printAnswerType(ques):
     location = ["Location", "Place"]
     name = ["Nicknames", "Birth", "Name"]
 
-    questionword = parts_of_speech.tokanize(question)
-    keyword = k.getAllKeywords(ques)
+    questionWord = parts_of_speech.tokanize(question)
+    # keyword = k.getAllKeywords(ques)
 
-    if (questionword[0] in ['Who','Whom']) :
+    type = "null"
+    if (questionWord[0] in ['Who','Whom']) :
         type = "PERSON"
 
-    elif questionword[0] == 'Where':
+    elif questionWord[0] == 'Where':
         type = "LOCATION"
 
-    elif questionword[0] == 'When':
+    elif questionWord[0] == 'When':
         type = "DATE"
 
-    elif questionword[0] in ['What','Which'] :
+    elif questionWord[0] in ['What','Which'] :
         for i in range(len(keyword)):
             if keyword[i] in number:
                 type = 'NUMBER'
@@ -42,14 +43,13 @@ def printAnswerType(ques):
                 type = 'NAME'
 
 
-    elif questionword[0] in ['How']:
+    elif questionWord[0] in ['How']:
         for i in range(len(keyword)):
             if keyword[i] in ["Few", "Little", "Much", "Many", "Often", "Tall"]:
                 type = "NUMBER"
 
             elif keyword[i] in ["Young", "Old", "Long"]:
                 type = "DATE"
-
 
     return type
 

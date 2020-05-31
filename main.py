@@ -5,7 +5,7 @@ from q_a_system.spacy_play.keyword_extraction import removeNounChunks, getActual
 from q_a_system.web_scrape.propertyScrape import getPageProperties
 
 # question = input.getUserQuestion()
-question = 'When was Obama born?'
+question = 'When was obama born?'
 
 print("Step 1: Name Entity finding")
 nameEntityList = name_entity.getNameEntity(question)
@@ -18,8 +18,8 @@ if len(nameEntityList) > 0:
 
     if len(resourceList) > 0:
         print("Step 3: Keywords finding")
-        keywordList = keyword_extraction.getAllKeywords(question)
-        keywordList = removeNounChunks(question, keywordList)
+        keywordListTemp = keyword_extraction.getAllKeywords(question)
+        keywordList = removeNounChunks(question, keywordListTemp)
         print(keywordList)
 
         print("Step 4: Property finding")
@@ -28,13 +28,17 @@ if len(nameEntityList) > 0:
         print(propertyList)
 
         print("Step 5: All possible answer finding")
-        answer_array = api_dbpedia.getQueryResult(propertyList, resourceList)
-        print(answer_array)
+        answerArray = api_dbpedia.getQueryResult(propertyList, resourceList)
+        print(answerArray)
 
         print("Step 6: Answer type extraction")
+
         type = anwer_type_extraction.printAnswerType(question)
+
+        type = anwer_type_extraction.printAnswerType(question, keywordListTemp)
+
         print("Expected Answer Type : " + type)
 
         print("Step 7: Answer type validation")
-        answer = answer_validation.answer_validation(answer_array,type)
+        answer = answer_validation.answerValidation(answerArray,type)
         print("Actual Answer  : " + answer)
