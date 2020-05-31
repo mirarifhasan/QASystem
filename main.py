@@ -33,7 +33,7 @@ if len(nameEntityList) > 0:
 
         print("Step 6: Answer type extraction")
         type = anwer_type_extraction.printAnswerType(question)
-        print(print("Expected Answer Type : " + type))
+        print("Expected Answer Type : " + type)
 
         print("Step 7: Answer type validation")
         answer = answer_validation.answer_validation(answer_array,type)
