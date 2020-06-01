@@ -4,6 +4,7 @@ from q_a_system.api_sevice import api_dbpedia
 from q_a_system.spacy_play.keyword_extraction import removeNounChunks
 from q_a_system.spacy_play.property_selection import getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
+import datetime
 
 # question = input.getUserQuestion()
 question = 'When was obama born?'

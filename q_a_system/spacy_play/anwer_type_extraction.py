@@ -8,8 +8,7 @@ from q_a_system.spacy_play import parts_of_speech, keyword_extraction as k
 
 
 def printAnswerType(ques, keyword):
-    nlp = spacy.load(constant.lang)
-    question = nlp(ques)
+    question = constant.nlp(ques)
 
     number = ["Height", "Elevation", "Peak", "Population", "Temperature"]
     date = ["Birthdate", "DeathDate", "Date", "Year", "Born", "Die"]
@@ -51,4 +50,4 @@ def printAnswerType(ques, keyword):
             elif keyword[i] in ["Young", "Old", "Long"]:
                 questionType = "DATE"
 
-    return type
+    return questionType

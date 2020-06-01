@@ -3,19 +3,22 @@ from q_a_system.global_pack import constant
 
 
 def getActualProperty(keywordList, propertyList):
-    nlp = spacy.load(constant.lang)
     minSimilarity = constant.minSimilarity
     array = []
 
     for keyword in keywordList:
-        keyword = nlp(keyword)
+        keyword = constant.nlp(keyword)
 
         for property in propertyList:
-            propertyLabel = nlp(property.label)
+            propertyLabel = constant.nlp(property.label)
 
-            if minSimilarity < keyword.similarity(propertyLabel):
+            # print(property.label)
+            # print(keyword.similarity(propertyLabel))
+            wordSimilarity = keyword.similarity(propertyLabel)
+            if minSimilarity < wordSimilarity:
                 # print(propertyLabel)
                 # print(keyword.similarity(propertyLabel))
+                property.similarity = wordSimilarity
                 array.append(property)
 
     return array

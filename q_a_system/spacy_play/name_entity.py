@@ -9,8 +9,7 @@ class NameEntity:
 
 
 def getNameEntity(question):
-    nlp = spacy.load(constant.lang)
-    sentence = nlp(question)
+    sentence = constant.nlp(question)
     array = []
 
     for token in sentence.ents:

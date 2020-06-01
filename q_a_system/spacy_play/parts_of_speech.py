@@ -3,8 +3,7 @@ from q_a_system.global_pack import constant
 
 
 def printAllWordDetails(question):
-    nlp = spacy.load(constant.lang)
-    question = nlp(question)
+    question = constant.nlp(question)
 
     for token in question:
         print(

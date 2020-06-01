@@ -8,6 +8,7 @@ class Property:
         self.propertyType = propertyType
         self.property = property
         self.label = re.sub(r"(\w)([A-Z])", r"\1 \2", property)
+        self.similarity = 0.0
 
 
 def getPageProperties(url):
