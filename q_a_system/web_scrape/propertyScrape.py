@@ -2,12 +2,12 @@ import urllib.request
 import re
 from bs4 import BeautifulSoup
 
+
 class Property:
     def __init__(self, propertyType, property):
         self.propertyType = propertyType
         self.property = property
         self.label = re.sub(r"(\w)([A-Z])", r"\1 \2", property)
-
 
 
 def getPageProperties(url):
