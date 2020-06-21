@@ -3,14 +3,14 @@
 import pymysql
 
 # Open database connection
-db = pymysql.connect("localhost","AnikaTanzim","oceanblue7972", "QASYSTEM" )
+db = pymysql.connect("localhost","Thesis","Thesis123", "QASYSTEM" )
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
 
 
 # Drop table if it already exist using execute() method.
 cursor.execute("DROP TABLE IF EXISTS TEMPLATES")
-
+'''
 # Create table as per requirement
 sql = """CREATE TABLE TEMPLATES (
    ID int NOT NULL PRIMARY KEY,
@@ -20,7 +20,7 @@ sql = """CREATE TABLE TEMPLATES (
 
 cursor.execute(sql)
 
-'''
+
 
 # Prepare SQL query to INSERT a record into the database.
 sql = """INSERT INTO TEMPLATES(ID,A,B,C,D,E,F,G,H)

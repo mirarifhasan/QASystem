@@ -3,8 +3,8 @@
 import pymysql
 
 # Open database connection
-db = pymysql.connect("localhost","AnikaTanzim","oceanblue7972", "QASYSTEM" )
 
+db = pymysql.connect("localhost","Thesis","Thesis123", "QASYSTEM" )
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
 
