@@ -10,10 +10,10 @@ def getQueryResult(propertyList, resourceList):
         resource = resourceList[0]
 
         sql = """
-            SELECT ?label
+            SELECT distinct ?label
             WHERE { res:""" + resource + """ """ + property.propertyType + """:""" + property.property + """ ?label }
         """
-        # print(strings.prefix + sql)
+        print(strings.prefix + sql)
         sparql.setQuery(strings.prefix + sql)
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()

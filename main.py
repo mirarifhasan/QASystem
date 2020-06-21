@@ -4,8 +4,8 @@ from q_a_system.api_sevice import api_dbpedia
 from q_a_system.spacy_play.keyword_extraction import removeNounChunks, getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
 
-# question = input.getUserQuestion()
-question = 'When was obama born?'
+question = input.getUserQuestion()
+#question = 'When was obama born?'
 
 print("Step 1: Name Entity finding")
 nameEntityList = name_entity.getNameEntity(question)
@@ -33,7 +33,7 @@ if len(nameEntityList) > 0:
 
         print("Step 6: Answer type extraction")
 
-        type = anwer_type_extraction.printAnswerType(question)
+        #type = anwer_type_extraction.printAnswerType(question)
 
         type = anwer_type_extraction.printAnswerType(question, keywordListTemp)
 

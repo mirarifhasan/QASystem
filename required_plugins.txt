@@ -7,3 +7,5 @@ pip install spacy[lookups]
 
 pip install wikipedia
 pip install SPARQLWrapper
+
+pip install PyMySQL

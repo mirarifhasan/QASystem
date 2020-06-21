@@ -23,7 +23,10 @@ def removeNounChunks(question, keywordList):
     sentence = nlp(question)
 
     for chunk in sentence.noun_chunks:
-        keywordList.remove(chunk.text)
+        try:
+            keywordList.remove(chunk.text)
+        except:
+            pass
     return keywordList
 
 
