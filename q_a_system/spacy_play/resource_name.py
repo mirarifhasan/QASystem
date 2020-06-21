@@ -1,5 +1,6 @@
 from wikipedia import wikipedia
 
+
 def getResourceName(nameEntityArray):
     array = []
 

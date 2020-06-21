@@ -1,17 +1,16 @@
 import spacy
-from q_a_system.global_pack import strings
+from q_a_system.global_pack import constant
 
-nlp = spacy.load(strings.lang)
 
-def answerValidation(answerArray, type):
-    answer = []
+def answerValidation(answerArray, questionType):
+
     for answerGroup in answerArray:
-        sentence = nlp(answerGroup[0])
+        sentence = constant.nlp(answerGroup[0])
 
         for token in sentence.ents:
-            #print(token.text, token.label_)
-            if(token.label_ == type):
-                if(type == 'DATE'):
+            # print(token.text, token.label_)
+            if token.label_ == questionType:
+                if questionType in ['DATE']:
                     return answerGroup[0]
                 else:
                     return answerGroup

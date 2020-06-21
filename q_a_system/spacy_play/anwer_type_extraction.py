@@ -3,57 +3,51 @@ Answer type can be date, location, number, person
 '''
 
 import spacy
-from q_a_system.global_pack import strings
+from q_a_system.global_pack import constant
 from q_a_system.spacy_play import parts_of_speech, keyword_extraction as k
 
+
 def printAnswerType(ques, keyword):
-    nlp = spacy.load(strings.lang)
-    question = nlp(ques)
+    question = constant.nlp(ques)
 
     number = ["Height", "Elevation", "Peak", "Population", "Temperature"]
     date = ["Birthdate", "DeathDate", "Date", "Year", "Born", "Die"]
     location = ["Location", "Place"]
     name = ["Nicknames", "Birth", "Name"]
 
-    questionWord = parts_of_speech.tokanize(question)
+    questionWord = parts_of_speech.tokenize(question)
     # keyword = k.getAllKeywords(ques)
 
-    type = "null"
-    if (questionWord[0] in ['Who','Whom']) :
-        type = "PERSON"
+    questionType = "null"
+    if questionWord[0] in ['Who', 'Whom']:
+        questionType = "PERSON"
 
     elif questionWord[0] == 'Where':
-        type = "LOCATION"
+        questionType = "LOCATION"
 
     elif questionWord[0] == 'When':
-        type = "DATE"
+        questionType = "DATE"
 
-    elif questionWord[0] in ['What','Which'] :
+    elif questionWord[0] in ['What', 'Which']:
         for i in range(len(keyword)):
             if keyword[i] in number:
-                type = 'NUMBER'
+                questionType = 'NUMBER'
 
             elif keyword[i] in date:
-                type = 'DATE'
+                questionType = 'DATE'
 
             elif keyword[i] in location:
-                type = 'LOCATION'
+                questionType = 'LOCATION'
 
             elif keyword[i] in name:
-                type = 'NAME'
-
+                questionType = 'NAME'
 
     elif questionWord[0] in ['How']:
         for i in range(len(keyword)):
             if keyword[i] in ["Few", "Little", "Much", "Many", "Often", "Tall"]:
-                type = "NUMBER"
+                questionType = "NUMBER"
 
             elif keyword[i] in ["Young", "Old", "Long"]:
-                type = "DATE"
+                questionType = "DATE"
 
-    return type
-
-
-
-
-
+    return questionType
