@@ -14,8 +14,8 @@ def getQueryResult(propertyList, resourceList):
             WHERE { res:""" + resource + """ """ + property.propertyType + """:""" + property.property + """ ?label }
         """
 
-        print(strings.prefix + sql)
-        sparql.setQuery(strings.prefix + sql)
+        print(constant.prefix + sql)
+        sparql.setQuery(constant.prefix + sql)
 
         sparql.setReturnFormat(JSON)
         results = sparql.query().convert()
