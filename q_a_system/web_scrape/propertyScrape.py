@@ -24,7 +24,5 @@ def getPageProperties(url):
 
         temp = row.split(':')
         propertyArray.append(Property(temp[0], temp[1]))
-        print(temp[0])
-        print(temp[1])
 
     return propertyArray

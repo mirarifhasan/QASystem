@@ -24,4 +24,3 @@ def removeNounChunks(question, keywordList):
             keywordList.remove(chunk.text)
         except:
             pass
-    return keywordList
