@@ -13,7 +13,7 @@ def whWord(ques):
     question = constant.nlp(ques)
 
     questionWord = parts_of_speech.tokenize(question)
-
+    qid=[]
     word=""
     if questionWord[0] in ['How' , 'What','Where', 'When','Which','Who', 'Whom', 'List']:
         word=questionWord[0]
@@ -28,9 +28,14 @@ def whWord(ques):
     cursor.execute("SELECT wid FROM whwords WHERE WHwords =  '" +word +" ' " )
     results = cursor.fetchall()
     for row in results:
-        a = row[0]
+        wid = row[0]
+
+    cursor.execute("SELECT qid FROM querieswhwordsrelation WHERE wid =  " + str(wid) )
+    results = cursor.fetchall()
+    for row in results:
+        qid.append(row[0])
 
 
-    return a
+    return qid
 
-#print(whWord("When is the time"))
+#print(whWord("Where is the time"))
