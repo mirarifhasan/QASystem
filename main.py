@@ -54,6 +54,5 @@ if len(nameEntityList) > 0:
             answer = answer_validation.answerValidation(answerArray, questionType)
             print("Actual Answer: " + answer)
 
-
         else:
             print("No property found! Can't go forward without property")
