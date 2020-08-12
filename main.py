@@ -1,8 +1,8 @@
 from q_a_system.method import byAutomation, byDataDictionary
 from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech, keyword_extraction, \
-    anwer_type_extraction, answer_validation
+    anwer_type_extraction, answer_validation, question_type_extraction
 from q_a_system.input_output import input
-from q_a_system.api_sevice import api_dbpedia
+from q_a_system.api_sevice import api_dbpedia, mysql_operations
 from q_a_system.spacy_play.keyword_extraction import removeNounChunks
 from q_a_system.spacy_play.property_selection import getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
@@ -40,8 +40,12 @@ if len(nameEntityList) > 0:
         print(propertyList)
 
         if len(propertyList) > 0:
+            print("Step 5.0.1: Get Sparql Query IDs")
+            questionType = question_type_extraction.findQuestionType(question)
+            queryIDs = mysql_operations.findSparqlQueryID(questionType)
+
             print("Step 5: All possible answer finding")
-            answerArray = api_dbpedia.getQueryResult(propertyList, resourceList)
+            answerArray = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs)
             print(answerArray)
 
             print("Step 6: Answer type extraction")
