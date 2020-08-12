@@ -1,4 +1,5 @@
 import spacy
+import mysql
 import mysql.connector
 from spacy.matcher import Matcher
 from spacy.util import filter_spans
@@ -40,7 +41,7 @@ def insert_single_value(column_name, value, table_name):
 def insert_double_value(column1, column2, value1, value2, table_name):
     query = f'INSERT INTO {table_name} ({column1}, {column2}) VALUES (%s, %s)'
     print(f'executed query: {query}')
-    value = (value1, value2)
+    value = (str(value1), str(value2))
     database_cursor.execute(query, value)
     database.commit()
 
@@ -79,7 +80,7 @@ def find_keyword_by_automation(question):
                         given_keyword = input('enter the keyword\n')
                         create_relation(phrase_id, given_keyword)
                         keyword_list_by_data_dictionary.append(given_keyword)
-                        return
+                        break
 
                 # the phrase is sure to have a keyword
                 for relation in relation_list:
