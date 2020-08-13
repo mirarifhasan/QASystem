@@ -31,7 +31,7 @@ if len(nameEntityList) > 0:
         # finding keyword list by DataDictionary approach
         # call 'byDataDictionary.{function name with parameter}'
         keywordListByDD = byDataDictionary.find_keyword_by_automation(question)
-        print(keywordListByDD)
+        print(f'keywordListByDD : {keywordListByDD}')
         # DataDictionary approach calling END here
 
         print("Step 4: Property finding")
