@@ -43,32 +43,37 @@ def find_keyword_by_automation(question):
             print(f'{phrase} " not found in " {const.TABLE_PHRASE}')
             print("would you like to add it?")
             # TODO: perform insertion operation in phrase table and change logic accordingly
-            print("this functionality has not been implemented yet")
+            choice = input('y/n\n')
+            if choice == 'y' or choice == 'Y':
+                insert_single_value(const.COLUMN_PHRASE, phrase, const.TABLE_PHRASE)
+                result_list = search_for(const.COLUMN_PHRASE, phrase, const.TABLE_PHRASE)
 
-        else:
-            # i.e. phrase found
-            for result in result_list:
-                phrase_id = result[0]
-                relation_list = search_for(const.COLUMN_PHRASE_ID, phrase_id, const.TABLE_RELATION)
-                if len(relation_list) == 0:
-                    # i.e. this phrase do not have keyword
-                    print(f'{phrase} (phrase id : {phrase_id}) does not have corresponding keyword')
-                    print('would you like to add corresponding keyword?')
-                    choice = input('[y/n]\n')
-                    if choice == 'y':
-                        given_keyword = input('enter the keyword\n')
-                        create_relation(phrase_id, given_keyword)
-                        keyword_list_by_data_dictionary.append(given_keyword)
-                        break
+            else:
+                continue
 
-                # the phrase is sure to have a keyword
-                print(f'relation list : {relation_list}')
-                for relation in relation_list:
-                    keyword_id = relation[2]
-                    keyword_list = search_for(const.COLUMN_ID, keyword_id, const.TABLE_KEYWORD)
-                    for row in keyword_list:
-                        keyword = row[1]
-                        keyword_list_by_data_dictionary.append(keyword)
+        # i.e. phrase found
+        for result in result_list:
+            phrase_id = result[0]
+            relation_list = search_for(const.COLUMN_PHRASE_ID, phrase_id, const.TABLE_RELATION)
+            if len(relation_list) == 0:
+                # i.e. this phrase do not have keyword
+                print(f'{phrase} (phrase id : {phrase_id}) does not have corresponding keyword')
+                print('would you like to add corresponding keyword?')
+                choice = input('[y/n]\n')
+                if choice == 'y':
+                    given_keyword = input('enter the keyword\n')
+                    create_relation(phrase_id, given_keyword)
+                    keyword_list_by_data_dictionary.append(given_keyword)
+                    break
+
+            # the phrase is sure to have a keyword
+            print(f'relation list : {relation_list}')
+            for relation in relation_list:
+                keyword_id = relation[2]
+                keyword_list = search_for(const.COLUMN_ID, keyword_id, const.TABLE_KEYWORD)
+                for row in keyword_list:
+                    keyword = row[1]
+                    keyword_list_by_data_dictionary.append(keyword)
 
     print('______________________________find_keyword_by_automation END')
     return keyword_list_by_data_dictionary
