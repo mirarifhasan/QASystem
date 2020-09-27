@@ -1,4 +1,4 @@
-from q_a_system.method import byAutomation, byDataDictionary
+from q_a_system.method import byAutomation
 from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech, keyword_extraction, \
     anwer_type_extraction, answer_validation, question_type_extraction
 from q_a_system.input_output import input
@@ -10,6 +10,7 @@ import datetime
 
 # question = input.getUserQuestion()
 question = 'When was obama born?'
+# question = 'Who is the president of Eritrea?'
 
 # byAutomation.byAutomation(question)
 
@@ -24,14 +25,14 @@ if len(nameEntityList) > 0:
 
     if len(resourceList) > 0:
         print("Step 3: Keywords finding")
-        # finding keyword list by build is services
+        # finding keyword list by build in services
         keywordList = byAutomation.findKeywordByAutomation(question)
         print(keywordList)
 
         # finding keyword list by DataDictionary approach
         # call 'byDataDictionary.{function name with parameter}'
-        keywordListByDD = byDataDictionary.find_keyword_by_automation(question)
-        print(f'keywordListByDD : {keywordListByDD}')
+        # keywordListByDD = byDataDictionary.find_keyword_by_automation(question)
+        # print(f'keywordListByDD : {keywordListByDD}')
         # DataDictionary approach calling END here
 
         print("Step 4: Property finding")

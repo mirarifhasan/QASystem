@@ -1,5 +1,6 @@
 from q_a_system.api_sevice import db_connect
 
+
 def findSparqlQueryID(whWord):
     queryIDs = []
     wordID = 0
@@ -24,13 +25,13 @@ def findSparqlQueryID(whWord):
     cursor.close()
     return queryIDs
 
-def getAllSparqlQuery(queryIDs):
 
+def getAllSparqlQuery(queryIDs):
     sql = "SELECT * FROM sparql_query WHERE query_id IN ( "
     temp = 0
     for queryID in queryIDs:
         sql = sql + str(queryID)
-        if temp != len(queryIDs)-1:
+        if temp != len(queryIDs) - 1:
             sql = sql + ", "
             temp = temp + 1
     sql = sql + " )"
@@ -41,6 +42,3 @@ def getAllSparqlQuery(queryIDs):
     cursor.close()
 
     return results
-
-
-print(getAllSparqlQuery([1, 2]))
