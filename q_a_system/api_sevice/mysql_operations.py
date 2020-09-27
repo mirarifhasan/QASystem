@@ -3,19 +3,11 @@ from q_a_system.api_sevice import db_connect
 
 def findSparqlQueryID(whWord):
     queryIDs = []
-    wordID = 0
 
     cursor = db_connect.connection.cursor()
     try:
-        cursor.execute("SELECT wh_id FROM wh_word WHERE wh_word_name = '" + whWord + "'")
-        results = cursor.fetchall()
-        for row in results:
-            wordID = row[0]
-    except:
-        print("Something else went wrong")
-
-    try:
-        cursor.execute("SELECT sparql_id FROM sparql_wh WHERE wh_id = " + str(wordID))
+        sql = "SELECT sparql_id FROM sparql_wh WHERE wh_id = ( SELECT wh_id FROM wh_word WHERE wh_word_name = '" + whWord + "' )"
+        cursor.execute(sql)
         results = cursor.fetchall()
         for row in results:
             queryIDs.append(row[0])
