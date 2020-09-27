@@ -1,5 +1,4 @@
 import urllib.request
-import csv
 from bs4 import BeautifulSoup
 
 url = 'http://mappings.dbpedia.org/server/ontology/classes/'
