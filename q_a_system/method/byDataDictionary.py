@@ -8,7 +8,7 @@ from q_a_system.api_sevice import db_connect
 
 # the following function will be called in main.py
 def find_keyword_by_dataDictionary(question):
-    print('______________________________find_keyword_by_automation START')
+    print('______________________________find_keyword_by_dataDictionary START')
     keyword_list_by_data_dictionary = []
     matcher = get_matcher()
     doc = const.nlp(question)
@@ -55,7 +55,7 @@ def find_keyword_by_dataDictionary(question):
                     keyword = row[1]
                     keyword_list_by_data_dictionary.append(keyword)
 
-    print('______________________________find_keyword_by_automation END')
+    print('______________________________find_keyword_by_dataDictionary END')
     return keyword_list_by_data_dictionary
 
 
@@ -137,4 +137,4 @@ def get_matcher():
     return matcher
 
 
-find_keyword_by_dataDictionary('When did Operation Overlord commence?')
+# find_keyword_by_dataDictionary('When did Operation Overlord commence?')

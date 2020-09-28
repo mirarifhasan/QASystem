@@ -9,7 +9,7 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 import datetime
 
 # question = input.getUserQuestion()
-questions = ['When did Operation Overlord commence?', 'When did princess Diana die?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?', 'When was obama born?']
+questions = ['When was obama born?', 'When did Operation Overlord commence?', 'When did princess Diana die?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?', 'When was obama born?']
 # question = 'Who is the president of Eritrea?'
 
 for question in questions:
@@ -26,13 +26,18 @@ for question in questions:
         if len(resourceList) > 0:
             print("Step 3: Keywords finding")
             # finding keyword list by build in services
-            keywordList = byAutomation.findKeywordByAutomation(question)
-            print(keywordList)
+            keywordListByAM = byAutomation.findKeywordByAutomation(question)
+            print(keywordListByAM)
 
             # finding keyword list by DataDictionary approach
             keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
-            print('keywordListByDD : {keywordListByDD}')
+            print(keywordListByDD)
 
+            keywordList = []
+            for i in keywordListByDD:
+                keywordList.append(i)
+            for i in keywordListByAM:
+                keywordList.append(i)
 
             print("Step 4: Property finding")
             propertyList = getPageProperties(resourceList[0])
