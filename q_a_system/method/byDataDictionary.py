@@ -1,36 +1,17 @@
-import spacy
-import mysql
-import mysql.connector
 from spacy.matcher import Matcher
 from spacy.util import filter_spans
-
-from q_a_system import constant as const
+from q_a_system.global_pack import constant as const
+from q_a_system.api_sevice import db_connect
 
 
 # TODO: REMOVE REDUNDANT PRINT STATEMENTS
 
-
-def get_database():
-    selected_database = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",
-        database=const.DATABASE_NAME
-    )
-    return selected_database
-
-
-nlp = spacy.load('en_core_web_sm')
-database = get_database()
-database_cursor = database.cursor()
-
-
 # the following function will be called in main.py
-def find_keyword_by_automation(question):
+def find_keyword_by_dataDictionary(question):
     print('______________________________find_keyword_by_automation START')
     keyword_list_by_data_dictionary = []
     matcher = get_matcher()
-    doc = nlp(question)
+    doc = const.nlp(question)
     # call the matcher to find matches
     matches = matcher(doc)
     spans = [doc[start:end] for _, start, end in matches]
@@ -47,7 +28,6 @@ def find_keyword_by_automation(question):
             if choice == 'y' or choice == 'Y':
                 insert_single_value(const.COLUMN_PHRASE, phrase, const.TABLE_PHRASE)
                 result_list = search_for(const.COLUMN_PHRASE, phrase, const.TABLE_PHRASE)
-
             else:
                 continue
 
@@ -82,8 +62,11 @@ def find_keyword_by_automation(question):
 def search_for(column_name, value, table_name):
     query = f"SELECT * FROM {table_name} WHERE {column_name} = '{value}'"
     print(f'executed query: {query}')
-    database_cursor.execute(query)
-    return database_cursor.fetchall()
+    cursor = db_connect.connection.cursor()
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    return results
 
 
 def create_relation(phrase_id, given_keyword):
@@ -105,19 +88,22 @@ def create_relation(phrase_id, given_keyword):
 
 
 def insert_single_value(column_name, value, table_name):
-    query = f"INSERT INTO {table_name} ({column_name}) VALUES (%s)"
-    print(f'executed query: {query}')
-    database_cursor.execute(query, value)
-    database.commit()
+    cursor = db_connect.connection.cursor()
+    for i in range(0, len(value), 1):
+        print(value[i])
+        sql = "INSERT INTO `phrase` (`phrase`) VALUES (%s)"
+        cursor.execute(sql, (str(value[i])))
+        db_connect.connection.commit()
+
+    cursor.close()
 
 
 # TODO: merge the two insert functions into one
 def insert_double_value(column1, column2, value1, value2, table_name):
-    query = f'INSERT INTO {table_name} ({column1}, {column2}) VALUES (%s, %s)'
-    print(f'executed query: {query}')
-    value = (str(value1), str(value2))
-    database_cursor.execute(query, value)
-    database.commit()
+    cursor = db_connect.connection.cursor()
+    sql = f"INSERT INTO {table_name} ({column1}, {column2}) VALUES (%s, %s)"
+    cursor.execute(sql, (str(value1), str(value2)))
+    db_connect.connection.commit()
 
 
 def get_matcher():
@@ -144,8 +130,11 @@ def get_matcher():
         ],
     ]
     # instantiate a Matcher instance
-    matcher = Matcher(nlp.vocab)
+    matcher = Matcher(const.nlp.vocab)
     for pattern in pattern_list:
         matcher.add("Noun phrase", None, pattern)
 
     return matcher
+
+
+find_keyword_by_dataDictionary('When did Operation Overlord commence?')

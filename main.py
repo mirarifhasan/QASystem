@@ -1,4 +1,4 @@
-from q_a_system.method import byAutomation
+from q_a_system.method import byAutomation, byDataDictionary
 from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech, keyword_extraction, \
     answer_type_extraction, answer_validation, question_type_extraction
 from q_a_system.input_output import input
@@ -9,7 +9,7 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 import datetime
 
 # question = input.getUserQuestion()
-questions = ['When did princess Diana die?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?', 'When was obama born?']
+questions = ['When did Operation Overlord commence?', 'When did princess Diana die?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?', 'When was obama born?']
 # question = 'Who is the president of Eritrea?'
 
 for question in questions:
@@ -30,10 +30,9 @@ for question in questions:
             print(keywordList)
 
             # finding keyword list by DataDictionary approach
-            # call 'byDataDictionary.{function name with parameter}'
-            # keywordListByDD = byDataDictionary.find_keyword_by_automation(question)
-            # print('keywordListByDD : {keywordListByDD}')
-            # DataDictionary approach calling END here
+            keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
+            print('keywordListByDD : {keywordListByDD}')
+
 
             print("Step 4: Property finding")
             propertyList = getPageProperties(resourceList[0])
