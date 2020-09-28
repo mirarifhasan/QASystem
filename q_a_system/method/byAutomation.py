@@ -9,5 +9,5 @@ import datetime
 
 def findKeywordByAutomation(question):
     keywordList = keyword_extraction.getAllKeywords(question)
-    removeNounChunks(question, keywordList)
+    # removeNounChunks(question, keywordList)
     return keywordList

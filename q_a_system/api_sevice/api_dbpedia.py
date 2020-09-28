@@ -11,6 +11,7 @@ def getQueryResult(propertyList, resourceList, queryIDs):
 
     for property in propertyList:
         resource = resourceList[0]
+        resource = resource.replace(",", "\,")
 
         for query in queries:
             # column traverse for generating Sparql
@@ -25,14 +26,15 @@ def getQueryResult(propertyList, resourceList, queryIDs):
 
             print(constant.prefix + sql)
             sparql.setQuery(constant.prefix + sql)
+            try:
+                sparql.setReturnFormat(JSON)
+                results = sparql.query().convert()
 
-            sparql.setReturnFormat(JSON)
-            results = sparql.query().convert()
-
-            tempResultArray = []
-            for result in results["results"]["bindings"]:
-                tempResultArray.append(result["label"]["value"])
-
-            answerArray.append(tempResultArray)
+                tempResultArray = []
+                for result in results["results"]["bindings"]:
+                    tempResultArray.append(result["label"]["value"])
+                answerArray.append(tempResultArray)
+            except:
+                pass
 
     return answerArray

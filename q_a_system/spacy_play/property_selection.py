@@ -21,4 +21,5 @@ def getActualProperty(keywordList, propertyList):
                 property.similarity = wordSimilarity
                 array.append(property)
 
+    array.sort(key=lambda x: x.similarity, reverse=True)
     return array

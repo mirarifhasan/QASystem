@@ -9,7 +9,7 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 import datetime
 
 # question = input.getUserQuestion()
-questions = ['When was obama born?', 'Who is the president of Eritrea?']
+questions = ['When did princess Diana die?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?', 'When was obama born?']
 # question = 'Who is the president of Eritrea?'
 
 for question in questions:

@@ -3,8 +3,6 @@ from q_a_system.global_pack import constant
 
 
 def getAllKeywords(question):
-    merge_nps = constant.nlp.create_pipe("merge_noun_chunks")
-    constant.nlp.add_pipe(merge_nps)
     question = constant.nlp(question)
 
     keyword = []
