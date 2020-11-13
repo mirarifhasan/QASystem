@@ -1,10 +1,9 @@
-'''
+"""
 Answer type can be date, location, number, person
-'''
+"""
 
-import spacy
 from q_a_system.global_pack import constant
-from q_a_system.spacy_play import parts_of_speech, keyword_extraction as k
+from q_a_system.spacy_play import parts_of_speech
 
 
 def printAnswerType(ques, keyword):

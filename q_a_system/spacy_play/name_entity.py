@@ -1,4 +1,3 @@
-import spacy
 from q_a_system.global_pack import constant
 
 

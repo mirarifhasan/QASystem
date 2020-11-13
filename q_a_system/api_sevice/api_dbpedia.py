@@ -1,13 +1,14 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
+
+from q_a_system.api_sevice import mysql_operations
 from q_a_system.global_pack import constant
-from q_a_system.api_sevice import db_connect, mysql_operations
 
 
 def getQueryResult(propertyList, resourceList, queryIDs):
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     answerArray = []
 
-    queries = mysql_operations.getAllSparqlQuery(queryIDs);
+    queries = mysql_operations.getAllSparqlQuery(queryIDs)
 
     for property in propertyList:
         resource = resourceList[0]

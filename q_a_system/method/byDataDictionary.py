@@ -1,7 +1,8 @@
 from spacy.matcher import Matcher
 from spacy.util import filter_spans
-from q_a_system.global_pack import constant as const
+
 from q_a_system.api_sevice import db_connect
+from q_a_system.global_pack import constant as const
 
 
 # TODO: REMOVE REDUNDANT PRINT STATEMENTS
@@ -135,6 +136,5 @@ def get_matcher():
         matcher.add("Noun phrase", None, pattern)
 
     return matcher
-
 
 # find_keyword_by_dataDictionary('When did Operation Overlord commence?')

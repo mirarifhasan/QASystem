@@ -1,5 +1,6 @@
-import urllib.request
 import re
+import urllib.request
+
 from bs4 import BeautifulSoup
 
 

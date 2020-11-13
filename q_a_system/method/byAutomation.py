@@ -1,10 +1,4 @@
-from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech, keyword_extraction,answer_type_extraction, answer_validation
-from q_a_system.input_output import input
-from q_a_system.api_sevice import api_dbpedia
-from q_a_system.spacy_play.keyword_extraction import removeNounChunks
-from q_a_system.spacy_play.property_selection import getActualProperty
-from q_a_system.web_scrape.propertyScrape import getPageProperties
-import datetime
+from q_a_system.spacy_play import keyword_extraction
 
 
 def findKeywordByAutomation(question):

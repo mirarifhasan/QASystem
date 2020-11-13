@@ -1,6 +1,6 @@
-import spacy
-from q_a_system.global_pack import constant
 import re
+
+from q_a_system.global_pack import constant
 
 
 def answerValidation(answerArray, questionType):

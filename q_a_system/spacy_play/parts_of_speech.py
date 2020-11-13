@@ -1,4 +1,3 @@
-import spacy
 from q_a_system.global_pack import constant
 
 
@@ -13,5 +12,5 @@ def printAllWordDetails(question):
 def tokenize(question):
     array = []
     for token in question:
-        array.append(token.text);
-    return array;
+        array.append(token.text)
+    return array

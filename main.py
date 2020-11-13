@@ -1,22 +1,21 @@
-from q_a_system.method import byAutomation, byDataDictionary
-from q_a_system.spacy_play import name_entity, resource_name, parts_of_speech, keyword_extraction, \
-    answer_type_extraction, answer_validation, question_type_extraction
-from q_a_system.input_output import input
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
-from q_a_system.spacy_play.keyword_extraction import removeNounChunks
+from q_a_system.method import byAutomation, byDataDictionary
+from q_a_system.spacy_play import name_entity, resource_name, answer_type_extraction, answer_validation, \
+    question_type_extraction
 from q_a_system.spacy_play.property_selection import getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
-import datetime
 
 # question = input.getUserQuestion()
-questions = ['When was obama born?', 'When did Operation Overlord commence?', 'When did princess Diana die?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?', 'When was obama born?']
+# questions = ['When was obama born?', 'When did princess Diana die?', 'When did Operation Overlord commence?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?']
+questions = ['Where do the Red Sox play?', 'Where is Syngman Rhee buried?', 'Where does Piccadilly start?']
 # question = 'Who is the president of Eritrea?'
 
 for question in questions:
     print(question)
     print("Step 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
-    print(nameEntityList)
+    for nameEntity in nameEntityList:
+        print(nameEntity.text)
 
     if len(nameEntityList) > 0:
         print("Step 2: Resource Name finding")
@@ -42,7 +41,8 @@ for question in questions:
             print("Step 4: Property finding")
             propertyList = getPageProperties(resourceList[0])
             propertyList = getActualProperty(keywordList, propertyList)
-            print(propertyList)
+            for prop in propertyList:
+                print(prop.label)
 
             if len(propertyList) > 0:
                 print("Step 5.0.1: Get Sparql Query IDs")
