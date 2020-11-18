@@ -5,12 +5,29 @@ from q_a_system.global_pack import constant
 
 def answerValidation(answerArray, questionType):
     # Date pattern matcher
-    for answerGroup in answerArray:
-        if len(answerGroup) > 0 and answerGroup[0].startswith('http') == False:
-            dateRegex1 = re.compile('\d\d\d\d-\d\d-\d\d')
-            dateRegex2 = re.compile('a-z..\d\d\d\d')
-            if dateRegex1.search(answerGroup[0]) or dateRegex2.search(answerGroup[0]):
-                return answerGroup[0]
+    if questionType == 'DATE':
+        for answerGroup in answerArray:
+            if len(answerGroup) > 0 and answerGroup[0].startswith('http') == False:
+                dateRegex1 = re.compile('\d\d\d\d-\d\d-\d\d')
+                dateRegex2 = re.compile('[a-z]..\d\d\d\d')
+                if dateRegex1.search(answerGroup[0]) or dateRegex2.search(answerGroup[0]) :
+                    return answerGroup[0]
+
+    #person - whom +who
+    if questionType == 'PERSON':
+        for answerGroup in answerArray:
+            if len(answerGroup) > 0 and answerGroup[0].startswith('http') == True:
+                url_answer = answerGroup[0].split('/')[-1]
+                a = url_answer.split('_')
+                print(a)
+                for i in a:
+                    sentence = constant.nlp(i)
+
+                    for token in sentence.ents:
+                        print(token.text, token.label_)
+                        if token.label_ == questionType:
+                            return url_answer
+
 
     for answerGroup in answerArray:
         if len(answerGroup) > 0:
@@ -18,7 +35,14 @@ def answerValidation(answerArray, questionType):
 
             for token in sentence.ents:
                 print(token.text, token.label_)
-                if token.label_ == questionType:
+                if token.label_ == questionType :
                     return answerGroup
+                elif token.label_ in ('FAC','ORG','GPE','LOC') and questionType == 'LOCATION':
+                    return answerGroup[0]
+
+
 
     return "No result found"
+
+
+

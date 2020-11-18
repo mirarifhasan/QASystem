@@ -17,7 +17,7 @@ def getQueryResult(propertyList, resourceList, queryIDs):
         for query in queries:
             # column traverse for generating Sparql
             sql = ""
-            for i in range(3, 8, 1):
+            for i in range(3, 12, 1):
                 if query[i] == 'res:':
                     sql = sql + " res:" + resource
                 elif query[i] == 'dbo/dbp:':
