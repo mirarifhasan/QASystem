@@ -39,7 +39,7 @@ def printAnswerType(ques, keyword):
                 questionType = 'LOCATION'
 
             elif keyword[i] in name:
-                questionType = 'NAME'
+                questionType = 'PERSON'
 
     elif questionWord[0] in ['How']:
         for i in range(len(keyword)):

@@ -16,17 +16,20 @@ def answerValidation(answerArray, questionType):
     #person - whom +who
     if questionType == 'PERSON':
         for answerGroup in answerArray:
-            if len(answerGroup) > 0 and answerGroup[0].startswith('http') == True:
-                url_answer = answerGroup[0].split('/')[-1]
-                a = url_answer.split('_')
-                print(a)
-                for i in a:
-                    sentence = constant.nlp(i)
+            for i in answerGroup:
+                if len(answerGroup) > 0 and i.startswith('http') == True:
+                    url_answer = i.split('/')[-1]
+                    a = url_answer.split('_')
+                    #a= ' '.join(a)
+                    print(a)
+                    for i in a:
+                        sentence = constant.nlp(i)
 
-                    for token in sentence.ents:
-                        print(token.text, token.label_)
-                        if token.label_ == questionType:
-                            return url_answer
+                        for token in sentence.ents:
+                            print(token.text, token.label_)
+                            if token.label_ == questionType or token.label_ in ('ORG','PRODUCT'):
+                                return ' '.join(url_answer.split('_')) # answer is splited by space
+            return ' '.join(a) + "(partially)"
 
 
     for answerGroup in answerArray:
@@ -42,7 +45,7 @@ def answerValidation(answerArray, questionType):
 
 
 
-    return "No result found"
+    return "No result found!"
 
 
 

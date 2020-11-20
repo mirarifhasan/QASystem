@@ -6,12 +6,13 @@ from q_a_system.spacy_play.property_selection import getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
 
 # question = input.getUserQuestion()
-#questions = ['When did the Dodo become extinct?', 'When did the Boston Tea Party take place?']#questions = ['When was obama born?', 'When did princess Diana die?', 'When did Operation Overlord commence?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?']
+#questions = ['When did the Dodo become extinct?', 'When did the Boston Tea Party take place?']
+#questions = ['When was obama born?', 'When did princess Diana die?', 'When did Operation Overlord commence?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?']
 #questions = ['Where do the Red Sox play?', 'Where is Syngman Rnhee buried?', 'Where does Piccadilly start?']
 #questions=['Whom did Lance Bass marry? ', 'Whom did Obama marry?']
-#questions = ['Who is president of Eritrea?','Who was doctoral supervisor of Albert Einstein?','Who wrote the song Hotel California?','Who was on the Apollo 11 mission?','Who are developers of DBpedia?', 'Who wrote Harry Potter?']
-questions = ['Show me all books in Asimov’s Foundation series.','Who developed Slack? ','Who is mayor of Paris?']
-#['Who created Family Guy?', 'Who does the voice of Bart Simpson?' ]
+#questions = ['Who is president of Eritrea?','Who was doctoral supervisor of Albert Einstein?','Who wrote the song Hotel California?','Who was on the Apollo 11 mission?', 'Who wrote Harry Potter?','Who are developers of DBpedia?']
+#questions = ['Show me all books in Asimov’s Foundation series.','Who developed Slack? ','Who is mayor of Paris?']
+questions=['Who created Family Guy?', 'Who does the voice of Bart Simpson?' ]
 #questions= ['How many moons does Mars have?','How much did the Lego Movie cost? ','How many people live in Poland?']
 for question in questions:
     print(question)
@@ -41,9 +42,12 @@ for question in questions:
             for i in keywordListByAM:
                 keywordList.append(i)
 
+
+
             print("Step 4: Property finding")
             propertyList = getPageProperties(resourceList[0])
-            propertyList = getActualProperty(keywordList, propertyList)
+            propertyList = getActualProperty(keywordList, propertyList, keywordListByDD)
+
             for prop in propertyList:
                 print(prop.label)
 

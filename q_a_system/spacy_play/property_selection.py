@@ -1,5 +1,5 @@
 from q_a_system.global_pack import constant
-
+from q_a_system.web_scrape import propertyScrape
 
 def removeDuplicates(array):
     temp_array = []
@@ -9,9 +9,19 @@ def removeDuplicates(array):
     return temp_array
 
 
-def getActualProperty(keywordList, propertyList):
+def getActualProperty(keywordList, propertyList, keywordListByDD):
     minSimilarity = constant.minSimilarity
     array = []
+
+    for k in keywordListByDD:
+        p1=propertyScrape.Property('dbo',k)
+        p1.similarity = 1.0
+        array.append(p1)
+        p2 = propertyScrape.Property('dbp', k)
+        p2.similarity=1.0
+        array.append(p2)
+
+
 
     for keyword in keywordList:
         keyword = constant.nlp(keyword)
@@ -29,5 +39,6 @@ def getActualProperty(keywordList, propertyList):
                 array.append(property)
 
     array = removeDuplicates(array)
+
     array.sort(key=lambda x: x.similarity, reverse=True)
     return array
