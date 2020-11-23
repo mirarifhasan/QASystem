@@ -9,34 +9,32 @@ def removeDuplicates(array):
     return temp_array
 
 
-def getActualProperty(keywordList, propertyList, keywordListByDD):
+def getActualProperty(keywordList, propertyList):
     minSimilarity = constant.minSimilarity
     array = []
-
-    for k in keywordListByDD:
-        p1=propertyScrape.Property('dbo',k)
-        p1.similarity = 1.0
-        array.append(p1)
-        p2 = propertyScrape.Property('dbp', k)
-        p2.similarity=1.0
-        array.append(p2)
-
-
 
     for keyword in keywordList:
         keyword = constant.nlp(keyword)
 
         for property in propertyList:
             propertyLabel = constant.nlp(property.label)
+            propertyProperty = constant.nlp(property.property)
 
-            # print(property.label)
-            # print(keyword.similarity(propertyLabel))
             wordSimilarity = keyword.similarity(propertyLabel)
+            if keyword.similarity(propertyProperty) > wordSimilarity:
+                wordSimilarity = keyword.similarity(propertyProperty)
+
             if minSimilarity < wordSimilarity:
-                # print(propertyLabel)
-                # print(keyword.similarity(propertyLabel))
-                property.similarity = wordSimilarity
-                array.append(property)
+                b = False
+                for arrayObject in array:
+                    if arrayObject.property == property.property:
+                        b = True
+                        if arrayObject.similarity < wordSimilarity:
+                            arrayObject.similarity = wordSimilarity
+
+                if not b:
+                    property.similarity = wordSimilarity
+                    array.append(property)
 
     array = removeDuplicates(array)
 

@@ -46,7 +46,7 @@ for question in questions:
 
             print("Step 4: Property finding")
             propertyList = getPageProperties(resourceList[0])
-            propertyList = getActualProperty(keywordList, propertyList, keywordListByDD)
+            propertyList = getActualProperty(keywordList, propertyList)
 
             for prop in propertyList:
                 print(prop.label)
