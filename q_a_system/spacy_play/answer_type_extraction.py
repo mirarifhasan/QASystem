@@ -1,5 +1,5 @@
 """
-Answer type can be date, location, number, person
+Answer type can be date, location, number, person, resource
 """
 
 from q_a_system.global_pack import constant
@@ -30,7 +30,7 @@ def printAnswerType(ques, keyword):
     elif questionWord[0] in ['What', 'Which']:
         for i in range(len(keyword)):
             if keyword[i] in number:
-                questionType = 'NUMBER'
+                questionType = 'RESOURCE'
 
             elif keyword[i] in date:
                 questionType = 'DATE'
