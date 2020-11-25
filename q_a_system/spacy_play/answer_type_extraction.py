@@ -12,7 +12,7 @@ def printAnswerType(ques, keyword):
     number = ["Height", "Elevation", "Peak", "Population", "Temperature"]
     date = ["Birthdate", "DeathDate", "Date", "Year", "Born", "Die"]
     location = ["Location", "Place"]
-    name = ["Nicknames", "Birth", "Name"]
+    name = ["Nicknames", "Birth", "Name", "nicknames", "birth", "name"]
 
     questionWord = parts_of_speech.tokenize(question)
     # keyword = k.getAllKeywords(ques)
@@ -30,7 +30,7 @@ def printAnswerType(ques, keyword):
     elif questionWord[0] in ['What', 'Which']:
         for i in range(len(keyword)):
             if keyword[i] in number:
-                questionType = 'RESOURCE'
+                questionType = 'NUMBER'
 
             elif keyword[i] in date:
                 questionType = 'DATE'
@@ -40,7 +40,8 @@ def printAnswerType(ques, keyword):
 
             elif keyword[i] in name:
                 questionType = 'PERSON'
-
+            else:
+                questionType = 'RESOURCE'
     elif questionWord[0] in ['How']:
         for i in range(len(keyword)):
             if keyword[i] in ["Few", "Little", "Much", "Many", "Often", "Tall"]:

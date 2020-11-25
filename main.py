@@ -7,25 +7,6 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # question = input.getUserQuestion()
 #questions = ['When did the Dodo become extinct?', 'When did the Boston Tea Party take place?','When was Coca Cola invented? ']
 #questions = ['When was obama born?', 'When did princess Diana die?', 'When did Operation Overlord commence?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?']
@@ -36,18 +17,28 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 #questions=['Who discovered Ceres?','Who is the host of the BBC Wildlife Specials?','Who wrote the Game of Thrones theme?']
 #questions=['Who developed Slack?','Who was Vincent van Gogh inspired by?']
 #questions=['Who is the president of Eritrea?','Who is the mayor of Paris?','Who are the developers of DBpedia']
+
 ##=====================unprocessed
 #questions = ['Show me all books in Asimov’s Foundation series.']
 #questions= ['How many moons does Mars have?','How much did the Lego Movie cost? ','How many people live in Poland?']
 
-#questions=['What is in a chocolate chip cookie? ','What is the atmosphere of the Moon composed of?','What is the capital of Cameroon? ','What country is Sitecore from?', 'What is full name of Prince Charles?']
-#questions=['What form of government does Russia have?']
-#questions=['What kind of music did Lou Reed play?']
-#questions = ['What languages do they speak in Pakistan?']
-#questions = ['What is Elon Musk famous for?','What is Batman’s real name?']
+
+#questions=['What is in a chocolate chip cookie? ','What is the atmosphere of the Moon composed of?','What is the capital of Cameroon? ','What country is Sitecore from?']
+#questions=['What is full name of Prince Charles?']
+questions=[  'What languages do they speak in Pakistan?','What is Elon Musk famous for?','What is Batman’s real name?','What form of government does Russia have?','What kind of music did Lou Reed play?']
 #questions=['What color expresses loyalty?','What are the five boroughs of New York?','What are the zodiac signs?']
+
 #questions=['Which actors play in Big Bang Theory?', 'In which time zone is Rome?']
-questions=['On which day is Columbus Day?']
+#questions=['On which day is Columbus Day?']
+
+
+#questions=[' Did Elvis Presley have children?', 'Does Neymar play for Real Madrid?', 'Did Kaurismäki ever win the Grand Prix at Cannes?' ]
+#questions=[  'Who are developers of DBpedia?', 'Who wrote the song Hotel California?','When was Coca Cola invented?' ]
+#questions=['Who wrote the song Hotel California?']
+
+######### our dataset
+#questions=['When was Maynamati War Cemetery  established ?']
+#questions= ['When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?',''When was Nina Pilard born?'']
 for question in questions:
     print(question)
     print("Step 1: Name Entity finding")
