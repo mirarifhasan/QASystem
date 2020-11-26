@@ -49,5 +49,8 @@ def printAnswerType(ques, keyword):
 
             elif keyword[i] in ["Young", "Old", "Long"]:
                 questionType = "DATE"
+    elif questionWord[0] in ['In', 'On','To','For','At', 'By', 'From']:
+        if questionWord[1] in ['which', 'what']:
+            questionType = 'RESOURCE'
 
     return questionType

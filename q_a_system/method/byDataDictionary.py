@@ -87,7 +87,20 @@ def create_relation(phrase_id, given_keyword):
         const.TABLE_RELATION
     )
 
-
+def insert_single_value(column_name, value, table_name):
+    cursor = db_connect.connection.cursor()
+    '''
+    for i in range(0, len(value), 1):
+        print(value[i])
+        sql = "INSERT INTO `phrase` (`phrase`) VALUES (%s)"
+        cursor.execute(sql, (str(value[i])))
+        db_connect.connection.commit()
+    '''
+    sql = f"INSERT INTO `{table_name}` (`{column_name}`) VALUES (%s)"
+    cursor.execute(sql, str(value))
+    db_connect.connection.commit()
+    cursor.close()
+'''
 def insert_single_value(column_name, value, table_name):
     cursor = db_connect.connection.cursor()
     for i in range(0, len(value), 1):
@@ -97,7 +110,7 @@ def insert_single_value(column_name, value, table_name):
         db_connect.connection.commit()
 
     cursor.close()
-
+'''
 
 # TODO: merge the two insert functions into one
 def insert_double_value(column1, column2, value1, value2, table_name):
