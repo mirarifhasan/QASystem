@@ -79,7 +79,12 @@ def answerValidation(answerArray, questionType):
                 elif token.label_ in ('FAC','ORG','GPE','LOC') and questionType == 'LOCATION':
                     return answerGroup[0]
                 elif token.label_ in ('PERSON','NORP','FAC','ORG','GPE','LOC','PRODUCT','EVENT','WORK_OF_ART','LAW','LANGUAGE','DATE','TIME','PERCENT','MONEY','QUANTITY','ORDINAL','CARDINAL') and questionType == 'RESOURCE':
+                    print(token.text, token.label_)
                     return ', '.join(answerGroup)
+                elif token.label_ in ('PERCENT','MONEY','QUANTITY','ORDINAL','CARDINAL') and questionType == 'NUMBER':
+                    print(token.text, token.label_)
+                    return ', '.join(answerGroup)
+
 
         # resource - what+ which
         a = []
@@ -116,6 +121,19 @@ def answerValidation(answerArray, questionType):
                     elif flag2 == 1:
                         return ', '.join((grouparray)) + "(partially)"
 
+
+
+        if questionType== 'LIST':
+            for answerGroup in answerArray:
+                if len(answerGroup) > 0:
+                    for i in answerGroup:
+                        if i.startswith('http') == True:
+                            url_answer = i.split('/')[-1]
+                            a = url_answer.split('_')
+                            # a= ' '.join(a)
+                            print(a)
+                            grouparray.append(' '.join(a))
+                    return ', '.join((grouparray))
 
     return "No result found!"
 

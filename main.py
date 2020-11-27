@@ -31,8 +31,8 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 #questions=['Which actors play in Big Bang Theory?', 'In which time zone is Rome?']
 #questions=['On which day is Columbus Day?', 'Who played Gus Fring in Breaking Bad?']
 
-questions=['How did Michael Jackson die? ']
-
+#questions=['What languages do they speak in Pakistan?','What form of government does Russia have?']
+questions=['Show me all U.S. states']
 
 #' Did Elvis Presley have children?'
 #questions=['Does Neymar play for Real Madrid?', 'Did Kaurismäki ever win the Grand Prix at Cannes?' ]

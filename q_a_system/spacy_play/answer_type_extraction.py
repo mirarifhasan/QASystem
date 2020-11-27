@@ -1,5 +1,5 @@
 """
-Answer type can be date, location, number, person, resource
+Answer type can be date, location, number, person, resource, process
 """
 
 from q_a_system.global_pack import constant
@@ -28,29 +28,33 @@ def printAnswerType(ques, keyword):
         questionType = "DATE"
 
     elif questionWord[0] in ['What', 'Which']:
-        for i in range(len(keyword)):
-            if keyword[i] in number:
+
+            if questionWord[1] in number:
                 questionType = 'NUMBER'
 
-            elif keyword[i] in date:
+            elif questionWord[1] in date:
                 questionType = 'DATE'
 
-            elif keyword[i] in location:
+            elif questionWord[1] in location:
                 questionType = 'LOCATION'
 
-            elif keyword[i] in name:
+            elif questionWord[1] in name:
                 questionType = 'PERSON'
             else:
                 questionType = 'RESOURCE'
-    elif questionWord[0] in ['How']:
-        for i in range(len(keyword)):
-            if keyword[i] in ["Few", "Little", "Much", "Many", "Often", "Tall"]:
-                questionType = "NUMBER"
 
-            elif keyword[i] in ["Young", "Old", "Long"]:
+    elif questionWord[0] in ['How']:
+            if questionWord[1] in ["Few", "Little", "Much", "Many", "Often", "Tall"]:
+                questionType = "NUMBER"
+            elif questionWord[1] in ["Young", "Old", "Long"]:
                 questionType = "DATE"
+
+
     elif questionWord[0] in ['In', 'On','To','For','At', 'By', 'From']:
         if questionWord[1] in ['which', 'what']:
             questionType = 'RESOURCE'
+
+    elif questionWord[0] in ['Show', 'List','Give']:
+        questionType = 'LIST'
 
     return questionType

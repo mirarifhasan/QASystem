@@ -9,12 +9,12 @@ def findQuestionType(ques):
 
     if questionWord[0].lower() in ['how', 'what', 'where', 'when', 'which', 'who', 'whom', 'wist']:
         word = questionWord[0].lower()
-    elif questionWord[0].lower() in ['show', 'give']:
+    elif questionWord[0].lower() in ['show', 'give','list']:
         word = "list"
     elif questionWord[0].lower() in ['in', 'on', 'to'] and questionWord[1].lower() in ['which', 'what']:
         word = questionWord[1].lower()
     elif questionWord[0].lower() in ['do', 'does', 'did']:
-        word = 'others'
+        word = questionWord[1].lower()
 
     return word
 
