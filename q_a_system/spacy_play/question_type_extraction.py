@@ -6,16 +6,16 @@ def findQuestionType(ques):
     question = constant.nlp(ques)
     questionWord = parts_of_speech.tokenize(question)
     word = ""
-
-    if questionWord[0].lower() in ['how', 'what', 'where', 'when', 'which', 'who', 'whom', 'wist']:
-        word = questionWord[0].lower()
-    elif questionWord[0].lower() in ['show', 'give','list']:
+    arr=questionWord[0].split(' ')
+    arr2=questionWord[1].split(' ')
+    if arr[0].lower() in ['how', 'what', 'where', 'when', 'which', 'who', 'whom', 'list']:
+        word=arr[0].lower()
+    elif arr[0].lower() in ['show', 'give']:
         word = "list"
-    elif questionWord[0].lower() in ['in', 'on', 'to'] and questionWord[1].lower() in ['which', 'what']:
-        word = questionWord[1].lower()
-    elif questionWord[0].lower() in ['do', 'does', 'did']:
-        word = questionWord[1].lower()
+    elif arr[0].lower() in ['in', 'on', 'to'] and (arr2[0].lower() in ['which', 'what']):
+        word = arr2[0].lower()
+    elif arr[0].lower() in ['do', 'does', 'did']:
+        word = arr[0].lower()
 
     return word
 
-# print(findQuestionType("Where is the time"))

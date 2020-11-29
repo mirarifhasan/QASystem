@@ -32,19 +32,21 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 #questions=['On which day is Columbus Day?', 'Who played Gus Fring in Breaking Bad?']
 
 #questions=['What languages do they speak in Pakistan?','What form of government does Russia have?']
-questions=['Show me all U.S. states']
+#questions=['Show me all U.S. states']
 
 #' Did Elvis Presley have children?'
-#questions=['Does Neymar play for Real Madrid?', 'Did Kaurismäki ever win the Grand Prix at Cannes?' ]
+questions=['Does Neymar play for Real Madrid?', 'Did Kaurismäki ever win the Grand Prix at Cannes?' ]
 #questions=['What form of government does Russia have?','Which films did Stanley Kubrick direct?','Which companies produce hovercrafts?']
 #questions=[ 'In which ancient empire could you pay with cocoa beans?']
 #questions=['Which space probes were sent into orbit around the sun?']
-#questions=['When was 7-up invented?','When was Coca Cola invented?']
+#questions=['Did Elvis Presley have children?']
+
 ######### our dataset
-# 'Where  is Ahsanullah University of Science and Technology located?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?'
+# 'Where  is Ahsanullah University of Science and Technology located?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?','Where was Kazi Nazrul Islam born?'
 #questions=['When was Maynamati War Cemetery  established ?']
-#questions= ['When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
-#questions=[ 'Where was Kazi Nazrul Islam born?']
+#questions= ['When was 7-up invented?', 'When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
+# 'Show me the universities of Bangladesh ?', 'Show the broadcast channels of Bangladesh?','How many 100s/50s  has got Sakib Al Hasan  in his carier?'
+#questions=['How many matches Sakib Al Hasan played?']
 
 for question in questions:
     print(question)

@@ -4,6 +4,19 @@ from q_a_system.global_pack import constant
 
 
 def answerValidation(answerArray, questionType):
+
+    if questionType == 'NUMBER':
+        for answerGroup in answerArray:
+            if len(answerGroup) > 0:
+                for i in answerGroup:
+                    sentence = constant.nlp(i)
+                    for token in sentence.ents:
+                        print(token.text, token.label_)
+                        if token.label_ in ('PERCENT','MONEY','QUANTITY','ORDINAL','CARDINAL') :
+                            return ' '.join(answerGroup)
+
+
+
     # Date pattern matcher
     if questionType == 'DATE':
 
@@ -78,7 +91,7 @@ def answerValidation(answerArray, questionType):
                     return answerGroup[0]
                 elif token.label_ in ('FAC','ORG','GPE','LOC') and questionType == 'LOCATION':
                     return answerGroup[0]
-                elif token.label_ in ('PERSON','NORP','FAC','ORG','GPE','LOC','PRODUCT','EVENT','WORK_OF_ART','LAW','LANGUAGE','DATE','TIME','PERCENT','MONEY','QUANTITY','ORDINAL','CARDINAL') and questionType == 'RESOURCE':
+                elif token.label_ in ('NORP','FAC','ORG','GPE','PRODUCT','EVENT','WORK_OF_ART','LAW','LANGUAGE') and questionType == 'RESOURCE':
                     print(token.text, token.label_)
                     return ', '.join(answerGroup)
                 elif token.label_ in ('PERCENT','MONEY','QUANTITY','ORDINAL','CARDINAL') and questionType == 'NUMBER':
@@ -107,9 +120,7 @@ def answerValidation(answerArray, questionType):
                                 for token in sentence.ents:
                                     print(token.text, token.label_)
                                     if token.label_ == questionType or token.label_ in (
-                                    'PERSON', 'NORP', 'FAC', 'ORG', 'GPE', 'LOC', 'PRODUCT', 'EVENT', 'WORK_OF_ART',
-                                    'LAW', 'LANGUAGE', 'DATE', 'TIME', 'PERCENT', 'MONEY', 'QUANTITY', 'ORDINAL',
-                                    'CARDINAL'):
+                                    'NORP','FAC','ORG','GPE','PRODUCT','EVENT','WORK_OF_ART','LAW','LANGUAGE'):
                                         flag1 = 1
                                         # return ' '.join(url_answer.split('_')) # answer is splited by space
 
@@ -134,6 +145,15 @@ def answerValidation(answerArray, questionType):
                             print(a)
                             grouparray.append(' '.join(a))
                     return ', '.join((grouparray))
+
+
+
+    if questionType == 'YES/NO':
+        if answerArray:
+            return "True"
+        else:
+            return "False"
+
 
     return "No result found!"
 
