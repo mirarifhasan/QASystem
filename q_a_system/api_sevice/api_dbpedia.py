@@ -37,7 +37,7 @@ def getQueryResult(propertyList, resourceList, queryIDs,question):
                 else:
                     sql = sql + " " + query[i]
 
-            print(constant.prefix + sql)
+            # print(constant.prefix + sql)
             sparql.setQuery(constant.prefix + sql)
             try:
                 if queries in (20,21):
