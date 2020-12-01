@@ -9,7 +9,7 @@ from q_a_system.global_pack import constant as const
 
 # the following function will be called in main.py
 def find_keyword_by_dataDictionary(question):
-    print('______________________________find_keyword_by_dataDictionary START')
+    # print('______________________________find_keyword_by_dataDictionary START')
     keyword_list_by_data_dictionary = []
     matcher = get_matcher()
     doc = const.nlp(question)
@@ -19,8 +19,8 @@ def find_keyword_by_dataDictionary(question):
     filtered_spans = filter_spans(spans)
     for phrase in filtered_spans:
         result_list = search_for(const.COLUMN_PHRASE, phrase, const.TABLE_PHRASE)
-        print(f'result list : {result_list}')
-        if len(result_list) == 0:
+        # print(f'result list : {result_list}')
+        if False and len(result_list) == 0:
             # i.e phrase not found
             print(f'{phrase} " not found in " {const.TABLE_PHRASE}')
             print("would you like to add it?")
@@ -36,7 +36,7 @@ def find_keyword_by_dataDictionary(question):
         for result in result_list:
             phrase_id = result[0]
             relation_list = search_for(const.COLUMN_PHRASE_ID, phrase_id, const.TABLE_RELATION)
-            if len(relation_list) == 0:
+            if False and len(relation_list) == 0:
                 # i.e. this phrase do not have keyword
                 print(f'{phrase} (phrase id : {phrase_id}) does not have corresponding keyword')
                 print('would you like to add corresponding keyword?')
@@ -48,7 +48,7 @@ def find_keyword_by_dataDictionary(question):
                     break
 
             # the phrase is sure to have a keyword
-            print(f'relation list : {relation_list}')
+            # print(f'relation list : {relation_list}')
             for relation in relation_list:
                 keyword_id = relation[2]
                 keyword_list = search_for(const.COLUMN_ID, keyword_id, const.TABLE_KEYWORD)
@@ -56,13 +56,13 @@ def find_keyword_by_dataDictionary(question):
                     keyword = row[1]
                     keyword_list_by_data_dictionary.append(keyword)
 
-    print('______________________________find_keyword_by_dataDictionary END')
+    # print('______________________________find_keyword_by_dataDictionary END')
     return keyword_list_by_data_dictionary
 
 
 def search_for(column_name, value, table_name):
     query = f"SELECT * FROM {table_name} WHERE {column_name} = '{value}'"
-    print(f'executed query: {query}')
+    # print(f'executed query: {query}')
     cursor = db_connect.connection.cursor()
     cursor.execute(query)
     results = cursor.fetchall()
@@ -72,20 +72,21 @@ def search_for(column_name, value, table_name):
 
 def create_relation(phrase_id, given_keyword):
     keyword_list = search_for(const.COLUMN_KEYWORD, given_keyword, const.TABLE_KEYWORD)
-    if len(keyword_list) == 0:
+    if False and len(keyword_list) == 0:
         # i.e. the given keyword is not available in keyword table
         insert_single_value(const.COLUMN_KEYWORD, given_keyword, const.TABLE_KEYWORD)
         keyword_list = search_for(const.COLUMN_KEYWORD, given_keyword, const.TABLE_KEYWORD)
         if len(keyword_list) == 0:
             print('something is fishy')
             # return
-    print(f'keyword_list : {keyword_list}')
+    # print(f'keyword_list : {keyword_list}')
     keyword_id = keyword_list[0][0]
     insert_double_value(
         const.COLUMN_PHRASE_ID, const.COLUMN_KEYWORD_ID,
         int(phrase_id), int(keyword_id),
         const.TABLE_RELATION
     )
+
 
 def insert_single_value(column_name, value, table_name):
     cursor = db_connect.connection.cursor()
@@ -100,6 +101,8 @@ def insert_single_value(column_name, value, table_name):
     cursor.execute(sql, str(value))
     db_connect.connection.commit()
     cursor.close()
+
+
 '''
 def insert_single_value(column_name, value, table_name):
     cursor = db_connect.connection.cursor()
@@ -111,6 +114,7 @@ def insert_single_value(column_name, value, table_name):
 
     cursor.close()
 '''
+
 
 # TODO: merge the two insert functions into one
 def insert_double_value(column1, column2, value1, value2, table_name):
