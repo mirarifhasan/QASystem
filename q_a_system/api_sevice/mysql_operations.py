@@ -34,3 +34,13 @@ def getAllSparqlQuery(queryIDs):
     cursor.close()
 
     return results
+
+
+def findResource(nameEntity):
+    sql = "SELECT * FROM resource_dictionary WHERE name_entity = '" + nameEntity + "'"
+    cursor = db_connect.connection.cursor()
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    cursor.close()
+
+    return results
