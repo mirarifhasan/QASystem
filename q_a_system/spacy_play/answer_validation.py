@@ -89,6 +89,8 @@ def answerValidation(answerArray, questionType):
                 print(token.text, token.label_)
                 if token.label_ == questionType :
                     return answerGroup[0]
+                if token.label_ in ('PERSON', 'ORG') :
+                    return answerGroup[0]
                 elif token.label_ in ('FAC','ORG','GPE','LOC') and questionType == 'LOCATION':
                     return answerGroup[0]
                 elif token.label_ in ('NORP','FAC','ORG','GPE','PRODUCT','EVENT','WORK_OF_ART','LAW','LANGUAGE') and questionType == 'RESOURCE':
@@ -155,7 +157,7 @@ def answerValidation(answerArray, questionType):
             return "False"
 
 
-    return "No result found!"
+    return answerArray[0][0] + "(partially)"
 
 
 

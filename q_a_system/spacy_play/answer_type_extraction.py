@@ -1,5 +1,5 @@
 """
-Answer type can be date, location, number, person, resource, process
+Answer type can be date, location, number, person, resource, list
 """
 
 from q_a_system.global_pack import constant
@@ -8,15 +8,14 @@ from q_a_system.spacy_play import parts_of_speech, keyword_extraction
 
 def printAnswerType(ques, keyword):
     question = constant.nlp(ques)
-
-    number = ["Height", "Elevation", "Peak", "Population", "Temperature"]
-    date = ["Birthdate", "DeathDate", "Date", "Year", "Born", "Die"]
-    location = ["Location", "Place","universities"]
-    name = ["Nicknames", "Birth", "Name", "nicknames", "birth", "name"]
+    qu = ques.split(' ')
+    number = ["height", "elevation", "peak", "population", "temperature","score"]
+    date = ["birthdate", "deathDate", "date", "year", "born", "die"]
+    location = ["location", "place","universities"]
+    name = ["nicknames", "birth", "name", "nicknames"]
 
     questionWord = parts_of_speech.tokenize(question)
     arr = questionWord[0].split(' ')
-    keyword = keyword_extraction.getAllKeywords(ques)
 
     questionType = "null"
     if arr[0] in ['Who', 'Whom']:
@@ -29,44 +28,47 @@ def printAnswerType(ques, keyword):
         questionType = "DATE"
 
     elif arr[0] in ['What', 'Which']:
-
-            if arr[1] in number:
+        questionType = 'RESOURCE'
+        for q in qu:
+            if (q in number):
                 questionType = 'NUMBER'
-
-            elif arr[1] in date:
+                break;
+            elif (q in date):
                 questionType = 'DATE'
-
-            elif arr[1] in location:
+                break;
+            elif (q in location ):
                 questionType = 'LOCATION'
-
-            elif arr[1] in name:
+                break;
+            elif (q in name):
                 questionType = 'PERSON'
-            else:
-                questionType = 'RESOURCE'
+                break;
+
 
     elif arr[0] in ['How']:
-            if arr[1] in ["few", "little", "much", "many", "often", "tall"]:
+            if len(arr)>1 and arr[1] in ["few", "little", "much", "many", "often", "tall"]:
                 questionType = "NUMBER"
-            elif arr[1] in ["Young", "Old", "Long"]:
+            elif len(arr)>1 and arr[1] in ["Young", "Old", "Long"]:
                 questionType = "DATE"
-
+            else:
+                questionType = "RESOURCE"
 
     elif arr[0] in ['In', 'On','To','For','At', 'By', 'From']:
         arr2 = questionWord[1].split(' ')
-        if arr[0] in ['which', 'what']:
-            if arr[1] in number:
-                questionType = 'NUMBER'
-
-            elif arr[1] in date:
-                questionType = 'DATE'
-
-            elif arr[1] in location:
-                questionType = 'LOCATION'
-
-            elif arr[1] in name:
-                questionType = 'PERSON'
-            else:
-                questionType = 'RESOURCE'
+        if arr2[0] in ['which', 'what']:
+            questionType = 'RESOURCE'
+            for q in qu:
+                if (q in number):
+                    questionType = 'NUMBER'
+                    break;
+                elif (q in date):
+                    questionType = 'DATE'
+                    break;
+                elif (q in location):
+                    questionType = 'LOCATION'
+                    break;
+                elif (q in name):
+                    questionType = 'PERSON'
+                    break;
 
     elif arr[0] in ['Show', 'List','Give']:
         if keyword in location:

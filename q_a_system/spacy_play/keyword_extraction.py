@@ -9,7 +9,7 @@ def getAllKeywords(question):
     questionwords = ["Who", "What", "Where", "When", "How", "Which", "List", "who", "what", "where", "when", "how", "which", "list"]
     commonwords = [ "The", "A", "An", "Is", "Are", "Were", "Can", "Could", "Would", "Does", "Has", "Was", "Had",
                    "Have", "Did", "Will", "As", "Do", "the", "a", "an", "is", "are", "were", "can", "could", "would", "does", "has", "was", "had",
-                   "have", "did", "will", "as", "do"]
+                   "have", "did", "will", "as", "do","many","much"]
     keyword = []
 
     for word in question:
