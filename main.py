@@ -5,6 +5,7 @@ from q_a_system.spacy_play import name_entity, resource_name, answer_type_extrac
 from q_a_system.spacy_play.property_selection import getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
 import warnings
+import time
 
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
@@ -58,8 +59,20 @@ urlInputFile = "D:\All Codes and Projects\Python\Resources\Questions - Sheet1.cs
 urlOutputFile = "D:\All Codes and Projects\Python\Resources\ProcessingTime.csv"
 question_count = 0
 
+total_qp_time = 0
+# qp refers to question processing
+qp_time_automation = 0
+qp_time_automation_start = 0
+qp_time_automation_end = 0
+qp_time_dd_start = 0
+qp_time_dd_end = 0
+total_qp_time_automation = 0
+total_qp_time_dd = 0
+total_mapping_and_ans_retrieval_time = 0
+total_property_time = 0
+
 try:
-    inputFile = open(urlInputFile)
+    inputFile = open(urlInputFile, "r")
     for line in inputFile:
         questions.append(line)
 
@@ -69,14 +82,21 @@ except:
 finally:
     inputFile.close()
 
+try:
+    outputFile = open(urlOutputFile, "w")
+    outputFile.write("Question Processing Time (s),Query Generation and Answer Retrieval Time (s)")
+except:
+    print("error opening output file")
+
 for question in questions:
     question_count = question_count + 1
-    print(f"Question no: {question_count}\n")
-    if question_count < 16:
-        continue
+    print(f"Question no: {question_count}")
+    # if question_count < 16:
+    # continue
     print(question)
-    print("Step 1: Name Entity finding")
+    # print("Step 1: Name Entity finding")
     # TODO: start question processing count here
+    total_qp_time = time.time()
     nameEntityList = name_entity.getNameEntity(question)
     #    for nameEntity in nameEntityList:
     #        print(nameEntity.text)
@@ -89,11 +109,18 @@ for question in questions:
         if len(resourceList) > 0:
             # print("Step 3: Keywords finding")
             # finding keyword list by build in services
+            total_qp_time = time.time() - total_qp_time
+            qp_time_automation_start = time.time()
             keywordListByAM = byAutomation.findKeywordByAutomation(question)
+            qp_time_automation_end = time.time()
+            total_qp_time_automation = qp_time_automation_end - qp_time_automation_start
             # print(keywordListByAM)
 
             # finding keyword list by DataDictionary approach
+            qp_time_dd_start = time.time()
             keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
+            qp_time_dd_end = time.time()
+            total_qp_time_dd = qp_time_dd_end - qp_time_dd_start
             # print(keywordListByDD)
 
             keywordList = []
@@ -103,8 +130,14 @@ for question in questions:
                 keywordList.append(i)
 
             # print("Step 4: Property finding")
+            # TODO: make it free from internet issues
+            total_property_time = time.time()
             propertyList = getPageProperties(resourceList[0])
             propertyList = getActualProperty(keywordList, propertyList)
+            total_property_time = time.time() - total_property_time
+
+            # total_qp_time = total_qp_time + (time.time() - qp_time_dd_end)
+            total_qp_time = total_qp_time + min(total_qp_time_automation, total_qp_time_dd)
 
             # for prop in propertyList:
             #   print(prop.label)
@@ -114,6 +147,7 @@ for question in questions:
                 questionType = question_type_extraction.findQuestionType(question)
                 queryIDs = mysql_operations.findSparqlQueryID(questionType)
 
+                total_mapping_and_ans_retrieval_time = time.time()
                 # print("Step 5: All possible answer finding")
                 answerArray = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs, question)
                 # print(answerArray)
@@ -121,12 +155,31 @@ for question in questions:
                 # print("Step 6: Answer type extraction")
                 questionType = answer_type_extraction.printAnswerType(question, keywordList)
                 # print("Expected Answer Type : " + questionType)
+                total_mapping_and_ans_retrieval_time = time.time() - total_mapping_and_ans_retrieval_time
 
                 # print("Step 7: Answer type validation")
                 answer = answer_validation.answerValidation(answerArray, questionType)
                 # print("Actual Answer: " + answer)
 
             else:
-                print("No property found! Can't go forward without property")
+                # print("No property found! Can't go forward without property")
+                do_nothing = True
+                total_mapping_and_ans_retrieval_time = -1
 
-    print('\n\n\n')
+        else:
+            total_qp_time = time.time() - total_qp_time
+
+    else:
+        total_qp_time = -1
+    # print('\n\n\n')
+    total_qp_time_automation = round(total_qp_time_automation, 2)
+    total_qp_time_dd = round(total_qp_time_dd, 2)
+    total_qp_time = round(total_qp_time, 2)
+    total_mapping_and_ans_retrieval_time = round(total_mapping_and_ans_retrieval_time, 2)
+    print("qp_by_aut  qp_by_dd  total_qp  map_ans_time")
+    print(
+        f"\t{total_qp_time_automation} \t {total_qp_time_dd} \t {total_qp_time} \t {total_mapping_and_ans_retrieval_time}")
+    # print(f"property finding time: {round(total_property_time, 2)}\n\n")
+    outputFile.write(f"{total_qp_time},{total_mapping_and_ans_retrieval_time}")
+
+outputFile.close()
