@@ -4,6 +4,9 @@ from q_a_system.spacy_play import name_entity, resource_name, answer_type_extrac
     question_type_extraction
 from q_a_system.spacy_play.property_selection import getActualProperty
 from q_a_system.web_scrape.propertyScrape import getPageProperties
+import warnings
+
+warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
 # questions = input.getUserQuestion()
 # questions = ['When did the Boston Tea Party take place?','When does the ottoman state founded?']
@@ -53,6 +56,7 @@ questions = []
 
 urlInputFile = "D:\All Codes and Projects\Python\Resources\Questions - Sheet1.csv"
 urlOutputFile = "D:\All Codes and Projects\Python\Resources\ProcessingTime.csv"
+question_count = 0
 
 try:
     inputFile = open(urlInputFile)
@@ -66,6 +70,10 @@ finally:
     inputFile.close()
 
 for question in questions:
+    question_count = question_count + 1
+    print(f"Question no: {question_count}\n")
+    if question_count < 16:
+        continue
     print(question)
     print("Step 1: Name Entity finding")
     # TODO: start question processing count here
