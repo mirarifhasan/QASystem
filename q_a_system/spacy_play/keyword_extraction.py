@@ -6,7 +6,7 @@ def getAllKeywords(question):
 
     ###this is added to solve the problem when "the mayor","what language" gets as keyword, it doesn't match the property. by this we get "mayor","language" as keyowrd.
 
-    questionwords = ["Who", "What", "Where", "When", "How", "Which", "List", "who", "what", "where", "when", "how", "which", "list"]
+    questionwords = ["Who", "What", "Where", "When", "How", "Which", "List", "who", "what", "where", "when", "how", "which", "list","Whose", "whose"]
     commonwords = [ "The", "A", "An", "Is", "Are", "Were", "Can", "Could", "Would", "Does", "Has", "Was", "Had",
                    "Have", "Did", "Will", "As", "Do", "the", "a", "an", "is", "are", "were", "can", "could", "would", "does", "has", "was", "had",
                    "have", "did", "will", "as", "do","many","much"]

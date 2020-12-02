@@ -8,7 +8,7 @@ def findQuestionType(ques):
     word = ""
     arr=questionWord[0].split(' ')
     arr2=questionWord[1].split(' ')
-    if arr[0].lower() in ['how', 'what', 'where', 'when', 'which', 'who', 'whom', 'list']:
+    if arr[0].lower() in ['how', 'what', 'where', 'when', 'which', 'who', 'whom', 'list','whose']:
         word=arr[0].lower()
     elif arr[0].lower() in ['show', 'give']:
         word = "list"

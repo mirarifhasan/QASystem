@@ -18,7 +18,7 @@ def printAnswerType(ques, keyword):
     arr = questionWord[0].split(' ')
 
     questionType = "null"
-    if arr[0] in ['Who', 'Whom']:
+    if arr[0] in ['Who', 'Whom','Whose']:
         questionType = "PERSON"
 
     elif arr[0] == 'Where':
