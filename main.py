@@ -43,7 +43,7 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 ######### our dataset
 #, 'What is the official language of turkey ?','What is the full name of turkey?', What is the species of royal Bengal tiger?', 'What is the nick name of Ahsanullah University of Science and Technology?','What is the currency code of Turkey?', "What is the birth name of  Nina Pillard?",'How many goals given by Maradona in total?','How many runs scored by Shakib Al Hasan in total?','What is the bowling average of Shakib Al Hasan?','What is the top score of Shakib Al Hasan?',,'How many wickets are taken by Shakib Al Hasan at maximum?','What is the batting average of  Shakib Al Hasan?'
 # 'Where  is Ahsanullah University of Science and Technology located?','When was Maynamati War Cemetery  established ?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?','Where was Kazi Nazrul Islam born?'
-questions=['which is the fastest growing religion?']
+questions=['How many goals did Pelé score?']
 #questions= ['When was 7-up invented?', 'When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
 # 'Show me the universities of Bangladesh ?', 'Show the broadcast channels of Bangladesh?','How many 100s/50s  has got Sakib Al Hasan  in his carier?'
 #questions=['How many matches Sakib Al Hasan played?',How many undergraduates study in  Ahsanullah University of Science and Technology?','How has Kazi Nazrul Islam been influenced in writing rebel poem?']

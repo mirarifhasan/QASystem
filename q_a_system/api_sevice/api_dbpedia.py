@@ -25,11 +25,13 @@ def getQueryResult(propertyList, resourceList, queryIDs,question):
         resource = resource.replace(",", "\,")
         resource = resource.replace(".", "\.")
         resource = resource.replace("+", "\+")
+        resource = resource.replace("(", "\(")
+        resource = resource.replace(")", "\)")
         property.property=property.property.replace("/", "\/")
         for query in queries:
             # column traverse for generating Sparql
             sql = ""
-            for i in range(3, 12, 1):
+            for i in range(3, 20, 1):
                 if query[i] == 'res:':
                     sql = sql + " res:" + resource
                 elif query[i] == 'dbo/dbp:':
@@ -40,14 +42,11 @@ def getQueryResult(propertyList, resourceList, queryIDs,question):
             print(constant.prefix + sql)
             sparql.setQuery(constant.prefix + sql)
             try:
-                if queries in (20,21):
-                    sparql.setReturnFormat(XML)
-                    results = sparql.query().convert()
-                    answerArray.append(results.toxml())
+                sparql.setReturnFormat(JSON)
+                results = sparql.query().convert()
+                if query[0] in (20,21):
+                    answerArray.append(results['boolean'])
                 else:
-                    sparql.setReturnFormat(JSON)
-                    results = sparql.query().convert()
-
                     tempResultArray = []
                     for result in results["results"]["bindings"]:
                         tempResultArray.append(result["label"]["value"])
