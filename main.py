@@ -84,7 +84,7 @@ finally:
 
 try:
     outputFile = open(urlOutputFile, "w")
-    outputFile.write("Question Processing Time (s),Query Generation and Answer Retrieval Time (s)")
+    outputFile.write("Question Processing Time (s),Query Generation and Answer Retrieval Time (s)\n")
 except:
     print("error opening output file")
 
@@ -180,6 +180,6 @@ for question in questions:
     print(
         f"\t{total_qp_time_automation} \t {total_qp_time_dd} \t {total_qp_time} \t {total_mapping_and_ans_retrieval_time}")
     # print(f"property finding time: {round(total_property_time, 2)}\n\n")
-    outputFile.write(f"{total_qp_time},{total_mapping_and_ans_retrieval_time}")
+    outputFile.write(f"{total_qp_time},{total_mapping_and_ans_retrieval_time}\n")
 
 outputFile.close()
