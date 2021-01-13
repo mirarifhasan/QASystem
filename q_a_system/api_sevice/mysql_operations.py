@@ -1,8 +1,12 @@
 from q_a_system.api_sevice import db_connect
 
 
-def findSparqlQueryID(whWord):
+def findSparqlQueryID(whWord, question):
     queryIDs = []
+
+    queryIDs = findIfAggregate(question)
+    if len(queryIDs) > 0:
+        return queryIDs
 
     cursor = db_connect.connection.cursor()
     try:
@@ -15,6 +19,22 @@ def findSparqlQueryID(whWord):
         print("Something else went wrong")
 
     cursor.close()
+    return queryIDs
+
+
+def findIfAggregate(question):
+    queryIDs = []
+    questionWords = question.split(' ')
+    questionWords[-1] = questionWords[-1].replace("?", "")
+
+    for word in questionWords:
+        if word in ['top', 'maximum']:
+            queryIDs = [22]
+        elif word in ['total']:
+            queryIDs = [23]
+        elif word in ['average']:
+            queryIDs = [24]
+
     return queryIDs
 
 

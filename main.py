@@ -1,7 +1,7 @@
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
 from q_a_system.method import byAutomation, byDataDictionary
 from q_a_system.spacy_play import name_entity, resource_name, answer_type_extraction, answer_validation, question_type_extraction
-from q_a_system.spacy_play.property_selection import getActualProperty
+from q_a_system.spacy_play.property_selection import getActualProperty, addAdditionalSet
 from q_a_system.web_scrape.propertyScrape import getPageProperties
 
 
@@ -45,7 +45,7 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 #, 'What is the official language of turkey ?','What is the full name of turkey?', What is the species of royal Bengal tiger?', 'What is the nick name of Ahsanullah University of Science and Technology?','What is the currency code of Turkey?', "What is the birth name of  Nina Pillard?",'How many goals given by Maradona in total?','How many runs scored by Shakib Al Hasan in total?','What is the bowling average of Shakib Al Hasan?','What is the top score of Shakib Al Hasan?',,'How many wickets are taken by Shakib Al Hasan at maximum?','What is the batting average of  Shakib Al Hasan?'
 # 'Where  is Ahsanullah University of Science and Technology located?','When was Maynamati War Cemetery  established ?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?','Where was Kazi Nazrul Islam born?'
 
-questions=['How many people live in Poland?']
+questions=['When was obama born?']
 
 #questions= ['When was 7-up invented?', 'When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
 # 'Show me the universities of Bangladesh ?', 'Show the broadcast channels of Bangladesh?','How many 100s/50s  has got Sakib Al Hasan  in his carier?'
@@ -54,7 +54,8 @@ questions=['How many people live in Poland?']
 
 for question in questions:
     print(question)
-    print("Step 1: Name Entity finding")
+
+    print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
     for nameEntity in nameEntityList:
         print(nameEntity.text)
@@ -64,49 +65,51 @@ for question in questions:
         resourceList = resource_name.getResourceName(nameEntityList)
         print(resourceList)
 
-        if len(resourceList) > 0:
-            print("Step 3: Keywords finding")
-            # finding keyword list by build in services
-            keywordListByAM = byAutomation.findKeywordByAutomation(question)
-            print(keywordListByAM)
+    print("Step 3: Keywords finding")
+    # finding keyword list by build in services
+    keywordListByAM = byAutomation.findKeywordByAutomation(question)
+    print(keywordListByAM)
 
-            # finding keyword list by DataDictionary approach
-            keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
-            print(keywordListByDD)
+    # finding keyword list by DataDictionary approach
+    keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
+    print(keywordListByDD)
 
-            keywordList = []
-            for i in keywordListByDD:
-                keywordList.append(i)
-            for i in keywordListByAM:
-                keywordList.append(i)
+    keywordList = []
+    for i in keywordListByDD:
+        keywordList.append(i)
+    for i in keywordListByAM:
+        keywordList.append(i)
 
+    if len(resourceList) > 0:
+        print("Step 4: Property finding")
+        propertyList = getPageProperties(resourceList)
+        propertyList = getActualProperty(keywordList, propertyList)
+        propertyList.append(addAdditionalSet(keywordListByDD))
 
+    hasProperty = False
+    for propertyListSingle in propertyList:
+        for prop in propertyListSingle:
+            hasProperty = True
+            print(prop.label)
 
-            print("Step 4: Property finding")
-            propertyList = getPageProperties(resourceList[0])
-            propertyList = getActualProperty(keywordList, propertyList)
+    if hasProperty:
+        print("Step 5.0.1: Get Sparql Query IDs")
+        questionType = question_type_extraction.findQuestionType(question)
+        queryIDs = mysql_operations.findSparqlQueryID(questionType, question)
 
-            for prop in propertyList:
-                print(prop.label)
+        print("Step 5: All possible answer finding")
+        answerArray = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs)
+        print(answerArray)
 
-            if len(propertyList) > 0:
-                print("Step 5.0.1: Get Sparql Query IDs")
-                questionType = question_type_extraction.findQuestionType(question)
-                queryIDs = mysql_operations.findSparqlQueryID(questionType)
+        print("Step 6: Answer type extraction")
+        questionType = answer_type_extraction.printAnswerType(question, keywordList)
+        print("Expected Answer Type : " + questionType)
 
-                print("Step 5: All possible answer finding")
-                answerArray = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs,question)
-                print(answerArray)
+        print("Step 7: Answer type validation")
+        answer = answer_validation.answerValidation(answerArray, questionType)
+        print("Actual Answer: " + answer)
 
-                print("Step 6: Answer type extraction")
-                questionType = answer_type_extraction.printAnswerType(question, keywordList)
-                print("Expected Answer Type : " + questionType)
-
-                print("Step 7: Answer type validation")
-                answer = answer_validation.answerValidation(answerArray, questionType)
-                print("Actual Answer: " + answer)
-
-            else:
-                print("No property found! Can't go forward without property")
+    else:
+        print("No property found! Can't go forward without property")
 
     print('\n\n\n')

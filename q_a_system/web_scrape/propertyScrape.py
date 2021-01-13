@@ -12,18 +12,19 @@ class Property:
         self.similarity = 0.0
 
 
-def getPageProperties(url):
-    baseUrl = 'http://dbpedia.org/page/'
-    page = urllib.request.urlopen(baseUrl + url)
-    soup = BeautifulSoup(page, 'html.parser')
-
-    rows = soup.find('table').find_all('td', class_="property")
-
+def getPageProperties(urls):
     propertyArray = []
-    for row in rows:
-        row = (row.find('a')).text.strip()
+    for url in urls:
+        baseUrl = 'http://dbpedia.org/page/'
+        page = urllib.request.urlopen(baseUrl + url)
+        subPropertyArray = []
 
-        temp = row.split(':')
-        propertyArray.append(Property(temp[0], temp[1]))
+        soup = BeautifulSoup(page, 'html.parser')
+        rows = soup.find('table').find_all('td', class_="property")
+        for row in rows:
+            row = (row.find('a')).text.strip()
+            temp = row.split(':')
+            subPropertyArray.append(Property(temp[0], temp[1]))
+        propertyArray.append(subPropertyArray)
 
     return propertyArray
