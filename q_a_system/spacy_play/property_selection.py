@@ -48,5 +48,6 @@ def addAdditionalSet(keywordListByDD):
     array = []
     for k in keywordListByDD:
         array.append(propertyScrape.Property('dbo', k))
+        array.append(propertyScrape.Property('dbp', k))
 
     return array
