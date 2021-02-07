@@ -135,12 +135,31 @@ def makeOneResSql(propertyList, resourceList, query):
     return list(set(sqls))
 
 
+def formateResourceAndPropertyData(propertyList, resourceList):
+    for i in range(0, len(resourceList)):
+        resource = resourceList[i]
+        resource = resource.replace(",", "\,")
+        resource = resource.replace(".", "\.")
+        resource = resource.replace("+", "\+")
+        resource = resource.replace("(", "\(")
+        resource = resource.replace(")", "\)")
+        resourceList[i] = resource
+
+    for i in range(0, len(propertyList)):
+        for j in range(0, len(propertyList[i])):
+            # c =
+            propertyList[i][j].property = propertyList[i][j].property.replace("/", "\/")
+            # propertyList[i][j] = b
+
+
 def getQueryResult(propertyList, resourceList, queryIDs):
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     answerArray = []
 
     queries = mysql_operations.getAllSparqlQuery(queryIDs)
     sqls = []
+
+    formateResourceAndPropertyData(propertyList, resourceList)
 
     for query in queries:
         noOfRes = query[1]
@@ -168,41 +187,3 @@ def getQueryResult(propertyList, resourceList, queryIDs):
                 pass
 
     return answerArray
-'''
-    for property in propertyList:
-        resource = resourceList[0]
-        resource = resource.replace(",", "\,")
-        resource = resource.replace(".", "\.")
-        resource = resource.replace("+", "\+")
-        resource = resource.replace("(", "\(")
-        resource = resource.replace(")", "\)")
-        property.property=property.property.replace("/", "\/")
-        for query in queries:
-            # column traverse for generating Sparql
-            sql = ""
-            for i in range(3, 20, 1):
-                if query[i] == 'res:':
-                    sql = sql + " res:" + resource
-                elif query[i] == 'dbo/dbp:':
-                    sql = sql + " " + property.propertyType + ":" + property.property
-                else:
-                    sql = sql + " " + query[i]
-
-            print(constant.prefix + sql)
-            sparql.setQuery(constant.prefix + sql)
-            try:
-                sparql.setReturnFormat(JSON)
-                results = sparql.query().convert()
-                if query[0] in (20,21):
-                    answerArray.append(results['boolean'])
-                else:
-                    tempResultArray = []
-                    for result in results["results"]["bindings"]:
-                        tempResultArray.append(result["label"]["value"])
-                    answerArray.append(tempResultArray)
-            except:
-                pass
-'''
-
-
-
