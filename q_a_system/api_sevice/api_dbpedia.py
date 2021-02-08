@@ -46,7 +46,7 @@ def makeZeroResSql(propertyList, query):
                             sql = sql + " " + query[i]
                     sqls.append(sql)
 
-    return list(set(sqls))
+    return list(property_selection.removeDuplicates(sqls))
 
 
 def makeOneResSql(propertyList, resourceList, query):
@@ -132,7 +132,7 @@ def makeOneResSql(propertyList, resourceList, query):
                                     sql = sql + " " + query[i]
                             sqls.append(sql)
 
-    return list(set(sqls))
+    return list(property_selection.removeDuplicates(sqls))
 
 
 def formateResourceAndPropertyData(propertyList, resourceList):
