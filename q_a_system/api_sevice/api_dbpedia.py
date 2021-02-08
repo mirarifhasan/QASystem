@@ -152,6 +152,20 @@ def formateResourceAndPropertyData(propertyList, resourceList):
             # propertyList[i][j] = b
 
 
+def sortSqlsByPropertySimilarity(sqls, propertyList):
+    arr = []
+
+    for propertyListSingle in propertyList:
+        for prop in propertyListSingle:
+            print(prop.label)
+            for sqlsRow in sqls:
+                for sql in sqlsRow:
+                    if(prop.property in sql):
+                        if(sql not in arr):
+                            arr.append(sql)
+    return arr
+
+
 def getQueryResult(propertyList, resourceList, queryIDs):
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     answerArray = []
@@ -169,21 +183,22 @@ def getQueryResult(propertyList, resourceList, queryIDs):
         elif noOfRes == 1:
             sqls.append(makeOneResSql(propertyList, resourceList, query))
 
-    for sqlsRow in sqls:
-        for sql in sqlsRow:
-            print(constant.prefix + sql)
-            sparql.setQuery(constant.prefix + sql)
-            try:
-                sparql.setReturnFormat(JSON)
-                results = sparql.query().convert()
-                if query[0] in (20, 21):
-                    answerArray.append(results['boolean'])
-                else:
-                    tempResultArray = []
-                    for result in results["results"]["bindings"]:
-                        tempResultArray.append(result["label"]["value"])
-                    answerArray.append(tempResultArray)
-            except:
-                pass
+    sqls = sortSqlsByPropertySimilarity(sqls, propertyList)
+
+    for sql in sqls:
+        print(constant.prefix + sql)
+        sparql.setQuery(constant.prefix + sql)
+        try:
+            sparql.setReturnFormat(JSON)
+            results = sparql.query().convert()
+            if query[0] in (20, 21):
+                answerArray.append(results['boolean'])
+            else:
+                tempResultArray = []
+                for result in results["results"]["bindings"]:
+                    tempResultArray.append(result["label"]["value"])
+                answerArray.append(tempResultArray)
+        except:
+            pass
 
     return answerArray
