@@ -99,7 +99,7 @@ for question in questions:
         queryIDs = mysql_operations.findSparqlQueryID(questionType, question)
 
         print("Step 5: All possible answer finding")
-        answerArray = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs)
+        answerArray, sqls = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs)
         print(answerArray)
 
         print("Step 6: Answer type extraction")

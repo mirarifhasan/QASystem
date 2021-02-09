@@ -201,4 +201,4 @@ def getQueryResult(propertyList, resourceList, queryIDs):
         except:
             pass
 
-    return answerArray
+    return answerArray, sqls
