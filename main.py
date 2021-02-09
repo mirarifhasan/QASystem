@@ -44,8 +44,9 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 #"Whose father is Sheikh Mujibur Rahman?"
 #, 'What is the official language of turkey ?','What is the full name of turkey?', What is the species of royal Bengal tiger?', 'What is the nick name of Ahsanullah University of Science and Technology?','What is the currency code of Turkey?', "What is the birth name of  Nina Pillard?",'How many goals given by Maradona in total?','How many runs scored by Shakib Al Hasan in total?','What is the bowling average of Shakib Al Hasan?','What is the top score of Shakib Al Hasan?',,'How many wickets are taken by Shakib Al Hasan at maximum?','What is the batting average of  Shakib Al Hasan?'
 # 'Where  is Ahsanullah University of Science and Technology located?','When was Maynamati War Cemetery  established ?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?','Where was Kazi Nazrul Islam born?'
-
-questions=['When was obama born?']
+#'Show me all books in Asimov’s Foundation series.','Did Elvis Presley have children?','Where do the Red Sox play?','Where is Syngman Rhee buried?','Who was on the Apollo 11 mission?','Who wrote the song Hotel California?','Where does Piccadilly start?'
+#questions=['When was obama born?']
+questions=['Whom did Lance Bass marry?']
 
 #questions= ['When was 7-up invented?', 'When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
 # 'Show me the universities of Bangladesh ?', 'Show the broadcast channels of Bangladesh?','How many 100s/50s  has got Sakib Al Hasan  in his carier?'

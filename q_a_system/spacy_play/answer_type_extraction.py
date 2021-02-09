@@ -10,7 +10,7 @@ def printAnswerType(ques, keyword):
     question = constant.nlp(ques)
     qu = ques.split(' ')
     number = ["height", "elevation", "peak", "population", "temperature","score"]
-    date = ["birthdate", "deathDate", "date", "year", "born", "die"]
+    date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
     location = ["location", "place","universities"]
     name = ["nicknames", "birth", "name", "nicknames"]
 

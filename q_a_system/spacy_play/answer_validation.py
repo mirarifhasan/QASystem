@@ -72,6 +72,42 @@ def answerValidation(answerArray, questionType):
                 elif flag2 == 1:
                     return ', '.join((grouparray)) + "(partially)"
 
+
+    # person - where
+    a = []
+    grouparray = []
+    flag1 = 0
+    flag2 = 0
+    if questionType == 'LOCATION':
+        for answerGroup in answerArray:
+            if len(answerGroup) > 0:
+                for i in answerGroup:
+                    if i.startswith('http') == True:
+                        url_answer = i.split('/')[-1]
+                        a = url_answer.split('_')
+                        # a= ' '.join(a)
+                        print(a)
+                        grouparray.append(' '.join(a))
+                        for i in a:
+                            sentence = constant.nlp(i)
+
+                            for token in sentence.ents:
+                                print(token.text, token.label_)
+                                if token.label_ == questionType or token.label_ in ('FAC', 'ORG', 'GPE', 'LOC'):
+                                    flag1 = 1
+                                    # return ' '.join(url_answer.split('_')) # answer is splited by space
+                if a:
+                    flag2 = 1
+                    # return ' '.join(a) + "(partially)"
+                if flag1 == 1:
+                    return ', '.join((grouparray))
+                elif flag2 == 1:
+                    return ', '.join((grouparray)) + "(partially)"
+
+
+
+
+
     if questionType == 'YES/NO':
         return str(answerArray[0])
 
@@ -83,7 +119,7 @@ def answerValidation(answerArray, questionType):
                 print(token.text, token.label_)
                 if token.label_ == questionType:
                     return answerGroup[0]
-                if token.label_ in ('PERSON', 'ORG'):
+                if token.label_ in ('PERSON', 'ORG') and questionType == 'PERSON':
                     return answerGroup[0]
                 elif token.label_ in ('FAC', 'ORG', 'GPE', 'LOC') and questionType == 'LOCATION':
                     return answerGroup[0]
@@ -142,4 +178,5 @@ def answerValidation(answerArray, questionType):
                             grouparray.append(' '.join(a))
                     return ', '.join((grouparray))
 
+    #return ', '.join(answerArray[0]) + "(partially)"   #answerArray[0][0]
     return answerArray[0][0] + "(partially)"
