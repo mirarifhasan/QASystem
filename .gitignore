@@ -8,3 +8,5 @@ __init__.py
 Code Behaviours - QLD6_SingleResource.csv
 output log.csv
 qasystem.sql
+
+.~lock.output log.csv#
