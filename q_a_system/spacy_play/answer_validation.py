@@ -72,7 +72,6 @@ def answerValidation(answerArray, questionType):
                 elif flag2 == 1:
                     return ', '.join((grouparray)) + "(partially)"
 
-
     # person - where
     a = []
     grouparray = []
@@ -104,10 +103,6 @@ def answerValidation(answerArray, questionType):
                 elif flag2 == 1:
                     return ', '.join((grouparray)) + "(partially)"
 
-
-
-
-
     if questionType == 'YES/NO':
         return str(answerArray[0])
 
@@ -128,7 +123,7 @@ def answerValidation(answerArray, questionType):
                     print(token.text, token.label_)
                     return ', '.join(answerGroup)
                 elif token.label_ in (
-                'PERCENT', 'MONEY', 'QUANTITY', 'ORDINAL', 'CARDINAL') and questionType == 'NUMBER':
+                        'PERCENT', 'MONEY', 'QUANTITY', 'ORDINAL', 'CARDINAL') and questionType == 'NUMBER':
                     print(token.text, token.label_)
                     return ', '.join(answerGroup)
 
@@ -178,5 +173,5 @@ def answerValidation(answerArray, questionType):
                             grouparray.append(' '.join(a))
                     return ', '.join((grouparray))
 
-    #return ', '.join(answerArray[0]) + "(partially)"   #answerArray[0][0]
+    # return ', '.join(answerArray[0]) + "(partially)"   #answerArray[0][0]
     return answerArray[0][0] + "(partially)"
