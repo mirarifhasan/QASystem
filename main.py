@@ -61,37 +61,36 @@ input_file = pd.read_csv(input_file_directory)
 questions = input_file["Question"].tolist()
 
 counter = 1
+
 log_named_entity_list = []
 log_resource_list = []
 log_keyword_list = []
 log_property_list = []
+log_sql_list = []
+log_all_answer_list = []
 log_answer_list = []
+log_question_type_list = []
 
 for question in questions:
-    # if counter > 1:
-    #     break
-    # counter = counter + 1
 
     print(question)
 
-    # 'Questions': questions,
-    # 'Name Entity': nameEntityList,
-    # 'Resources': resourceList,
-    # 'Keyword': keywordList,
-    # 'Property': propertyList,
-    # 'Answer': answer
-
     print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
+    log_var_named_entity_list = ''
     for nameEntity in nameEntityList:
         print(nameEntity.text)
-    log_named_entity_list.append(nameEntityList)
+        log_var_named_entity_list = log_var_named_entity_list + nameEntity.text + ', '
+    log_named_entity_list.append(log_var_named_entity_list)
 
     if len(nameEntityList) > 0:
         print("Step 2: Resource Name finding")
         resourceList = resource_name.getResourceName(nameEntityList)
         print(resourceList)
-        # log_resource_list.append(resourceList)
+        log_var_resource_list = ''
+        for i in resourceList:
+            log_var_resource_list = log_var_resource_list + i + ', '
+        log_resource_list.append(log_var_resource_list)
 
     print("Step 3: Keywords finding")
     # finding keyword list by build in services
@@ -115,14 +114,18 @@ for question in questions:
         propertyList = getPageProperties(resourceList)
         propertyList = getActualProperty(keywordList, propertyList)
         propertyList.append(addAdditionalSet(keywordListByDD))
-    log_resource_list.append(resourceList)
 
     hasProperty = False
+    temp = -1
+    log_var_property_list = ''
     for propertyListSingle in propertyList:
+        temp = temp + 1
         for prop in propertyListSingle:
             hasProperty = True
             print(prop.label)
-    log_property_list.append(log_property_list)
+            log_var_property_list = log_var_property_list + '(' + str(temp) + prop.property + '-' + str(
+                prop.similarity) + '), '
+    log_property_list.append(log_var_property_list)
 
     if hasProperty:
         print("Step 5.0.1: Get Sparql Query IDs")
@@ -141,7 +144,10 @@ for question in questions:
         answer = answer_validation.answerValidation(answerArray, questionType)
         print("Actual Answer: " + answer)
 
+        log_sql_list.append(sqls)
+        log_all_answer_list.append(answerArray)
         log_answer_list.append(answer)
+        log_question_type_list.append(questionType)
 
     else:
         print("No property found! Can't go forward without property")
@@ -149,13 +155,6 @@ for question in questions:
     print('\n\n\n')
 
 # writing the logs in csv file
-print("\n\n\n\n\n\n\n PANDAS OUTPUT \n\n\n")
-print(len(questions))
-print(len(log_named_entity_list))
-print(len(log_resource_list))
-print(len(log_keyword_list))
-print(len(log_property_list))
-print(len(log_answer_list))
 output_file = pd.DataFrame(
     {
         'Questions': questions,
@@ -163,7 +162,10 @@ output_file = pd.DataFrame(
         'Resources': log_resource_list,
         'Keyword': log_keyword_list,
         'Property': log_property_list,
-        'Answer': log_answer_list
+        'Answer Array': log_all_answer_list,
+        'Answer Type': log_question_type_list,
+        'Answer': log_answer_list,
+        'SQL': log_sql_list
     }
 )
 output_file.to_csv(output_file_directory)
