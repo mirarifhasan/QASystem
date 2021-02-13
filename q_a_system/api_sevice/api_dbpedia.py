@@ -251,6 +251,8 @@ def getQueryResult(propertyList, resourceList, queryIDs):
     answerArray = []
 
     queries = mysql_operations.getAllSparqlQuery(queryIDs)
+    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse=True)  # ASC [reverse false]; DESC [reverse true]
+
     sqls = []
 
     formatResourceAndPropertyData(propertyList, resourceList)
