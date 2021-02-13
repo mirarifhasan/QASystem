@@ -34,6 +34,7 @@ def getResourceName(nameEntityArray):
     reduceHTTPErrorContent(array)
     return array
 
+
 def reduceHTTPErrorContent(array):
     for i in array:
         if '%' in i:

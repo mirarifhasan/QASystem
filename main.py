@@ -8,59 +8,12 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 import pandas as pd
 
 # questions = input.getUserQuestion()
-# questions = ['When did the Boston Tea Party take place?','When does the ottoman state founded?']
-# questions = ['When did the Dodo become extinct?', 'When was obama born?', 'When did princess Diana die?', 'When did Operation Overlord commence?', 'When did the Dodo become extinct?', 'When did Boris Becker end his active career?', 'When did the Boston Tea Party take place?']
-# questions = ['Where do the Red Sox play?', 'Where is Syngman Rnhee buried?', 'Where does Piccadilly start?']
-# questions=['Whom did Lance Bass marry? ', 'Whom did Obama marry?']
-# questions = ['Who is president of Eritrea?','Who was doctoral supervisor of Albert Einstein?','Who wrote the song Hotel California?','Who was on the Apollo 11 mission?', 'Who wrote Harry Potter?','Who are developers of DBpedia?', 'Who created Family Guy?', 'Who does the voice of Bart Simpson?']
-# questions=['Who played Gus Fring in Breaking Bad?','Who composed soundtrack for Cameron’s Titanic?','Who is mayor of Paris?' ]
-# questions=['Who discovered Ceres?','Who is the host of the BBC Wildlife Specials?','Who wrote the Game of Thrones theme?']
-# questions=['Who developed Slack?','Who was Vincent van Gogh inspired by?']
-# questions=['Who is the president of Eritrea?','Who is the mayor of Paris?','Who are the developers of DBpedia']
-# questions=['What is in a chocolate chip cookie? ','What is the atmosphere of the Moon composed of?','What is the capital of Cameroon? ','What country is Sitecore from?']
-# questions=['What is full name of Prince Charles?','What is Batman’s real name?']
-
-##=====================unprocessed
-# questions = ['Show me all books in Asimov’s Foundation series.']
-# questions= ['How many moons does Mars have?','How many people live in Poland?','How much did the Lego Movie cost?','How many movies did Park Chan-wook direct?' ,'How many calories does a baguette have?']
-# questions=[ 'How many emperors did China have?', 'How did Michael Jackson die?']
-
-
-# questions=[  'What languages do they speak in Pakistan?','What is Elon Musk famous for?','What is Batman’s real name?','What form of government does Russia have?','What kind of music did Lou Reed play?']
-# questions=['What color expresses loyalty?','What are the five boroughs of New York?','What are the zodiac signs?']
-
-# questions=['Which actors play in Big Bang Theory?', 'In which time zone is Rome?']
-# questions=['On which day is Columbus Day?', 'Who played Gus Fring in Breaking Bad?']
-
-# questions=['What languages do they speak in Pakistan?','What form of government does Russia have?']
-# questions=['Show me all U.S. states']
-
-# ' Did Elvis Presley have children?'
-# questions=['Does Neymar play for Real Madrid?', 'Did Kaurismäki ever win the Grand Prix at Cannes?' ]
-# questions=['What form of government does Russia have?','Which films did Stanley Kubrick direct?','Which companies produce hovercrafts?']
-# questions=[ 'In which ancient empire could you pay with cocoa beans?']
-# questions=['Which space probes were sent into orbit around the sun?']
-# questions=['What movies does Jesse Eisenberg play in?','Who is the king of the Netherlands?']
-
-######### our dataset
-# "Whose father is Sheikh Mujibur Rahman?"
-# , 'What is the official language of turkey ?','What is the full name of turkey?', What is the species of royal Bengal tiger?', 'What is the nick name of Ahsanullah University of Science and Technology?','What is the currency code of Turkey?', "What is the birth name of  Nina Pillard?",'How many goals given by Maradona in total?','How many runs scored by Shakib Al Hasan in total?','What is the bowling average of Shakib Al Hasan?','What is the top score of Shakib Al Hasan?',,'How many wickets are taken by Shakib Al Hasan at maximum?','What is the batting average of  Shakib Al Hasan?'
-# 'Where  is Ahsanullah University of Science and Technology located?','When was Maynamati War Cemetery  established ?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?','Where was Kazi Nazrul Islam born?'
-# 'Show me all books in Asimov’s Foundation series.','Did Elvis Presley have children?','Where do the Red Sox play?','Where is Syngman Rhee buried?','Who was on the Apollo 11 mission?','Who wrote the song Hotel California?','Where does Piccadilly start?'
-# questions=['When was obama born?']
-# questions=['Whom did Lance Bass marry?']
-
-# questions= ['When was 7-up invented?', 'When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
-# 'Show me the universities of Bangladesh ?', 'Show the broadcast channels of Bangladesh?','How many 100s/50s  has got Sakib Al Hasan  in his carier?'
-# questions=['How many matches Sakib Al Hasan played?',How many undergraduates study in  Ahsanullah University of Science and Technology?','How has Kazi Nazrul Islam been influenced in writing rebel poem?']
 # questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
 
 input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
 output_file_directory = "output log.csv"
-input_file = pd.read_csv(input_file_directory)
+input_file = pd.read_csv(input_file_directory, encoding='cp1252')
 questions = input_file["Question"].tolist()
-
-counter = 1
 
 log_named_entity_list = []
 log_resource_list = []

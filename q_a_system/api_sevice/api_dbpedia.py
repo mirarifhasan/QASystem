@@ -135,7 +135,90 @@ def makeOneResSql(propertyList, resourceList, query):
     return list(property_selection.removeDuplicates(sqls))
 
 
-def formateResourceAndPropertyData(propertyList, resourceList):
+def makeTwoResSql(propertyList, resourceList, query):
+    sqls = []
+
+    if query[2] == 1:
+
+        for k, resource1 in enumerate(resourceList):
+            for j, resource2 in enumerate(resourceList):
+                if resource1 != resource2:
+                    list1 = []
+                    list2 = []
+                    for x in propertyList[k]:
+                        list1.append(x.property)
+                    for y in propertyList[j]:
+                        list2.append(y.property)
+                    for prop in list(set(list1).intersection(list2)):
+                        sql = ''
+                        resNo = 1
+                        for i in range(3, 20, 1):
+                            if query[i] == 'res:' and resNo == 1:
+                                sql = sql + " res:" + resource1
+                                resNo = resNo + 1
+                            elif query[i] == 'res:' and resNo == 2:
+                                sql = sql + " res:" + resource2
+                            elif query[i] == 'dbo/dbp:':
+                                for w in propertyList[k]:
+                                    if w.property == prop:
+                                        sql = sql + " " + w.propertyType + ":" + prop
+                                        break
+                            else:
+                                sql = sql + " " + query[i]
+                        sqls.append(sql)
+
+    if query[2] == 2:
+        for k, resource1 in enumerate(resourceList):
+            for j, resource2 in enumerate(resourceList):
+                if resource1 != resource2:
+                    for prop1 in propertyList[k]:
+                        for prop2 in propertyList[j]:
+                            sql = ''
+                            resNo = 1
+                            for i in range(3, 20, 1):
+                                if query[i] == 'res:' and resNo == 1:
+                                    sql = sql + " res:" + resource1
+                                    resNo = resNo + 1
+                                elif query[i] == 'res:' and resNo == 2:
+                                    sql = sql + " res:" + resource2
+                                elif query[i] == 'dbo/dbp:' and resNo == 1:
+                                    sql = sql + " " + prop1.propertyType + ":" + prop1.property
+                                elif query[i] == 'dbo/dbp:' and resNo == 2:
+                                    sql = sql + " " + prop2.propertyType + ":" + prop2.property
+                                else:
+                                    sql = sql + " " + query[i]
+                            sqls.append(sql)
+
+    if query[2] == 3:
+        for k, resource1 in enumerate(resourceList):
+            for j, resource2 in enumerate(resourceList):
+                if resource1 != resource2:
+                    for prop1 in propertyList[k]:
+                        for prop2 in propertyList[j]:
+                            for propLast in propertyList[len(resourceList)]:
+                                sql = ''
+                                dboDbpCount = 0
+                                for i in range(3, 20, 1):
+                                    if query[i] == 'res:' and dboDbpCount == 0:
+                                        sql = sql + " res:" + resource1
+                                        dboDbpCount = dboDbpCount + 1
+                                    elif query[i] == 'res:' and dboDbpCount == 1:
+                                        sql = sql + " res:" + resource2
+                                    elif query[i] == 'dbo/dbp:':
+                                        if (query[i+1] == 'res:' or query[i-1] == 'res:') and dboDbpCount == 0:
+                                            sql = sql + " " + prop1.propertyType + ":" + prop1.property
+                                        elif (query[i+1] == 'res:' or query[i-1] == 'res:') and dboDbpCount == 1:
+                                            sql = sql + " " + prop2.propertyType + ":" + prop2.property
+                                        else:
+                                            sql = sql + " " + propLast.propertyType + ":" + propLast.property
+                                    else:
+                                        sql = sql + " " + query[i]
+                                sqls.append(sql)
+
+    return list(property_selection.removeDuplicates(sqls))
+
+
+def formatResourceAndPropertyData(propertyList, resourceList):
     for i in range(0, len(resourceList)):
         resource = resourceList[i]
         resource = resource.replace(",", "\,")
@@ -147,9 +230,7 @@ def formateResourceAndPropertyData(propertyList, resourceList):
 
     for i in range(0, len(propertyList)):
         for j in range(0, len(propertyList[i])):
-            # c =
             propertyList[i][j].property = propertyList[i][j].property.replace("/", "\/")
-            # propertyList[i][j] = b
 
 
 def sortSqlsByPropertySimilarity(sqls, propertyList):
@@ -172,7 +253,7 @@ def getQueryResult(propertyList, resourceList, queryIDs):
     queries = mysql_operations.getAllSparqlQuery(queryIDs)
     sqls = []
 
-    formateResourceAndPropertyData(propertyList, resourceList)
+    formatResourceAndPropertyData(propertyList, resourceList)
 
     for query in queries:
         noOfRes = query[1]
@@ -181,6 +262,8 @@ def getQueryResult(propertyList, resourceList, queryIDs):
             sqls.append(makeZeroResSql(propertyList, query))
         elif noOfRes == 1:
             sqls.append(makeOneResSql(propertyList, resourceList, query))
+        elif noOfRes == 2:
+            sqls.append(makeTwoResSql(propertyList, resourceList, query))
 
     sqls = sortSqlsByPropertySimilarity(sqls, propertyList)
 

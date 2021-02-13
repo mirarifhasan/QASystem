@@ -1,6 +1,7 @@
 from q_a_system.global_pack import constant
 from q_a_system.web_scrape import propertyScrape
 
+
 def removeDuplicates(array):
     temp_array = []
     for i in array:
