@@ -39,6 +39,10 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 #questions=[ 'In which ancient empire could you pay with cocoa beans?']
 #questions=['Which space probes were sent into orbit around the sun?']
 #questions=['What movies does Jesse Eisenberg play in?','Who is the king of the Netherlands?']
+#,'What form of government does Russia have?','What kind of music did Lou Reed play?','What are the names of the Teenage Mutant Ninja Turtles?','What are the zodiac signs?']
+#'What is the capital of Cameroon? ','What country is Sitecore from?','What is in a chocolate chip cookie?','What is the atmosphere of the Moon composed of?','How many emperors did China have?','How much did the Lego Movie cost?','Whom did Lance Bass marry?','How many movies did Park Chan-wook direct?','How many goals did Pelé score?','How many people live in Poland?','How many moons does Mars have?',,'How many calories does a baguette have?'
+questions=['On which day is Columbus day?']
+
 
 ######### our dataset
 #"Whose father is Sheikh Mujibur Rahman?"
@@ -46,7 +50,7 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 # 'Where  is Ahsanullah University of Science and Technology located?','When was Maynamati War Cemetery  established ?','Where was Shakib Al Hasan born?' 'Where  was Maynamati War Cemetery established ?','Where was Kazi Nazrul Islam born?'
 #'Show me all books in Asimov’s Foundation series.','Did Elvis Presley have children?','Where do the Red Sox play?','Where is Syngman Rhee buried?','Who was on the Apollo 11 mission?','Who wrote the song Hotel California?','Where does Piccadilly start?'
 #questions=['When was obama born?']
-questions=['Whom did Lance Bass marry?']
+
 
 #questions= ['When was 7-up invented?', 'When was Anne Wojcicki born ?','When does the ottoman state founded?','When does the ottoman state end?','When was Comilla city established ?','When was Maynamati War Cemetery  established ?','When was Ahsanullah University of Science and Technology established ?','When was Nina Pilard born?']
 # 'Show me the universities of Bangladesh ?', 'Show the broadcast channels of Bangladesh?','How many 100s/50s  has got Sakib Al Hasan  in his carier?'

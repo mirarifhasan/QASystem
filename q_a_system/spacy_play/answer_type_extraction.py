@@ -12,7 +12,7 @@ def printAnswerType(ques, keyword):
     number = ["height", "elevation", "peak", "population", "temperature","score"]
     date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
     location = ["location", "place","universities"]
-    name = ["nicknames", "birth", "name", "nicknames"]
+    name = ["nicknames", "birth", "name", "nicknames","name?"]
 
     questionWord = parts_of_speech.tokenize(question)
     arr = questionWord[0].split(' ')
