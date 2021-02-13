@@ -12,7 +12,7 @@ def printAnswerType(ques, keyword):
     number = ["height", "elevation", "peak", "population", "temperature","score"]
     date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
     location = ["location", "place","universities"]
-    name = ["nicknames", "birth", "name", "nicknames"]
+    name = ["nicknames", "birth", "name", "nicknames", "name?"]
 
     questionWord = parts_of_speech.tokenize(question)
     arr = questionWord[0].split(' ')
@@ -32,25 +32,24 @@ def printAnswerType(ques, keyword):
         for q in qu:
             if (q in number):
                 questionType = 'NUMBER'
-                break;
+                break
             elif (q in date):
                 questionType = 'DATE'
-                break;
+                break
             elif (q in location ):
                 questionType = 'LOCATION'
-                break;
+                break
             elif (q in name):
                 questionType = 'PERSON'
-                break;
-
+                break
 
     elif arr[0] in ['How']:
-            if len(arr)>1 and arr[1] in ["few", "little", "much", "many", "often", "tall"]:
-                questionType = "NUMBER"
-            elif len(arr)>1 and arr[1] in ["Young", "Old", "Long"]:
-                questionType = "DATE"
-            else:
-                questionType = "RESOURCE"
+        if len(arr)>1 and arr[1] in ["few", "little", "much", "many", "often", "tall"]:
+            questionType = "NUMBER"
+        elif len(arr)>1 and arr[1] in ["Young", "Old", "Long"]:
+            questionType = "DATE"
+        else:
+            questionType = "RESOURCE"
 
     elif arr[0] in ['In', 'On','To','For','At', 'By', 'From']:
         arr2 = questionWord[1].split(' ')
@@ -59,16 +58,16 @@ def printAnswerType(ques, keyword):
             for q in qu:
                 if (q in number):
                     questionType = 'NUMBER'
-                    break;
+                    break
                 elif (q in date):
                     questionType = 'DATE'
-                    break;
+                    break
                 elif (q in location):
                     questionType = 'LOCATION'
-                    break;
+                    break
                 elif (q in name):
                     questionType = 'PERSON'
-                    break;
+                    break
 
     elif arr[0] in ['Show', 'List','Give']:
         if keyword in location:
@@ -76,6 +75,6 @@ def printAnswerType(ques, keyword):
         else:
             questionType = 'LIST'
     elif arr[0] in['Do','Does','Did']:
-        questionType ='YES/NO'
+        questionType = 'YES/NO'
 
     return questionType
