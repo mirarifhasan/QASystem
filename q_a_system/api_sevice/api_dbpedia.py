@@ -157,7 +157,6 @@ def sortSqlsByPropertySimilarity(sqls, propertyList):
 
     for propertyListSingle in propertyList:
         for prop in propertyListSingle:
-            print(prop.label)
             for sqlsRow in sqls:
                 for sql in sqlsRow:
                     if(prop.property in sql):

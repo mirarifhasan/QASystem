@@ -3,3 +3,10 @@ venv
 
 __init__.py
 **/__pycache__
+
+
+Code Behaviours - QLD6_SingleResource.csv
+output log.csv
+qasystem.sql
+
+.~lock.output log.csv#

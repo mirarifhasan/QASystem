@@ -31,4 +31,10 @@ def getResourceName(nameEntityArray):
                     name_arr = [x.capitalize() for x in name_arr]
                     array.append('_'.join(name_arr))
 
+    reduceHTTPErrorContent(array)
     return array
+
+def reduceHTTPErrorContent(array):
+    for i in array:
+        if '%' in i:
+            array.remove(i)
