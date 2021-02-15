@@ -272,14 +272,16 @@ def getQueryResult(propertyList, resourceList, queryIDs):
 
     sqls = sortSqlsByPropertySimilarity(sqls, propertyList)
 
-    with ThreadPoolExecutor(max_workers=len(sqls) + 10) as executor:
+    with ThreadPoolExecutor(max_workers=200 + 10) as executor:
         results = executor.map(getAnswerBySPQRQL, sqls)
 
     for result in results:
         print(result)
         answerArray.append(result)
 
-    return answerArray, sqls
+    print('\n' + str(len(sqls)) + " SQL run!\n")
+
+    return list(filter(None, answerArray)) , sqls
 
 
 def getAnswerBySPQRQL(sql):
