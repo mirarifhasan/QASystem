@@ -3,7 +3,10 @@ import numpy as np
 from q_a_system.api_sevice import mysql_operations
 from q_a_system.global_pack import constant
 from q_a_system.spacy_play import property_selection
+from concurrent.futures import ThreadPoolExecutor
 
+
+sparql = SPARQLWrapper("http://dbpedia.org/sparql")
 
 def makeZeroResSql(propertyList, query):
     sqls = []
@@ -269,20 +272,30 @@ def getQueryResult(propertyList, resourceList, queryIDs):
 
     sqls = sortSqlsByPropertySimilarity(sqls, propertyList)
 
-    for sql in sqls:
-        print(constant.prefix + sql)
-        sparql.setQuery(constant.prefix + sql)
-        try:
-            sparql.setReturnFormat(JSON)
-            results = sparql.query().convert()
-            if query[0] in (20, 21):
-                answerArray.append(results['boolean'])
-            else:
-                tempResultArray = []
-                for result in results["results"]["bindings"]:
-                    tempResultArray.append(result["label"]["value"])
-                answerArray.append(tempResultArray)
-        except:
-            pass
+    with ThreadPoolExecutor(max_workers=len(sqls) + 10) as executor:
+        results = executor.map(getAnswerBySPQRQL, sqls)
+
+    for result in results:
+        print(result)
+        answerArray.append(result)
 
     return answerArray, sqls
+
+
+def getAnswerBySPQRQL(sql):
+
+    print(constant.prefix + sql)
+    sparql.setQuery(constant.prefix + sql)
+    try:
+        sparql.setReturnFormat(JSON)
+        results = sparql.query().convert()
+        if 'ASK' in sql:
+            print(">\n")
+            return results['boolean']
+        else:
+            tempResultArray = []
+            for result in results["results"]["bindings"]:
+                tempResultArray.append(result["label"]["value"])
+            return tempResultArray
+    except:
+        pass

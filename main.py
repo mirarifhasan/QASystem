@@ -6,6 +6,8 @@ from q_a_system.spacy_play.property_selection import getActualProperty, addAddit
 from q_a_system.web_scrape.propertyScrape import getPageProperties
 
 import pandas as pd
+import datetime
+
 
 # questions = input.getUserQuestion()
 # questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
@@ -23,6 +25,7 @@ log_sql_list = []
 log_all_answer_list = []
 log_answer_list = []
 log_question_type_list = []
+
 
 for question in questions:
 
@@ -106,6 +109,8 @@ for question in questions:
         print("No property found! Can't go forward without property")
 
     print('\n\n\n')
+
+
 
 # writing the logs in csv file
 output_file = pd.DataFrame(
