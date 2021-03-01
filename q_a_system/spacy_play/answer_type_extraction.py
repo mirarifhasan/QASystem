@@ -11,7 +11,7 @@ def printAnswerType(ques, keyword):
     qu = ques.split(' ')
     number = ["height", "elevation", "peak", "population", "temperature","score"]
     date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
-    location = ["location", "place","universities"]
+    location = ["location", "place","universities","country"]
     name = ["nicknames", "birth", "name", "nicknames", "name?"]
 
     questionWord = parts_of_speech.tokenize(question)
@@ -33,11 +33,11 @@ def printAnswerType(ques, keyword):
             if (q in number):
                 questionType = 'NUMBER'
                 break
-            elif (q in date):
-                questionType = 'DATE'
-                break
             elif (q in location ):
                 questionType = 'LOCATION'
+                break
+            elif (q in date):
+                questionType = 'DATE'
                 break
             elif (q in name):
                 questionType = 'PERSON'
@@ -78,3 +78,4 @@ def printAnswerType(ques, keyword):
         questionType = 'YES/NO'
 
     return questionType
+#print(printAnswerType("Which country was Bill Gates born in?",['born']))

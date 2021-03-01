@@ -6,12 +6,11 @@ user = "admincoder"
 password = "adm!nadm!n"
 databaseName = "qasystemdb"
 # connection = pymysql.connect(hostname, user, password, databaseName)
-connection = pymysql.connect("localhost", "root", "", "qasystem")
+#connection = pymysql.connect("localhost", "root", "", "qasystem")
 
 
-# connection = pymysql.connect("localhost","root","", "qa1", port=8111)  #for aboni
+connection = pymysql.connect("localhost","root","", "qa2", port=8111)  #for aboni
 
-# connection = pymysql.connect("localhost","root","", "qasystem_new", port=8111)  #for Aboni
 
 
 # prepare a cursor object using cursor() method
