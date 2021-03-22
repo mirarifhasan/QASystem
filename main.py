@@ -1,5 +1,5 @@
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
-from q_a_system.method import byAutomation, byDataDictionary
+from q_a_system.method import byAutomation, byDataDictionary, lookup_things
 from q_a_system.spacy_play import name_entity, resource_name, answer_type_extraction, answer_validation, \
     question_type_extraction
 from q_a_system.spacy_play.property_selection import getActualProperty, addAdditionalSet
@@ -39,14 +39,6 @@ for question in questions:
         log_var_named_entity_list = log_var_named_entity_list + nameEntity.text + ', '
     log_named_entity_list.append(log_var_named_entity_list)
 
-    if len(nameEntityList) > 0:
-        print("Step 2: Resource Name finding")
-        resourceList = resource_name.getResourceName(nameEntityList)
-        print(resourceList)
-        log_var_resource_list = ''
-        for i in resourceList:
-            log_var_resource_list = log_var_resource_list + i + ', '
-        log_resource_list.append(log_var_resource_list)
 
     print("Step 3: Keywords finding")
     # finding keyword list by build in services
@@ -64,6 +56,21 @@ for question in questions:
         keywordList.append(i)
 
     log_keyword_list.append(keywordList)
+
+
+    if len(nameEntityList) > 0:
+        print("Step 2: Resource Name finding")
+        # Making string
+        stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
+        # Google search
+        resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
+        # resourceList = resource_name.getResourceName(nameEntityList)
+        print(resourceList)
+        log_var_resource_list = ''
+        for i in resourceList:
+            log_var_resource_list = log_var_resource_list + i + ', '
+        log_resource_list.append(log_var_resource_list)
+
 
     if len(resourceList) > 0:
         print("Step 4: Property finding")

@@ -1,6 +1,7 @@
 from wikipedia import wikipedia
 from q_a_system.api_sevice import mysql_operations
-
+import requests
+from bs4 import BeautifulSoup
 
 def getResourceName(nameEntityArray):
     array = []
@@ -39,3 +40,45 @@ def reduceHTTPErrorContent(array):
     for i in array:
         if '%' in i:
             array.remove(i)
+
+
+def get_resource_name(link):
+    resource = ''
+    wiki_link = "wikipedia.org/wiki/"
+    index = link.find(wiki_link)
+    if index == -1:
+        return resource
+    index = index + len(wiki_link)
+    for i in range(index, len(link)):
+        character = link[i]
+        if character.isalpha() or character == '_' or character == '(' or character == ')':
+            resource = resource + character
+        else:
+            break
+    print("R is", resource)
+    return resource
+
+
+def getResourceNameByGoogleSearch(stringList):
+
+    # for i in stringList:
+    links = ["https://www.google.com/search?q=" + stringList]
+    print(links[0])
+    page = requests.get(links[0])
+
+    soup = BeautifulSoup(page.content, 'html.parser')
+
+    out_file = open("web_response.txt", "w", encoding='utf-8')
+
+    out_file.write(soup.prettify())
+
+    containers = soup.find_all('a')
+    for tag in containers:
+        response_link = tag.get('href')
+
+        resource = get_resource_name(response_link)
+
+        if(resource != ''):
+            print(resource)
+            print("______________________________")
+            break

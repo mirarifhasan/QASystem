@@ -9,4 +9,6 @@ Code Behaviours - QLD6_SingleResource.csv
 output log.csv
 qasystem.sql
 
+web_response.txt
+
 .~lock.output log.csv#
