@@ -8,7 +8,8 @@ def getResourceName(nameEntityArray):
     questionwords = ["who", "what", "where", "when", "how", "which", "list", "show"]
 
     for nameEntity in nameEntityArray:
-        resDic = mysql_operations.findResource(nameEntity.text)
+        # resDic = mysql_operations.findResource(nameEntity.text)
+        resDic = []
 
         if len(resDic) > 0:
             array.append(resDic[0][1])
