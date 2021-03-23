@@ -12,10 +12,11 @@ import datetime
 # questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
 
 input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
-# output_file_directory = "output log.csv"
+output_file_directory = "output log.csv"
 input_file = pd.read_csv(input_file_directory, encoding='cp1252')
 questions = input_file["Question"].tolist()
 
+log_question_list = []
 log_named_entity_list = []
 log_resource_list = []
 log_keyword_list = []
@@ -25,23 +26,29 @@ log_all_answer_list = []
 log_answer_list = []
 log_question_type_list = []
 
-ques_count = 0
-for question in questions:
-    # print(f"\n\n#{ques_count}")
-    # print(question)
-    nameentitytemp = ''
-    ques_count = ques_count + 1
+# ques_count = 0
+flagResFromGoogleSearch = True
 
-    # print("\nStep 1: Name Entity finding")
+questionIndex = 0
+while questionIndex < len(questions):
+    question = questions[questionIndex]
+    log_question_list.append(question)
+
+    # print(f"\n\n#{ques_count}")
+    print(question)
+    nameentitytemp = ''
+    # ques_count = ques_count + 1
+
+    print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
     log_var_named_entity_list = ''
     for nameEntity in nameEntityList:
-        # print(f"Named Entity: {nameEntity.text}")  # todo: keep this
+        print(f"Named Entity: {nameEntity.text}")  # todo: keep this
         nameentitytemp = nameentitytemp + ', ' + nameEntity.text
         log_var_named_entity_list = log_var_named_entity_list + nameEntity.text + ', '
     log_named_entity_list.append(log_var_named_entity_list)
 
-    # print("Step 3: Keywords finding")
+    print("Step 3: Keywords finding")
     # finding keyword list by build in services
     keywordListByAM = byAutomation.findKeywordByAutomation(question)
     # print(keywordListByAM)
@@ -59,23 +66,26 @@ for question in questions:
     log_keyword_list.append(keywordList)
 
     if len(nameEntityList) > 0:
-        # print("Step 2: Resource Name finding")
-        # Making string
-        stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
-        # Google search
-        resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
-        # resourceList = resource_name.getResourceName(nameEntityList)
-        # print(f"resource list: {resourceList}")  # todo: keep this
-        if resourceList is None:
-            resourceList = ['!!']
+        print("Step 2: Resource Name finding")
+        if flagResFromGoogleSearch == True:
+            # Making string
+            stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
+            # Google search
+            resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
+        else:
+            resourceList = resource_name.getResourceName(nameEntityList)
+            flagResFromGoogleSearch = True
+        print(f"resource list: {resourceList}")  # todo: keep this
+        # if resourceList is None:
+        #     resourceList = ['!!']
         log_var_resource_list = ''
         for i in resourceList:
             log_var_resource_list = log_var_resource_list + i + ', '
         log_resource_list.append(log_var_resource_list)
 
 
-        print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
-'''
+        # print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
+
     if len(resourceList) > 0:
         print("Step 4: Property finding")
         propertyList = getPageProperties(resourceList)
@@ -116,8 +126,19 @@ for question in questions:
         log_answer_list.append(answer)
         log_question_type_list.append(questionType)
 
+        if answer == "No answer" and log_question_list[len(log_question_list)-1] != log_question_list[len(log_question_list)-2]:
+            flagResFromGoogleSearch = False
+            continue
+        else:
+            questionIndex = questionIndex + 1
+
     else:
         print("No property found! Can't go forward without property")
+        if log_question_list[len(log_question_list)-1] != log_question_list[len(log_question_list)-2]:
+            flagResFromGoogleSearch = False
+            continue
+        else:
+            questionIndex = questionIndex + 1
 
     print('\n\n\n')
 
@@ -138,4 +159,4 @@ output_file = pd.DataFrame(
     }
 )
 output_file.to_csv(output_file_directory)
-'''
+

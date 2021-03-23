@@ -48,7 +48,6 @@ def get_resource_name(link):
     wiki_link = "wikipedia.org/wiki/"
     index = link.find(wiki_link)
     if index == -1:
-        # print('no wiki link found')
         return resource
     index = index + len(wiki_link)
     for i in range(index, len(link)):
@@ -57,36 +56,30 @@ def get_resource_name(link):
             resource = resource + character
         else:
             break
-    # print("R is", resource)
+
     return resource
 
 
 def getResourceNameByGoogleSearch(stringList):
-    # for i in stringList:
-    links = ["https://www.google.com/search?q=" + stringList]
-    # print(links[0])
-    page = requests.get(links[0])
-
-    soup = BeautifulSoup(page.content, 'html.parser')
-
-    out_file = open("web_response.txt", "w", encoding='utf-8')
-
-    out_file.write(soup.prettify())
-
-    containers = soup.find_all('a')
-    for tag in containers:
-        response_link = tag.get('href')
-
-        resource = get_resource_name(response_link)
-        # print(f'Obtained resource: {resource}')
-
-        if resource != '':
-            arr = [resource]
-            return arr
-            # return resource.split()
-            # print(resource)
-            # print("______________________________")
-            break
-
     arr = []
-    return arr.append(resource)
+
+    for i in stringList:
+        links = ["https://www.google.com/search?q=" + i]
+
+        page = requests.get(links[0])
+        soup = BeautifulSoup(page.content, 'html.parser')
+
+        out_file = open("web_response.txt", "w", encoding='utf-8')
+        out_file.write(soup.prettify())
+
+        containers = soup.find_all('a')
+        for tag in containers:
+            response_link = tag.get('href')
+
+            resource = get_resource_name(response_link)
+
+            if resource != '':
+                arr.append(resource)
+                break
+
+    return arr
