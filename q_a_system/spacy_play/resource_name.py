@@ -53,7 +53,7 @@ def get_resource_name(link):
     index = index + len(wiki_link)
     for i in range(index, len(link)):
         character = link[i]
-        if character.isalpha() or character == '_' or character == '(' or character == ')' or character == '-':
+        if character.isalnum() or character == '_' or character == '(' or character == ')' or character == '-':
             resource = resource + character
         else:
             break
@@ -80,9 +80,8 @@ def getResourceNameByGoogleSearch(stringList):
         resource = get_resource_name(response_link)
         # print(f'Obtained resource: {resource}')
 
-        if (resource != ''):
-            arr = []
-            arr.append(resource)
+        if resource != '':
+            arr = [resource]
             return arr
             # return resource.split()
             # print(resource)

@@ -1,7 +1,8 @@
 def getResKeywordString(nameEntity, keyword):
     res_key = ""
     ''' removing unwanted name entity from array'''
-    questionWords = ["Who", "What", "Where", "When", "How", "Which", "List", "Show"]
+    questionWords = ["Who", "What", "Where", "When", "How", "Which", "List", "Show", "who", "what", "where", "when",
+                     "how", "which", "list", "show"]
     name_arr = []
     for i in nameEntity:
         aa = i.text.split()
@@ -31,6 +32,9 @@ def getResKeywordString(nameEntity, keyword):
     if len(name_arr) > 1:
         res_key = name_arr[-2] + ' ' + name_arr[-1]  # bang theory , Liz Taylor
 
+    substring = "the "
+    if substring in res_key:
+        res_key = res_key[4:]
     return res_key
 
 # print(getResKeywordString(['shishu park'], ['director', 'movies', 'park chan-wook', 'direct']))
