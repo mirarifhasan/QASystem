@@ -10,13 +10,14 @@ def getResKeywordString(nameEntity, keyword):
             if a in questionWords:
                 break
             else:
-                name_arr.append((a))
+                name_arr.append((a.lower()))
 
     '''processing keyword array'''
     key_arr = []
     for i in keyword:
         aa = i.split()
         for a in aa:
+            a = a.lower()
             if a not in name_arr:
                 key_arr.append((a))  # duplicate removed
 

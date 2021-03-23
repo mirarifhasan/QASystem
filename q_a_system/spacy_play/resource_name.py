@@ -3,6 +3,7 @@ from q_a_system.api_sevice import mysql_operations
 import requests
 from bs4 import BeautifulSoup
 
+
 def getResourceName(nameEntityArray):
     array = []
     resource = ''
@@ -47,23 +48,23 @@ def get_resource_name(link):
     wiki_link = "wikipedia.org/wiki/"
     index = link.find(wiki_link)
     if index == -1:
+        # print('no wiki link found')
         return resource
     index = index + len(wiki_link)
     for i in range(index, len(link)):
         character = link[i]
-        if character.isalpha() or character == '_' or character == '(' or character == ')':
+        if character.isalpha() or character == '_' or character == '(' or character == ')' or character == '-':
             resource = resource + character
         else:
             break
-    print("R is", resource)
+    # print("R is", resource)
     return resource
 
 
 def getResourceNameByGoogleSearch(stringList):
-
     # for i in stringList:
     links = ["https://www.google.com/search?q=" + stringList]
-    print(links[0])
+    # print(links[0])
     page = requests.get(links[0])
 
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -77,8 +78,16 @@ def getResourceNameByGoogleSearch(stringList):
         response_link = tag.get('href')
 
         resource = get_resource_name(response_link)
+        # print(f'Obtained resource: {resource}')
 
-        if(resource != ''):
-            print(resource)
-            print("______________________________")
+        if (resource != ''):
+            arr = []
+            arr.append(resource)
+            return arr
+            # return resource.split()
+            # print(resource)
+            # print("______________________________")
             break
+
+    arr = []
+    return arr.append(resource)

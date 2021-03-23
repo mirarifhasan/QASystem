@@ -8,12 +8,11 @@ from q_a_system.web_scrape.propertyScrape import getPageProperties
 import pandas as pd
 import datetime
 
-
 # questions = input.getUserQuestion()
 # questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
 
 input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
-output_file_directory = "output log.csv"
+# output_file_directory = "output log.csv"
 input_file = pd.read_csv(input_file_directory, encoding='cp1252')
 questions = input_file["Question"].tolist()
 
@@ -26,28 +25,30 @@ log_all_answer_list = []
 log_answer_list = []
 log_question_type_list = []
 
-
+ques_count = 0
 for question in questions:
+    # print(f"\n\n#{ques_count}")
+    # print(question)
+    nameentitytemp = ''
+    ques_count = ques_count + 1
 
-    print(question)
-
-    print("\nStep 1: Name Entity finding")
+    # print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
     log_var_named_entity_list = ''
     for nameEntity in nameEntityList:
-        print(nameEntity.text)
+        # print(f"Named Entity: {nameEntity.text}")  # todo: keep this
+        nameentitytemp = nameentitytemp + ', ' + nameEntity.text
         log_var_named_entity_list = log_var_named_entity_list + nameEntity.text + ', '
     log_named_entity_list.append(log_var_named_entity_list)
 
-
-    print("Step 3: Keywords finding")
+    # print("Step 3: Keywords finding")
     # finding keyword list by build in services
     keywordListByAM = byAutomation.findKeywordByAutomation(question)
-    print(keywordListByAM)
+    # print(keywordListByAM)
 
     # finding keyword list by DataDictionary approach
     keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
-    print(keywordListByDD)
+    # print(keywordListByDD)
 
     keywordList = []
     for i in keywordListByDD:
@@ -57,21 +58,24 @@ for question in questions:
 
     log_keyword_list.append(keywordList)
 
-
     if len(nameEntityList) > 0:
-        print("Step 2: Resource Name finding")
+        # print("Step 2: Resource Name finding")
         # Making string
         stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
         # Google search
         resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
         # resourceList = resource_name.getResourceName(nameEntityList)
-        print(resourceList)
+        # print(f"resource list: {resourceList}")  # todo: keep this
+        if resourceList is None:
+            resourceList = ['!!']
         log_var_resource_list = ''
         for i in resourceList:
             log_var_resource_list = log_var_resource_list + i + ', '
         log_resource_list.append(log_var_resource_list)
 
 
+        print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
+'''
     if len(resourceList) > 0:
         print("Step 4: Property finding")
         propertyList = getPageProperties(resourceList)
@@ -134,3 +138,4 @@ output_file = pd.DataFrame(
     }
 )
 output_file.to_csv(output_file_directory)
+'''
