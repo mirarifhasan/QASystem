@@ -12,9 +12,10 @@ import datetime
 # questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
 
 input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
-output_file_directory = "output log.csv"
+output_file_directory = "output log March 24 (test).csv"
 input_file = pd.read_csv(input_file_directory, encoding='cp1252')
 questions = input_file["Question"].tolist()
+# questions = ['What is the full name of Prince Charles?']
 
 log_question_list = []
 log_named_entity_list = []
@@ -25,12 +26,18 @@ log_sql_list = []
 log_all_answer_list = []
 log_answer_list = []
 log_question_type_list = []
+log_string_list = []
 
 # ques_count = 0
 flagResFromGoogleSearch = True
 
 questionIndex = 0
 while questionIndex < len(questions):
+    if questionIndex < 0:
+        questionIndex = questionIndex + 1
+        continue
+    if questionIndex > 5:
+        break
     question = questions[questionIndex]
     log_question_list.append(question)
 
@@ -72,9 +79,11 @@ while questionIndex < len(questions):
             stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
             # Google search
             resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
+            log_string_list.append(stringList)
         else:
             resourceList = resource_name.getResourceName(nameEntityList)
             flagResFromGoogleSearch = True
+            log_string_list.append('No String Found Here (I guess)')
         print(f"resource list: {resourceList}")  # todo: keep this
         # if resourceList is None:
         #     resourceList = ['!!']
@@ -82,7 +91,6 @@ while questionIndex < len(questions):
         for i in resourceList:
             log_var_resource_list = log_var_resource_list + i + ', '
         log_resource_list.append(log_var_resource_list)
-
 
         # print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
 
@@ -126,7 +134,8 @@ while questionIndex < len(questions):
         log_answer_list.append(answer)
         log_question_type_list.append(questionType)
 
-        if answer == "No answer" and log_question_list[len(log_question_list)-1] != log_question_list[len(log_question_list)-2]:
+        if answer == "No answer" and log_question_list[len(log_question_list) - 1] != log_question_list[
+            len(log_question_list) - 2]:
             flagResFromGoogleSearch = False
             continue
         else:
@@ -134,7 +143,7 @@ while questionIndex < len(questions):
 
     else:
         print("No property found! Can't go forward without property")
-        if log_question_list[len(log_question_list)-1] != log_question_list[len(log_question_list)-2]:
+        if log_question_list[len(log_question_list) - 1] != log_question_list[len(log_question_list) - 2]:
             flagResFromGoogleSearch = False
             continue
         else:
@@ -142,21 +151,23 @@ while questionIndex < len(questions):
 
     print('\n\n\n')
 
-
-
 # writing the logs in csv file
+print(f"Ques list count: {len(log_question_list)}")
+print(f"Res list count: {len(log_resource_list)}")
+print(f"Str list count: {len(log_string_list)}")
 output_file = pd.DataFrame(
     {
-        'Questions': questions,
-        'Name Entity': log_named_entity_list,
+        'Questions': log_question_list,
+        # 'Name Entity': log_named_entity_list,
         'Resources': log_resource_list,
-        'Keyword': log_keyword_list,
-        'Property': log_property_list,
-        'Answer Array': log_all_answer_list,
-        'Answer Type': log_question_type_list,
-        'Answer': log_answer_list,
-        'SQL': log_sql_list
+        # 'Keyword': log_keyword_list,
+        # 'Property': log_property_list,
+        # 'Answer Array': log_all_answer_list,
+        # 'Answer Type': log_question_type_list,
+        'Strings': log_string_list,
+        'Answer': log_answer_list
+        # 'SQL': log_sql_list
     }
 )
+print(log_answer_list)
 output_file.to_csv(output_file_directory)
-
