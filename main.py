@@ -15,7 +15,6 @@ input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
 output_file_directory = "output log March 24 (test).csv"
 input_file = pd.read_csv(input_file_directory, encoding='cp1252')
 questions = input_file["Question"].tolist()
-# questions = ['What is the full name of Prince Charles?']
 
 log_question_list = []
 log_named_entity_list = []

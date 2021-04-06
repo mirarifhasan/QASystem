@@ -68,72 +68,72 @@ def makeOneResSql(propertyList, resourceList, query):
                         sql = sql + " " + query[i]
                 sqls.append(sql)
 
-    # if query[2] == 2:
-    #     for i, resource in enumerate(resourceList):
-    #         for prop1 in propertyList[i]:
-    #             for propLast in propertyList[len(resourceList)]:
-    #                 sql = ''
-    #                 for i in range(3, 20, 1):
-    #                     if query[i] == 'res:':
-    #                         sql = sql + " res:" + resource
-    #                     elif query[i] == 'dbo/dbp:':
-    #                         if query[i + 1] == 'res:' or query[i - 1] == 'res:':
-    #                             sql = sql + " " + prop1.propertyType + ":" + prop1.property
-    #                         else:
-    #                             sql = sql + " " + propLast.propertyType + ":" + propLast.property
-    #                     else:
-    #                         sql = sql + " " + query[i]
-    #                 sqls.append(sql)
-    #
-    # if query[2] == 3:
-    #     for i, resource in enumerate(resourceList):
-    #         for prop1 in propertyList[i]:
-    #             for propLast1 in propertyList[len(resourceList)]:
-    #                 for propLast2 in propertyList[len(resourceList)]:
-    #                     sql = ''
-    #                     dboDbpCount = 0
-    #                     for i in range(3, 20, 1):
-    #                         if query[i] == 'res:':
-    #                             sql = sql + " res:" + resource
-    #                         elif query[i] == 'dbo/dbp:':
-    #                             if query[i + 1] == 'res:' or query[i - 1] == 'res:':
-    #                                 sql = sql + " " + prop1.propertyType + ":" + prop1.property
-    #                             else:
-    #                                 if dboDbpCount == 0:
-    #                                     sql = sql + " " + propLast1.propertyType + ":" + propLast1.property
-    #                                     dboDbpCount = dboDbpCount + 1
-    #                                 elif dboDbpCount == 1:
-    #                                     sql = sql + " " + propLast2.propertyType + ":" + propLast2.property
-    #                         else:
-    #                             sql = sql + " " + query[i]
-    #                     sqls.append(sql)
-    #
-    # if query[2] == 4:
-    #     for i, resource in enumerate(resourceList):
-    #         for prop1 in propertyList[i]:
-    #             for propLast1 in propertyList[len(resourceList)]:
-    #                 for propLast2 in propertyList[len(resourceList)]:
-    #                     for propLast3 in propertyList[len(resourceList)]:
-    #                         sql = ''
-    #                         dboDbpCount = 0
-    #                         for i in range(3, 20, 1):
-    #                             if query[i] == 'res:':
-    #                                 sql = sql + " res:" + resource
-    #                             elif query[i] == 'dbo/dbp:':
-    #                                 if query[i + 1] == 'res:' or query[i - 1] == 'res:':
-    #                                     sql = sql + " " + prop1.propertyType + ":" + prop1.property
-    #                                 else:
-    #                                     if dboDbpCount == 0:
-    #                                         sql = sql + " " + propLast1.propertyType + ":" + propLast1.property
-    #                                         dboDbpCount = dboDbpCount + 1
-    #                                     elif dboDbpCount == 1:
-    #                                         sql = sql + " " + propLast2.propertyType + ":" + propLast2.property
-    #                                         dboDbpCount = dboDbpCount + 1
-    #                                     elif dboDbpCount == 2:
-    #                                         sql = sql + " " + propLast3.propertyType + ":" + propLast3.property
-    #                             else:
-    #                                 sql = sql + " " + query[i]
-    #                         sqls.append(sql)
+    if query[2] == 2:
+        for i, resource in enumerate(resourceList):
+            for prop1 in propertyList[i]:
+                for propLast in propertyList[len(resourceList)]:
+                    sql = ''
+                    for i in range(3, 20, 1):
+                        if query[i] == 'res:':
+                            sql = sql + " res:" + resource
+                        elif query[i] == 'dbo/dbp:':
+                            if query[i + 1] == 'res:' or query[i - 1] == 'res:':
+                                sql = sql + " " + prop1.propertyType + ":" + prop1.property
+                            else:
+                                sql = sql + " " + propLast.propertyType + ":" + propLast.property
+                        else:
+                            sql = sql + " " + query[i]
+                    sqls.append(sql)
+
+    if query[2] == 3:
+        for i, resource in enumerate(resourceList):
+            for prop1 in propertyList[i]:
+                for propLast1 in propertyList[len(resourceList)]:
+                    for propLast2 in propertyList[len(resourceList)]:
+                        sql = ''
+                        dboDbpCount = 0
+                        for i in range(3, 20, 1):
+                            if query[i] == 'res:':
+                                sql = sql + " res:" + resource
+                            elif query[i] == 'dbo/dbp:':
+                                if query[i + 1] == 'res:' or query[i - 1] == 'res:':
+                                    sql = sql + " " + prop1.propertyType + ":" + prop1.property
+                                else:
+                                    if dboDbpCount == 0:
+                                        sql = sql + " " + propLast1.propertyType + ":" + propLast1.property
+                                        dboDbpCount = dboDbpCount + 1
+                                    elif dboDbpCount == 1:
+                                        sql = sql + " " + propLast2.propertyType + ":" + propLast2.property
+                            else:
+                                sql = sql + " " + query[i]
+                        sqls.append(sql)
+
+    if query[2] == 4:
+        for i, resource in enumerate(resourceList):
+            for prop1 in propertyList[i]:
+                for propLast1 in propertyList[len(resourceList)]:
+                    for propLast2 in propertyList[len(resourceList)]:
+                        for propLast3 in propertyList[len(resourceList)]:
+                            sql = ''
+                            dboDbpCount = 0
+                            for i in range(3, 20, 1):
+                                if query[i] == 'res:':
+                                    sql = sql + " res:" + resource
+                                elif query[i] == 'dbo/dbp:':
+                                    if query[i + 1] == 'res:' or query[i - 1] == 'res:':
+                                        sql = sql + " " + prop1.propertyType + ":" + prop1.property
+                                    else:
+                                        if dboDbpCount == 0:
+                                            sql = sql + " " + propLast1.propertyType + ":" + propLast1.property
+                                            dboDbpCount = dboDbpCount + 1
+                                        elif dboDbpCount == 1:
+                                            sql = sql + " " + propLast2.propertyType + ":" + propLast2.property
+                                            dboDbpCount = dboDbpCount + 1
+                                        elif dboDbpCount == 2:
+                                            sql = sql + " " + propLast3.propertyType + ":" + propLast3.property
+                                else:
+                                    sql = sql + " " + query[i]
+                            sqls.append(sql)
 
     return list(property_selection.removeDuplicates(sqls))
 
@@ -263,12 +263,12 @@ def getQueryResult(propertyList, resourceList, queryIDs):
     for query in queries:
         noOfRes = query[1]
 
-        # if noOfRes == 0:
-        #     sqls.append(makeZeroResSql(propertyList, query))
-        if noOfRes == 1:
+        if noOfRes == 0:
+            sqls.append(makeZeroResSql(propertyList, query))
+        elif noOfRes == 1:
             sqls.append(makeOneResSql(propertyList, resourceList, query))
-        # elif noOfRes == 2:
-        #     sqls.append(makeTwoResSql(propertyList, resourceList, query))
+        elif noOfRes == 2:
+            sqls.append(makeTwoResSql(propertyList, resourceList, query))
 
     sqls = sortSqlsByPropertySimilarity(sqls, propertyList)
 
@@ -281,7 +281,8 @@ def getQueryResult(propertyList, resourceList, queryIDs):
 
     print('\n' + str(len(sqls)) + " SQL run!\n")
 
-    return list(filter(None, answerArray)), sqls
+    # return list(filter(None, answerArray)), sqls
+    return answerArray, sqls
 
 
 def getAnswerBySPQRQL(sql):

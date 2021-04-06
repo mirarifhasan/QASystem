@@ -7,13 +7,16 @@ def answerValidation(answerArray, questionType):
     if len(answerArray) > 0:
         if questionType == 'NUMBER':
             for answerGroup in answerArray:
-                if len(answerGroup) > 0:
-                    for i in answerGroup:
-                        sentence = constant.nlp(i)
-                        for token in sentence.ents:
-                            print(token.text, token.label_)
-                            if token.label_ in ('PERCENT', 'MONEY', 'QUANTITY', 'ORDINAL', 'CARDINAL'):
-                                return ' '.join(answerGroup)
+                try:
+                    if len(answerGroup) > 0:
+                        for i in answerGroup:
+                            sentence = constant.nlp(i)
+                            for token in sentence.ents:
+                                print(token.text, token.label_)
+                                if token.label_ in ('PERCENT', 'MONEY', 'QUANTITY', 'ORDINAL', 'CARDINAL'):
+                                    return ' '.join(answerGroup)
+                except:
+                    pass
 
         # Date pattern matcher
         if questionType == 'DATE':
@@ -80,29 +83,32 @@ def answerValidation(answerArray, questionType):
         flag2 = 0
         if questionType == 'LOCATION':
             for answerGroup in answerArray:
-                if len(answerGroup) > 0:
-                    for i in answerGroup:
-                        if i.startswith('http') == True:
-                            url_answer = i.split('/')[-1]
-                            a = url_answer.split('_')
-                            # a= ' '.join(a)
-                            print(a)
-                            grouparray.append(' '.join(a))
-                            for i in a:
-                                sentence = constant.nlp(i)
+                try:
+                    if len(answerGroup) > 0:
+                        for i in answerGroup:
+                            if i.startswith('http') == True:
+                                url_answer = i.split('/')[-1]
+                                a = url_answer.split('_')
+                                # a= ' '.join(a)
+                                print(a)
+                                grouparray.append(' '.join(a))
+                                for i in a:
+                                    sentence = constant.nlp(i)
 
-                                for token in sentence.ents:
-                                    print(token.text, token.label_)
-                                    if token.label_ == questionType or token.label_ in ('FAC', 'ORG', 'GPE', 'LOC'):
-                                        flag1 = 1
-                                        # return ' '.join(url_answer.split('_')) # answer is splited by space
-                    if a:
-                        flag2 = 1
-                        # return ' '.join(a) + "(partially)"
-                    if flag1 == 1:
-                        return ', '.join((grouparray))
-                    elif flag2 == 1:
-                        return ', '.join((grouparray)) + "(partially)"
+                                    for token in sentence.ents:
+                                        print(token.text, token.label_)
+                                        if token.label_ == questionType or token.label_ in ('FAC', 'ORG', 'GPE', 'LOC'):
+                                            flag1 = 1
+                                            # return ' '.join(url_answer.split('_')) # answer is splited by space
+                        if a:
+                            flag2 = 1
+                            # return ' '.join(a) + "(partially)"
+                        if flag1 == 1:
+                            return ', '.join((grouparray))
+                        elif flag2 == 1:
+                            return ', '.join((grouparray)) + "(partially)"
+                except:
+                    pass
 
         if questionType == 'YES/NO':
             return str(answerArray[0])
