@@ -3,6 +3,7 @@ from q_a_system.api_sevice import mysql_operations
 import requests
 from bs4 import BeautifulSoup
 
+
 def getResourceName(nameEntityArray):
     array = []
     resource = ''
@@ -51,34 +52,34 @@ def get_resource_name(link):
     index = index + len(wiki_link)
     for i in range(index, len(link)):
         character = link[i]
-        if character.isalpha() or character == '_' or character == '(' or character == ')':
+        if character.isalnum() or character == '_' or character == '(' or character == ')' or character == '-' or character == ',':
             resource = resource + character
         else:
             break
-    print("R is", resource)
+
     return resource
 
 
 def getResourceNameByGoogleSearch(stringList):
+    arr = []
 
-    # for i in stringList:
-    links = ["https://www.google.com/search?q=" + stringList]
-    print(links[0])
-    page = requests.get(links[0])
+    for i in stringList:
+        links = ["https://www.google.com/search?q=" + i]
 
-    soup = BeautifulSoup(page.content, 'html.parser')
+        page = requests.get(links[0])
+        soup = BeautifulSoup(page.content, 'html.parser')
 
-    out_file = open("web_response.txt", "w", encoding='utf-8')
+        out_file = open("web_response.txt", "w", encoding='utf-8')
+        out_file.write(soup.prettify())
 
-    out_file.write(soup.prettify())
+        containers = soup.find_all('a')
+        for tag in containers:
+            response_link = tag.get('href')
 
-    containers = soup.find_all('a')
-    for tag in containers:
-        response_link = tag.get('href')
+            resource = get_resource_name(response_link)
 
-        resource = get_resource_name(response_link)
+            if resource != '':
+                arr.append(resource)
+                break
 
-        if(resource != ''):
-            print(resource)
-            print("______________________________")
-            break
+    return arr
