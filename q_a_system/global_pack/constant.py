@@ -1,4 +1,7 @@
 import spacy
+import warnings
+
+warnings.filterwarnings("ignore", message=r"\[W008\]", category=UserWarning)
 
 # lang = 'en_vectors_web_lg'
 lang = 'en_core_web_lg'
