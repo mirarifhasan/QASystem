@@ -46,16 +46,19 @@ def reduceHTTPErrorContent(array):
 def get_resource_name(link):
     resource = ''
     wiki_link = "wikipedia.org/wiki/"
-    index = link.find(wiki_link)
-    if index == -1:
+    try:
+        index = link.find(wiki_link)
+        if index == -1:
+            return resource
+        index = index + len(wiki_link)
+        for i in range(index, len(link)):
+            character = link[i]
+            if character.isalnum() or character == '_' or character == '(' or character == ')' or character == '-':
+                resource = resource + character
+            else:
+                break
+    except:
         return resource
-    index = index + len(wiki_link)
-    for i in range(index, len(link)):
-        character = link[i]
-        if character.isalnum() or character == '_' or character == '(' or character == ')' or character == '-':
-            resource = resource + character
-        else:
-            break
 
     return resource
 
@@ -65,8 +68,9 @@ def getResourceNameByGoogleSearch(stringList):
 
     for i in stringList:
         links = ["https://www.google.com/search?q=" + i]
-
-        page = requests.get(links[0])
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
+        page = requests.get(links[0],headers=headers)
+        print(f"status code: {page.status_code}")
         soup = BeautifulSoup(page.content, 'html.parser')
 
         out_file = open("web_response.txt", "w", encoding='utf-8')

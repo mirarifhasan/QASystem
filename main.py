@@ -26,7 +26,7 @@ log_all_answer_list = []
 log_answer_list = []
 log_question_type_list = []
 
-# ques_count = 0
+ques_count = 0
 flagResFromGoogleSearch = True
 
 questionIndex = 0
@@ -34,10 +34,10 @@ while questionIndex < len(questions):
     question = questions[questionIndex]
     log_question_list.append(question)
 
-    # print(f"\n\n#{ques_count}")
+    print(f"\n\n#{ques_count}")
     print(question)
     nameentitytemp = ''
-    # ques_count = ques_count + 1
+    ques_count = ques_count + 1
 
     print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
@@ -48,7 +48,7 @@ while questionIndex < len(questions):
         log_var_named_entity_list = log_var_named_entity_list + nameEntity.text + ', '
     log_named_entity_list.append(log_var_named_entity_list)
 
-    print("Step 3: Keywords finding")
+    print("Step 2: Keywords finding")
     # finding keyword list by build in services
     keywordListByAM = byAutomation.findKeywordByAutomation(question)
     # print(keywordListByAM)
@@ -64,12 +64,13 @@ while questionIndex < len(questions):
         keywordList.append(i)
 
     log_keyword_list.append(keywordList)
-
+    print(keywordList)
     if len(nameEntityList) > 0:
-        print("Step 2: Resource Name finding")
+        print("Step 3: Resource Name finding")
         if flagResFromGoogleSearch == True:
             # Making string
             stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
+            print(f"string to pass: {stringList}")
             # Google search
             resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
         else:
@@ -77,7 +78,8 @@ while questionIndex < len(questions):
             flagResFromGoogleSearch = True
         print(f"resource list: {resourceList}")  # todo: keep this
         # if resourceList is None:
-        #     resourceList = ['!!']
+        #     resourceList = [
+        #     '!!']
         log_var_resource_list = ''
         for i in resourceList:
             log_var_resource_list = log_var_resource_list + i + ', '

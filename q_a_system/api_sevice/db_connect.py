@@ -9,7 +9,7 @@ databaseName = "qasystemdb"
 connection = pymysql.connect("localhost", "root", "", "qasystem")
 
 
-# connection = pymysql.connect("localhost","root","", "qa2", port=8111)  #for aboni
+c#onnection = pymysql.connect("localhost","root","", "qa11", port=8111)  #for aboni
 
 
 
