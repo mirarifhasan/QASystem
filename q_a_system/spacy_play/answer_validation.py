@@ -4,6 +4,14 @@ from q_a_system.global_pack import constant
 
 
 def answerValidation(answerArray, questionType):
+    dummy_ans_arr = []
+    for item in answerArray:
+        if item is None:
+            continue
+        dummy_ans_arr.append(item)
+
+    answerArray = dummy_ans_arr
+
     if len(answerArray) > 0:
         if questionType == 'NUMBER':
             for answerGroup in answerArray:
@@ -114,6 +122,9 @@ def answerValidation(answerArray, questionType):
             return str(answerArray[0])
 
         for answerGroup in answerArray:
+            if answerGroup is None:
+                continue
+
             if len(answerGroup) > 0:
                 sentence = constant.nlp(answerGroup[0])
 
@@ -181,6 +192,10 @@ def answerValidation(answerArray, questionType):
                         return ', '.join((grouparray))
 
         # return ', '.join(answerArray[0]) + "(partially)"   #answerArray[0][0]
-        return answerArray[0][0] + "(partially)"
+        # todo: design a better solution
+        try:
+            return answerArray[0][0] + "(partially)"
+        except:
+            return 'ERR: I GUESS IT\'S EMPTY ANSWER ARRAY'
     else:
         return "No answer"

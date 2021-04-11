@@ -15,6 +15,25 @@ input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
 output_file_directory = "output log March 24 (test).csv"
 input_file = pd.read_csv(input_file_directory, encoding='cp1252')
 questions = input_file["Question"].tolist()
+# questions = [
+#     'Which films did Stanley Kubrick direct?', #Stanley Kubrick filmography (partially)
+#     'In which time zone is Rome?', # Zones of Rome
+#     'Which actors play in Big Bang Theory?', #Kevin Sussman, Jim Parsons, Kaley Cuoco, Sara Gilbert, Kunal Nayyar, Laura Spencer (actress), Simon Helberg, Johnny Galecki, Mayim Bialik, Melissa Rauch
+#     'Which companies produce hovercrafts?', # m.013xl3, Hovercraft, 4036570-0, 氣墊船, হোভারক্রাফ্ট, Luchtkessenreau, Лебдјелица,....
+#     'In which ancient empire could you pay with cocoa beans?', # Ghanaian cedi, Euro, West African CFA franc
+#     'Which space probes were sent into orbit around the sun?', # Earth?oldid=986561235&ns=0(partially)
+#     'On which day is Columbus day?', # October
+#     'To which party does the mayor of Paris belong?', #Paris Belongs to Us, m.04f02jr, پاریس از آن ماست, 12PyxB, パリはわれらのもの, Paris gehört uns, Paris nous appartient, Paris nous appartient, Q25513, Parigi ci appartiene
+#     'Which country was Bill Gates born in?', # Bremerton, Washington
+#     'In which countries do people speak Japanese?', # Japan, Japan
+#     'Which rivers flow into the North Sea?', # Baltic Sea, Humber, Scheldt, Rhine, River Dee, Aberdeenshire, River Don....
+#     'Which movies starboth Liz Taylor and Richard Burton?', # Love Is Better Than Ever, Under Milk Wood (1972 film), Boom! (film), Doctor Faustus (1967 film),
+#     'Which electronics companies were founded in Beijing?', # Chen Jining, Cai Qi, Ji Lin, Li Wei (PRC politician)
+#     'Which Indiancompany has the most employees?', #  https://global.dbpedia.org/id/5EMPt or No Answer
+#     'Which countries have more than ten volcanoes?', # Decade Volcanoes, m.05czx5, 十年火山, Декадни вулкани, Vulcões da Década, Декадные вулканы, Decade Volcanoes,
+#     'In which city was the president of Montenegro born?' # SR Montenegro, Cetinje, Yugoslavia, Nikšić, Socialist Federal Republic of Yugoslavia, Socialist Republic of Montenegro
+#     # 'Which writers studied in Istanbul?'
+# ]
 
 log_question_list = []
 log_named_entity_list = []
@@ -32,11 +51,11 @@ flagResFromGoogleSearch = True
 
 questionIndex = 0
 while questionIndex < len(questions):
-    if questionIndex < 0:
-        questionIndex = questionIndex + 1
-        continue
-    if questionIndex > 5:
-        break
+    # if questionIndex < 0:
+    #     questionIndex = questionIndex + 1
+    #     continue
+    # if questionIndex > 5:
+    #     break
     question = questions[questionIndex]
     log_question_list.append(question)
 
@@ -119,7 +138,8 @@ while questionIndex < len(questions):
         queryIDs = mysql_operations.findSparqlQueryID(questionType, question)
 
         print("Step 5: All possible answer finding")
-        answerArray, sqls = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs)
+        # answerArray, sqls = api_dbpedia.getQueryResult(propertyList, resourceList, queryIDs)
+        answerArray, sqls = api_dbpedia.get_query_result(propertyList, resourceList, queryIDs, questionType)
         print(answerArray)
 
         print("Step 6: Answer type extraction")
@@ -156,6 +176,7 @@ while questionIndex < len(questions):
 print(f"Ques list count: {len(log_question_list)}")
 print(f"Res list count: {len(log_resource_list)}")
 print(f"Str list count: {len(log_string_list)}")
+print(f"Ans list count: {len(log_answer_list)}")
 output_file = pd.DataFrame(
     {
         'Questions': log_question_list,
