@@ -53,13 +53,12 @@ def get_resource_name(link):
         index = index + len(wiki_link)
         for i in range(index, len(link)):
             character = link[i]
-            if character.isalnum() or character == '_' or character == '(' or character == ')' or character == '-':
+            if character.isalnum() or character == '_' or character == '(' or character == ')' or character == '-' or character == ',':
                 resource = resource + character
             else:
                 break
     except:
-        return resource
-
+        pass
     return resource
 
 

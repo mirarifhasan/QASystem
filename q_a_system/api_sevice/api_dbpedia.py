@@ -5,8 +5,8 @@ from q_a_system.global_pack import constant
 from q_a_system.spacy_play import property_selection
 from concurrent.futures import ThreadPoolExecutor
 
-
 sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+
 
 def makeZeroResSql(propertyList, query):
     sqls = []
@@ -77,7 +77,7 @@ def makeOneResSql(propertyList, resourceList, query):
                         if query[i] == 'res:':
                             sql = sql + " res:" + resource
                         elif query[i] == 'dbo/dbp:':
-                            if query[i+1] == 'res:' or query[i-1] == 'res:':
+                            if query[i + 1] == 'res:' or query[i - 1] == 'res:':
                                 sql = sql + " " + prop1.propertyType + ":" + prop1.property
                             else:
                                 sql = sql + " " + propLast.propertyType + ":" + propLast.property
@@ -96,7 +96,7 @@ def makeOneResSql(propertyList, resourceList, query):
                             if query[i] == 'res:':
                                 sql = sql + " res:" + resource
                             elif query[i] == 'dbo/dbp:':
-                                if query[i+1] == 'res:' or query[i-1] == 'res:':
+                                if query[i + 1] == 'res:' or query[i - 1] == 'res:':
                                     sql = sql + " " + prop1.propertyType + ":" + prop1.property
                                 else:
                                     if dboDbpCount == 0:
@@ -120,7 +120,7 @@ def makeOneResSql(propertyList, resourceList, query):
                                 if query[i] == 'res:':
                                     sql = sql + " res:" + resource
                                 elif query[i] == 'dbo/dbp:':
-                                    if query[i+1] == 'res:' or query[i-1] == 'res:':
+                                    if query[i + 1] == 'res:' or query[i - 1] == 'res:':
                                         sql = sql + " " + prop1.propertyType + ":" + prop1.property
                                     else:
                                         if dboDbpCount == 0:
@@ -208,9 +208,9 @@ def makeTwoResSql(propertyList, resourceList, query):
                                     elif query[i] == 'res:' and dboDbpCount == 1:
                                         sql = sql + " res:" + resource2
                                     elif query[i] == 'dbo/dbp:':
-                                        if (query[i+1] == 'res:' or query[i-1] == 'res:') and dboDbpCount == 0:
+                                        if (query[i + 1] == 'res:' or query[i - 1] == 'res:') and dboDbpCount == 0:
                                             sql = sql + " " + prop1.propertyType + ":" + prop1.property
-                                        elif (query[i+1] == 'res:' or query[i-1] == 'res:') and dboDbpCount == 1:
+                                        elif (query[i + 1] == 'res:' or query[i - 1] == 'res:') and dboDbpCount == 1:
                                             sql = sql + " " + prop2.propertyType + ":" + prop2.property
                                         else:
                                             sql = sql + " " + propLast.propertyType + ":" + propLast.property
@@ -243,8 +243,8 @@ def sortSqlsByPropertySimilarity(sqls, propertyList):
         for prop in propertyListSingle:
             for sqlsRow in sqls:
                 for sql in sqlsRow:
-                    if(prop.property in sql):
-                        if(sql not in arr):
+                    if (prop.property in sql):
+                        if (sql not in arr):
                             arr.append(sql)
     return arr
 
@@ -281,11 +281,11 @@ def getQueryResult(propertyList, resourceList, queryIDs):
 
     print('\n' + str(len(sqls)) + " SQL run!\n")
 
-    return list(filter(None, answerArray)) , sqls
+    # return list(filter(None, answerArray)), sqls
+    return answerArray, sqls
 
 
 def getAnswerBySPQRQL(sql):
-
     print(constant.prefix + sql)
     sparql.setQuery(constant.prefix + sql)
     try:
