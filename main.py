@@ -1,4 +1,7 @@
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
+from q_a_system.global_pack import constant
+from q_a_system.Logging import saveLogs
+import threading
 from q_a_system.method import byAutomation, byDataDictionary, lookup_things
 from q_a_system.spacy_play import name_entity, resource_name, answer_type_extraction, answer_validation, \
     question_type_extraction
@@ -9,13 +12,11 @@ import pandas as pd
 import datetime
 
 # questions = input.getUserQuestion()
-# questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
 
-#input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
-output_file_directory = "output log.csv"
-#input_file = pd.read_csv(input_file_directory, encoding='cp1252')
-#questions = input_file["Question"].tolist()
-questions= ['Who is the son of Sonny and Cher? ']
+questions = constant.quesGSheet.col_values(1)[1:]
+
+# questions = ['Who is the son of Sonny and Cher? ']
+
 # questions = [
 #     'Which films did Stanley Kubrick direct?', #Stanley Kubrick filmography (partially)
 #     'In which time zone is Rome?', # Zones of Rome
@@ -37,15 +38,6 @@ questions= ['Who is the son of Sonny and Cher? ']
 # ]
 
 log_question_list = []
-log_named_entity_list = []
-log_resource_list = []
-log_keyword_list = []
-log_property_list = []
-log_sql_list = []
-log_all_answer_list = []
-log_answer_list = []
-log_question_type_list = []
-log_string_list = []
 
 ques_count = 0
 flagResFromGoogleSearch = True
@@ -62,35 +54,32 @@ while questionIndex < len(questions):
 
     print(f"\n\n#{ques_count}")
     print(question)
-    nameentitytemp = ''
     ques_count = ques_count + 1
+
 
     print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
-    log_var_named_entity_list = ''
+    log_var_name_entity_list = ''
     for nameEntity in nameEntityList:
-        print(f"Named Entity: {nameEntity.text}")  # todo: keep this
-        nameentitytemp = nameentitytemp + ', ' + nameEntity.text
-        log_var_named_entity_list = log_var_named_entity_list + nameEntity.text + ', '
-    log_named_entity_list.append(log_var_named_entity_list)
+        print(f"Named Entity: {nameEntity.text}")
+        log_var_name_entity_list = log_var_name_entity_list + nameEntity.text + ', '
+
 
     print("Step 2: Keywords finding")
     # finding keyword list by build in services
     keywordListByAM = byAutomation.findKeywordByAutomation(question)
-    # print(keywordListByAM)
-
     # finding keyword list by DataDictionary approach
     keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
-    # print(keywordListByDD)
 
     keywordList = []
     for i in keywordListByDD:
         keywordList.append(i)
     for i in keywordListByAM:
         keywordList.append(i)
-
-    log_keyword_list.append(keywordList)
     print(keywordList)
+
+
+    resourceList = []
     if len(nameEntityList) > 0:
         print("Step 3: Resource Name finding")
         if flagResFromGoogleSearch == True:
@@ -99,36 +88,24 @@ while questionIndex < len(questions):
             print(f"string to pass: {stringList}")
             # Google search
             resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
-            log_string_list.append(stringList)
         else:
             resourceList = resource_name.getResourceName(nameEntityList)
             flagResFromGoogleSearch = True
-            log_string_list.append('No String Found Here (I guess)')
-        print(f"resource list: {resourceList}")  # todo: keep this
-        # if resourceList is None:
-        #     resourceList = [
-        #     '!!']
-        log_var_resource_list = ''
-        '''for i in resourceList:
-            log_var_resource_list = log_var_resource_list + i + ', '
-        log_resource_list.append(log_var_resource_list)'''
 
-        # print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
+        print(f"resource list: {resourceList}")
 
-    if len(resourceList) == 0: #for having 429 error
+
+    if len(resourceList) == 0: # for having 429 error
         resourceList = resource_name.getResourceNameWithString(stringList)
-        print(f"resource list: {resourceList}")  # todo: keep this
-         #end for 429 error
+        print(f"resource list: {resourceList}")
 
+
+    propertyList = [[]]
     if len(resourceList) > 0:
-        for i in resourceList:
-            log_var_resource_list = log_var_resource_list + i + ', '
-        log_resource_list.append(log_var_resource_list)
-
         print("Step 4: Property finding")
         propertyList = getPageProperties(resourceList)
         propertyList = getActualProperty(keywordList, propertyList)
-        propertyList.append(addAdditionalSet(keywordListByDD))
+    propertyList.append(addAdditionalSet(keywordListByDD))
 
     hasProperty = False
     temp = -1
@@ -140,7 +117,7 @@ while questionIndex < len(questions):
             print(prop.label)
             log_var_property_list = log_var_property_list + '(' + str(temp) + prop.property + '-' + str(
                 prop.similarity) + '), '
-    log_property_list.append(log_var_property_list)
+
 
     if hasProperty:
         print("Step 5.0.1: Get Sparql Query IDs")
@@ -160,13 +137,7 @@ while questionIndex < len(questions):
         answer = answer_validation.answerValidation(answerArray, questionType)
         print("Actual Answer: " + answer)
 
-        log_sql_list.append(sqls)
-        log_all_answer_list.append(answerArray)
-        log_answer_list.append(answer)
-        log_question_type_list.append(questionType)
-
-        if answer == "No answer" and log_question_list[len(log_question_list) - 1] != log_question_list[
-            len(log_question_list) - 2]:
+        if answer == "No answer" and log_question_list[len(log_question_list) - 1] != log_question_list[len(log_question_list) - 2]:
             flagResFromGoogleSearch = False
             continue
         else:
@@ -180,26 +151,6 @@ while questionIndex < len(questions):
         else:
             questionIndex = questionIndex + 1
 
+    threading.Thread(target=saveLogs.saveOneLog, args=(question, log_var_name_entity_list, str(stringList), str(resourceList), str(keywordList), log_var_property_list, answer, )).start()
     print('\n\n\n')
 
-# writing the logs in csv file
-print(f"Ques list count: {len(log_question_list)}")
-print(f"Res list count: {len(log_resource_list)}")
-print(f"Str list count: {len(log_string_list)}")
-print(f"Ans list count: {len(log_answer_list)}")
-output_file = pd.DataFrame(
-    {
-        'Questions': log_question_list,
-        # 'Name Entity': log_named_entity_list,
-        'Resources': log_resource_list,
-        # 'Keyword': log_keyword_list,
-        # 'Property': log_property_list,
-        # 'Answer Array': log_all_answer_list,
-        # 'Answer Type': log_question_type_list,
-        'Strings': log_string_list,
-        'Answer': log_answer_list
-        # 'SQL': log_sql_list
-    }
-)
-print(log_answer_list)
-output_file.to_csv(output_file_directory)
