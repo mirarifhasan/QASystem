@@ -67,7 +67,7 @@ def getResourceNameByGoogleSearch(stringList):
 
     for i in stringList:
         links = ["https://www.google.com/search?q=" + i]
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'}
         page = requests.get(links[0],headers=headers)
         print(f"status code: {page.status_code}")
         soup = BeautifulSoup(page.content, 'html.parser')
@@ -86,3 +86,24 @@ def getResourceNameByGoogleSearch(stringList):
                 break
 
     return arr
+
+
+# for 429 error
+def getResourceNameWithString(stringList):
+    array = []
+
+    for si in stringList:
+
+        try:
+            key = wikipedia.page(si)
+            resource = key.url[30:]
+            array.append(resource)
+        except:
+            pass
+
+
+
+    reduceHTTPErrorContent(array)
+    return array
+
+

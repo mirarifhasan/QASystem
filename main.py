@@ -11,10 +11,11 @@ import datetime
 # questions = input.getUserQuestion()
 # questions=['How many movies did Park Chan-wook direct?','How many headquarters are in Dhaka?']
 
-input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
-output_file_directory = "output log March 24 (test).csv"
-input_file = pd.read_csv(input_file_directory, encoding='cp1252')
-questions = input_file["Question"].tolist()
+#input_file_directory = "Code Behaviours - QLD6_SingleResource.csv"
+output_file_directory = "output log.csv"
+#input_file = pd.read_csv(input_file_directory, encoding='cp1252')
+#questions = input_file["Question"].tolist()
+questions= ['Who is the son of Sonny and Cher? ']
 # questions = [
 #     'Which films did Stanley Kubrick direct?', #Stanley Kubrick filmography (partially)
 #     'In which time zone is Rome?', # Zones of Rome
@@ -108,13 +109,22 @@ while questionIndex < len(questions):
         #     resourceList = [
         #     '!!']
         log_var_resource_list = ''
+        '''for i in resourceList:
+            log_var_resource_list = log_var_resource_list + i + ', '
+        log_resource_list.append(log_var_resource_list)'''
+
+        # print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
+
+    if len(resourceList) == 0: #for having 429 error
+        resourceList = resource_name.getResourceNameWithString(stringList)
+        print(f"resource list: {resourceList}")  # todo: keep this
+         #end for 429 error
+
+    if len(resourceList) > 0:
         for i in resourceList:
             log_var_resource_list = log_var_resource_list + i + ', '
         log_resource_list.append(log_var_resource_list)
 
-        # print(question + '\t' + nameentitytemp + '\t' + stringList + '\t' + str(resourceList))
-
-    if len(resourceList) > 0:
         print("Step 4: Property finding")
         propertyList = getPageProperties(resourceList)
         propertyList = getActualProperty(keywordList, propertyList)

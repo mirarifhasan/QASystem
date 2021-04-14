@@ -6,6 +6,10 @@ def getResKeywordString(nameEntity, keyword):
 
     name_arr_mega = []
     res_key_arr = []
+    ent_arr=[]
+    for i in nameEntity:
+        ent_arr.append(i.text.lower())
+
 
     for i in nameEntity:
         name_arr = []
@@ -25,7 +29,8 @@ def getResKeywordString(nameEntity, keyword):
             aa = i.split()
             for a in aa:
                 a = a.lower()
-                if a not in name_arr:
+                #and a not in ent_arr
+                if a not in name_arr and a not in ent_arr:
                     key_arr.append((a))  # duplicate removed
 
         '''making string'''
@@ -35,7 +40,9 @@ def getResKeywordString(nameEntity, keyword):
             res_key = key_arr[-1]
         if len(name_arr) == 1:
             res_key = name_arr[-1] + ' ' + key_arr[-1]  # ex. Ceres discovered, China emperors
-        if len(name_arr) > 1:
+        if len(name_arr) >=3:
+            res_key = name_arr[-3] + ' ' +name_arr[-2] + ' ' + name_arr[-1]
+        elif len(name_arr) > 1:
             res_key = name_arr[-2] + ' ' + name_arr[-1]  # bang theory , Liz Taylor
 
         substring = "the "
@@ -46,4 +53,4 @@ def getResKeywordString(nameEntity, keyword):
 
     return res_key_arr
 
-# print(getResKeywordString(['shishu park'], ['director', 'movies', 'park chan-wook', 'direct']))
+#print(getResKeywordString(['Sonny','Cher'], ['son','sonny', 'cher']))
