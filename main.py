@@ -57,7 +57,6 @@ while questionIndex < len(questions):
 
     print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
-    nameEntityList = list(dict.fromkeys(nameEntityList))
     print(str([x.text for x in nameEntityList]))
 
 

@@ -20,4 +20,4 @@ def getNameEntity(question):
             nameEntity = NameEntity(chunk.text, 'PERSON')
             array.append(nameEntity)
 
-    return array
+    return list(dict.fromkeys(array))

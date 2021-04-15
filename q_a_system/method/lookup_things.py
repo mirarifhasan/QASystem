@@ -6,10 +6,9 @@ def getResKeywordString(nameEntity, keyword):
 
     name_arr_mega = []
     res_key_arr = []
-    ent_arr=[]
+    ent_arr = []
     for i in nameEntity:
         ent_arr.append(i.text.lower())
-
 
     for i in nameEntity:
         name_arr = []
@@ -51,6 +50,6 @@ def getResKeywordString(nameEntity, keyword):
 
         res_key_arr.append(res_key)
 
-    return res_key_arr
+    return list(dict.fromkeys(res_key_arr))
 
 #print(getResKeywordString(['Sonny','Cher'], ['son','sonny', 'cher']))

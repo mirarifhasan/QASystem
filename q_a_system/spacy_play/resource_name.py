@@ -34,7 +34,7 @@ def getResourceName(nameEntityArray):
                     array.append('_'.join(name_arr))
 
     reduceHTTPErrorContent(array)
-    return array
+    return list(dict.fromkeys(array))
 
 
 def reduceHTTPErrorContent(array):
@@ -85,7 +85,7 @@ def getResourceNameByGoogleSearch(stringList):
                 arr.append(resource)
                 break
 
-    return arr
+    return list(dict.fromkeys(arr))
 
 
 # for 429 error
@@ -101,7 +101,7 @@ def getResourceNameWithString(stringList):
             pass
 
     reduceHTTPErrorContent(array)
-    return array
+    return list(dict.fromkeys(array))
 
 
 def getResourceNameFromWikipedia(data):
