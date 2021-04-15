@@ -93,7 +93,6 @@ def getResourceNameWithString(stringList):
     array = []
 
     for si in stringList:
-
         try:
             key = wikipedia.page(si)
             resource = key.url[30:]
@@ -101,9 +100,14 @@ def getResourceNameWithString(stringList):
         except:
             pass
 
-
-
     reduceHTTPErrorContent(array)
     return array
 
 
+def getResourceNameFromWikipedia(data):
+    try:
+        key = wikipedia.page(data)
+        resource = key.url[30:]
+        return resource
+    except:
+        pass

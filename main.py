@@ -1,3 +1,5 @@
+from itertools import chain
+
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
 from q_a_system.global_pack import constant
 from q_a_system.Logging import saveLogs
@@ -44,11 +46,7 @@ flagResFromGoogleSearch = True
 
 questionIndex = 0
 while questionIndex < len(questions):
-    # if questionIndex < 0:
-    #     questionIndex = questionIndex + 1
-    #     continue
-    # if questionIndex > 5:
-    #     break
+
     question = questions[questionIndex]
     log_question_list.append(question)
 
@@ -59,10 +57,8 @@ while questionIndex < len(questions):
 
     print("\nStep 1: Name Entity finding")
     nameEntityList = name_entity.getNameEntity(question)
-    log_var_name_entity_list = ''
-    for nameEntity in nameEntityList:
-        print(f"Named Entity: {nameEntity.text}")
-        log_var_name_entity_list = log_var_name_entity_list + nameEntity.text + ', '
+    nameEntityList = list(dict.fromkeys(nameEntityList))
+    print(str([x.text for x in nameEntityList]))
 
 
     print("Step 2: Keywords finding")
@@ -71,15 +67,12 @@ while questionIndex < len(questions):
     # finding keyword list by DataDictionary approach
     keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
 
-    keywordList = []
-    for i in keywordListByDD:
-        keywordList.append(i)
-    for i in keywordListByAM:
-        keywordList.append(i)
+    keywordList = list(chain.from_iterable([keywordListByDD, keywordListByAM]))
     print(keywordList)
 
 
     resourceList = []
+    stringList = []
     if len(nameEntityList) > 0:
         print("Step 3: Resource Name finding")
         if flagResFromGoogleSearch == True:
@@ -93,7 +86,6 @@ while questionIndex < len(questions):
             flagResFromGoogleSearch = True
 
         print(f"resource list: {resourceList}")
-
 
     if len(resourceList) == 0: # for having 429 error
         resourceList = resource_name.getResourceNameWithString(stringList)
@@ -117,6 +109,7 @@ while questionIndex < len(questions):
             print(prop.label)
             log_var_property_list = log_var_property_list + '(' + str(temp) + prop.property + '-' + str(
                 prop.similarity) + '), '
+    print(f"property list: {log_var_property_list}")
 
 
     if hasProperty:
@@ -151,6 +144,10 @@ while questionIndex < len(questions):
         else:
             questionIndex = questionIndex + 1
 
-    threading.Thread(target=saveLogs.saveOneLog, args=(question, log_var_name_entity_list, str(stringList), str(resourceList), str(keywordList), log_var_property_list, answer, )).start()
+
+    if 'answer' in vars():
+        threading.Thread(target=saveLogs.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), str(keywordList), log_var_property_list, answer], )).start()
+    else:
+        threading.Thread(target=saveLogs.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), str(keywordList), log_var_property_list, None], )).start()
     print('\n\n\n')
 
