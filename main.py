@@ -3,7 +3,7 @@ from itertools import chain
 
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
 from q_a_system.global_pack import constant
-from q_a_system.Logging import saveLogs
+from q_a_system.Logging import logWorks
 import threading
 from q_a_system.method import byAutomation, byDataDictionary, lookup_things
 from q_a_system.spacy_play import name_entity, resource_name, answer_type_extraction, answer_validation, \
@@ -16,7 +16,7 @@ import datetime
 
 # questions = input.getUserQuestion()
 
-questions = constant.quesGSheet.col_values(1)[1:]
+questions, expectedResource, expectedProperty, expectedAnswer = logWorks.getInputQ()
 
 # questions = ['Who is the son of Sonny and Cher? ']
 
@@ -77,19 +77,23 @@ while questionIndex < len(questions):
         print("Step 3: Resource Name finding")
         if flagResFromGoogleSearch == True:
             # Making string
-            stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
-            print(f"string to pass: {stringList}")
+            # stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
+            # print(f"string to pass: {stringList}")
             # Google search
             resourceList = resource_name.getResourceNameByGoogleSearch(nameEntityList)
+            print(f"resource list (google search): {resourceList}")
         else:
             resourceList = resource_name.getResourceName(nameEntityList)
+            print(f"resource list (wiki search): {resourceList}")
             flagResFromGoogleSearch = True
 
-        print(f"resource list: {resourceList}")
 
     if len(resourceList) == 0: # for having 429 error
+        stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
+        print(f"string to pass: {stringList}")
+
         resourceList = resource_name.getResourceNameWithString(stringList)
-        print(f"resource list (for 429): {resourceList}")
+        print(f"resource list (for 429 - wiki search): {resourceList}")
 
 
     propertyList = [[]]
@@ -146,8 +150,8 @@ while questionIndex < len(questions):
 
 
     if 'answer' in vars():
-        threading.Thread(target=saveLogs.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), str(keywordList), log_var_property_list, answer], )).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1]],)).start()
     else:
-        threading.Thread(target=saveLogs.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), str(keywordList), log_var_property_list, None], )).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]],)).start()
     print('\n\n\n')
 
