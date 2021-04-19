@@ -1,3 +1,4 @@
+import time
 from itertools import chain
 
 from q_a_system.api_sevice import api_dbpedia, mysql_operations
@@ -79,7 +80,7 @@ while questionIndex < len(questions):
             stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
             print(f"string to pass: {stringList}")
             # Google search
-            resourceList = resource_name.getResourceNameByGoogleSearch(stringList)
+            resourceList = resource_name.getResourceNameByGoogleSearch(nameEntityList)
         else:
             resourceList = resource_name.getResourceName(nameEntityList)
             flagResFromGoogleSearch = True
@@ -88,7 +89,7 @@ while questionIndex < len(questions):
 
     if len(resourceList) == 0: # for having 429 error
         resourceList = resource_name.getResourceNameWithString(stringList)
-        print(f"resource list: {resourceList}")
+        print(f"resource list (for 429): {resourceList}")
 
 
     propertyList = [[]]

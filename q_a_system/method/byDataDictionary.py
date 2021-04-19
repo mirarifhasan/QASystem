@@ -59,7 +59,7 @@ def find_keyword_by_dataDictionary(question):
                     keyword_list_by_data_dictionary.append(keyword)
 
     print('______________________________find_keyword_by_dataDictionary END')
-    return keyword_list_by_data_dictionary
+    return list(dict.fromkeys(keyword_list_by_data_dictionary))
 
 
 def search_for(column_name, value, table_name):

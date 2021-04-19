@@ -66,7 +66,7 @@ def getResourceNameByGoogleSearch(stringList):
     arr = []
 
     for i in stringList:
-        links = ["https://www.google.com/search?q=" + i]
+        links = ["https://www.google.com/search?q=" + i.text]
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'}
         page = requests.get(links[0],headers=headers)
         print(f"status code: {page.status_code}")
