@@ -12,22 +12,39 @@ class NameEntity:
 def getNameEntity(question):
     # doc = constant.nlp(question)
     array = []
-    question = question.replace("'s", '')
+
+    if question.find("'s"):
+        index = question.find("'s")
+        question = [question[:index], question[index + 3:]]
+    else:
+        question = [question]
+
+    substring = "the"
 
     for i in ['en_core_web_lg', 'en_core_web_sm']:
         nlp = spacy.load(i)
-        doc = nlp(question)
 
-        for ent in doc.ents:
-            # print(ent.text, ent.start_char, ent.end_char, ent.label_)
-            nameEntity = NameEntity(ent.text, ent.label_)
-            if nameEntity.text not in [ne.text for ne in array]:
-                array.append(nameEntity)
+        for n, q in enumerate(question, start=1):
+            doc = nlp(q)
 
-        if len(array) <= 0:
-            for chunk in doc.noun_chunks:
-                nameEntity = NameEntity(chunk.text, 'PERSON')
+            for ent in doc.ents:
+                # print(ent.text, ent.start_char, ent.end_char, ent.label_)
+                if substring in ent.text:
+                    nameEntity = NameEntity(ent.text[4:], ent.label_)
+                else:
+                    nameEntity = NameEntity(ent.text, ent.label_)
+
                 if nameEntity.text not in [ne.text for ne in array]:
                     array.append(nameEntity)
+
+            if (len(array) <= 0 and n == 1) or (len(question) == 2 and n == 2):
+                for chunk in doc.noun_chunks:
+                    if substring in chunk.text:
+                        nameEntity = NameEntity(chunk.text[4:], 'PERSON')
+                    else:
+                        nameEntity = NameEntity(chunk.text, 'PERSON')
+
+                    if nameEntity.text not in [ne.text for ne in array]:
+                        array.append(nameEntity)
 
     return array

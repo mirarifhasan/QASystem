@@ -65,7 +65,7 @@ while questionIndex < len(questions):
     # finding keyword list by build in services
     keywordListByAM = byAutomation.findKeywordByAutomation(question)
     # finding keyword list by DataDictionary approach
-    keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question)
+    keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question.replace("'s", ""))
 
     keywordList = list(chain.from_iterable([keywordListByDD, keywordListByAM]))
     print(keywordList)
@@ -88,12 +88,13 @@ while questionIndex < len(questions):
             flagResFromGoogleSearch = True
 
 
-    if len(resourceList) == 0: # for having 429 error
-        stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
-        print(f"string to pass: {stringList}")
+    # if len(resourceList) == 0: # for having 429 error
+    stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
+    print(f"string to pass: {stringList}")
 
-        resourceList = resource_name.getResourceNameWithString(stringList)
-        print(f"resource list (for 429 - wiki search): {resourceList}")
+    # resourceList = resource_name.getResourceNameWithString(stringList)
+    resourceList = list(chain.from_iterable([resource_name.getResourceNameWithString(stringList), resourceList]))
+    print(f"resource list (for 429 - wiki search): {resourceList}")
 
 
     propertyList = [[]]
@@ -149,9 +150,9 @@ while questionIndex < len(questions):
             questionIndex = questionIndex + 1
 
 
-    if 'answer' in vars():
-        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1]],)).start()
+    if 'answer' in vars() and 'sqls' in vars():
+        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
     else:
-        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]],)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
     print('\n\n\n')
 
