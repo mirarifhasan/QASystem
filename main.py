@@ -18,28 +18,6 @@ import datetime
 
 questions, expectedResource, expectedProperty, expectedAnswer = logWorks.getInputQ()
 
-# questions = ['Who is the son of Sonny and Cher? ']
-
-# questions = [
-#     'Which films did Stanley Kubrick direct?', #Stanley Kubrick filmography (partially)
-#     'In which time zone is Rome?', # Zones of Rome
-#     'Which actors play in Big Bang Theory?', #Kevin Sussman, Jim Parsons, Kaley Cuoco, Sara Gilbert, Kunal Nayyar, Laura Spencer (actress), Simon Helberg, Johnny Galecki, Mayim Bialik, Melissa Rauch
-#     'Which companies produce hovercrafts?', # m.013xl3, Hovercraft, 4036570-0, 氣墊船, হোভারক্রাফ্ট, Luchtkessenreau, Лебдјелица,....
-#     'In which ancient empire could you pay with cocoa beans?', # Ghanaian cedi, Euro, West African CFA franc
-#     'Which space probes were sent into orbit around the sun?', # Earth?oldid=986561235&ns=0(partially)
-#     'On which day is Columbus day?', # October
-#     'To which party does the mayor of Paris belong?', #Paris Belongs to Us, m.04f02jr, پاریس از آن ماست, 12PyxB, パリはわれらのもの, Paris gehört uns, Paris nous appartient, Paris nous appartient, Q25513, Parigi ci appartiene
-#     'Which country was Bill Gates born in?', # Bremerton, Washington
-#     'In which countries do people speak Japanese?', # Japan, Japan
-#     'Which rivers flow into the North Sea?', # Baltic Sea, Humber, Scheldt, Rhine, River Dee, Aberdeenshire, River Don....
-#     'Which movies starboth Liz Taylor and Richard Burton?', # Love Is Better Than Ever, Under Milk Wood (1972 film), Boom! (film), Doctor Faustus (1967 film),
-#     'Which electronics companies were founded in Beijing?', # Chen Jining, Cai Qi, Ji Lin, Li Wei (PRC politician)
-#     'Which Indiancompany has the most employees?', #  https://global.dbpedia.org/id/5EMPt or No Answer
-#     'Which countries have more than ten volcanoes?', # Decade Volcanoes, m.05czx5, 十年火山, Декадни вулкани, Vulcões da Década, Декадные вулканы, Decade Volcanoes,
-#     'In which city was the president of Montenegro born?' # SR Montenegro, Cetinje, Yugoslavia, Nikšić, Socialist Federal Republic of Yugoslavia, Socialist Republic of Montenegro
-#     # 'Which writers studied in Istanbul?'
-# ]
-
 log_question_list = []
 
 ques_count = 0
@@ -65,7 +43,7 @@ while questionIndex < len(questions):
     # finding keyword list by build in services
     keywordListByAM = byAutomation.findKeywordByAutomation(question)
     # finding keyword list by DataDictionary approach
-    keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question.replace("'s", ""))
+    keywordListByDD = byDataDictionary.find_keyword_by_dataDictionary(question.replace("\'s", ""))
 
     keywordList = list(chain.from_iterable([keywordListByDD, keywordListByAM]))
     print(keywordList)
@@ -93,8 +71,8 @@ while questionIndex < len(questions):
     print(f"string to pass: {stringList}")
 
     # resourceList = resource_name.getResourceNameWithString(stringList)
-    resourceList = list(chain.from_iterable([resource_name.getResourceNameWithString(stringList), resourceList]))
-    print(f"resource list (for 429 - wiki search): {resourceList}")
+    resourceList = list(dict.fromkeys(list(chain.from_iterable([resource_name.getResourceNameWithString(stringList), resourceList]))))
+    print(f"resource list (google + string): {resourceList}")
 
 
     propertyList = [[]]
@@ -151,8 +129,10 @@ while questionIndex < len(questions):
 
 
     if 'answer' in vars() and 'sqls' in vars():
-        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
+        if len(sqls) > 200:
+            sqls = sqls[:200]
+        threading.Thread(target=logWorks.saveOneLog, args=([datetime.datetime.now(), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
     else:
-        threading.Thread(target=logWorks.saveOneLog, args=([question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([datetime.datetime.now(), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
     print('\n\n\n')
 
