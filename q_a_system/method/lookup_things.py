@@ -32,12 +32,15 @@ def getResKeywordString(nameEntity, keyword):
                 if a not in name_arr and a not in ent_arr:
                     key_arr.append((a))  # duplicate removed
 
+
         '''making string'''
+        if len(key_arr) ==0 and len(name_arr) >=1:
+            res_key = ' '.join(name_arr)
         if len(name_arr) == 0 and len(key_arr) > 1:
             res_key = key_arr[-2] + ' ' + key_arr[-1]  # ex. columbus day
         if len(name_arr) == 0 and len(key_arr) == 1:
             res_key = key_arr[-1]
-        if len(name_arr) == 1:
+        if len(name_arr) == 1 and len(key_arr) >=1:
             res_key = name_arr[-1] + ' ' + key_arr[-1]  # ex. Ceres discovered, China emperors
         if len(name_arr) >=3:
             res_key = name_arr[-3] + ' ' +name_arr[-2] + ' ' + name_arr[-1]
