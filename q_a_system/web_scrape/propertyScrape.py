@@ -1,6 +1,6 @@
 import re
 import urllib.request
-
+from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 
 
@@ -12,26 +12,32 @@ class Property:
         self.similarity = 0.0
 
 
+def scrapPropertiesByRes(res):
+    notAllowedProperty = ['abstract', 'comment', 'isPrimaryTopicOf', 'primaryTopic', 'sameAs', 'seeAlso',
+                          'wasDerivedFrom', 'websiteTitle', 'wikiPageExternalLink', 'wikiPageID', 'wikiPageLength',
+                          'wikiPageUsesTemplate', 'wikiPageRevisionID', 'wikiPageWikiLink']
+
+    baseUrl = 'http://dbpedia.org/page/'
+    try:
+        page = urllib.request.urlopen(baseUrl + res)
+        subPropertyArray = []
+
+        soup = BeautifulSoup(page, 'html.parser')
+        rows = soup.find('table').find_all('td', class_="property")
+        for row in rows:
+            row = (row.find('a')).text.strip()
+            temp = row.split(':')
+            if temp[1] not in notAllowedProperty:
+                subPropertyArray.append(Property(temp[0], temp[1]))
+
+        return subPropertyArray
+    except:
+        pass
+
 def getPageProperties(urls):
     propertyArray = []
-    notAllowedProperty = ['abstract', 'comment', 'isPrimaryTopicOf', 'primaryTopic', 'sameAs', 'seeAlso', 'wasDerivedFrom', 'websiteTitle', 'wikiPageExternalLink', 'wikiPageID', 'wikiPageLength', 'wikiPageUsesTemplate', 'wikiPageRevisionID', 'wikiPageWikiLink']
 
-    for url in urls:
-        baseUrl = 'http://dbpedia.org/page/'
-        try:
-            page = urllib.request.urlopen(baseUrl + url)
-            subPropertyArray = []
-
-            soup = BeautifulSoup(page, 'html.parser')
-            rows = soup.find('table').find_all('td', class_="property")
-            for row in rows:
-                row = (row.find('a')).text.strip()
-                temp = row.split(':')
-                if temp[1] not in notAllowedProperty:
-                    subPropertyArray.append(Property(temp[0], temp[1]))
-
-            propertyArray.append(subPropertyArray)
-        except:
-            pass
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        propertyArray = executor.map(scrapPropertiesByRes, urls)
 
     return propertyArray

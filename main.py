@@ -58,7 +58,7 @@ while questionIndex < len(questions):
             # stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
             # print(f"string to pass: {stringList}")
             # Google search
-            resourceList = resource_name.getResourceNameByGoogleSearch(nameEntityList)
+            resourceList = resource_name.getResourceNameByGoogleSearch([ne.text for ne in nameEntityList])
             print(f"resource list (google search): {resourceList}")
         else:
             resourceList = resource_name.getResourceName(nameEntityList)
@@ -131,8 +131,8 @@ while questionIndex < len(questions):
     if 'answer' in vars() and 'sqls' in vars():
         if len(sqls) > 200:
             sqls = sqls[:200]
-        threading.Thread(target=logWorks.saveOneLog, args=([datetime.datetime.now(), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
     else:
-        threading.Thread(target=logWorks.saveOneLog, args=([datetime.datetime.now(), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
     print('\n\n\n')
 

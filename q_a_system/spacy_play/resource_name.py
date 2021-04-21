@@ -1,5 +1,6 @@
 from wikipedia import wikipedia
 from q_a_system.api_sevice import mysql_operations
+from concurrent.futures import ThreadPoolExecutor
 import requests
 from bs4 import BeautifulSoup
 
@@ -9,41 +10,29 @@ def getResourceName(nameEntityArray):
     resource = ''
     questionwords = ["who", "what", "where", "when", "how", "which", "list", "show"]
 
-    for nameEntity in nameEntityArray:
-        resDic = mysql_operations.findResource(nameEntity.text)
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        array = executor.map(callWikipediaPage, [ne.text for ne in nameEntityArray])
 
-        if len(resDic) > 0:
-            array.append(resDic[0][1])
-        else:
-            try:
-                key = wikipedia.page(nameEntity.text)
-                resource = key.url[30:]
-                array.append(resource)
-            except:
-                pass
-
-            if not array or resource == '':
-                name_arr = nameEntity.text.split(' ')
-                f = 0
-                for n in name_arr:
-                    n = n.lower()
-                    if n in questionwords:
-                        f = 1
-                if f == 0:
-                    name_arr = [x.capitalize() for x in name_arr]
-                    array.append('_'.join(name_arr))
+    if not array:
+        for nameEntity in nameEntityArray:
+            name_arr = nameEntity.text.split(' ')
+            f = 0
+            for n in name_arr:
+                if n.lower() in questionwords:
+                    f = 1
+            if f == 0:
+                name_arr = [x.capitalize() for x in name_arr]
+                array.append('_'.join(name_arr))
 
     reduceHTTPErrorContent(array)
     return list(dict.fromkeys(array))
 
 
 def reduceHTTPErrorContent(array):
-    for i in array:
-        if '%' in i:
-            array.remove(i)
+    array = [i for i in array if '%' not in i]
 
 
-def get_resource_name(link):
+def getResourceNameFromFetchedURL(link):
     resource = ''
     wiki_link = "wikipedia.org/wiki/"
     try:
@@ -62,52 +51,42 @@ def get_resource_name(link):
     return resource
 
 
+def scrapGoogleResponse(link):
+    link = "https://www.google.com/search?q=" + link
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'}
+    page = requests.get(link, headers=headers)
+    print(f"status code: {page.status_code}")
+
+    soup = BeautifulSoup(page.content, 'html.parser')
+    containers = soup.find_all('a')
+    for tag in containers:
+        response_link = tag.get('href')
+        resource = getResourceNameFromFetchedURL(response_link)
+
+        if resource != '':
+            return resource
+
+
 def getResourceNameByGoogleSearch(stringList):
     arr = []
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        arr = executor.map(scrapGoogleResponse, stringList)
 
-    for i in stringList:
-        links = ["https://www.google.com/search?q=" + i.text]
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'}
-        page = requests.get(links[0],headers=headers)
-        print(f"status code: {page.status_code}")
-        soup = BeautifulSoup(page.content, 'html.parser')
-
-        out_file = open("web_response.txt", "w", encoding='utf-8')
-        out_file.write(soup.prettify())
-
-        containers = soup.find_all('a')
-        for tag in containers:
-            response_link = tag.get('href')
-
-            resource = get_resource_name(response_link)
-
-            if resource != '':
-                arr.append(resource)
-                break
-
-    return list(dict.fromkeys(arr))
+    return list(dict.fromkeys(list(filter(None, arr))))
 
 
-# for 429 error
 def getResourceNameWithString(stringList):
     array = []
 
-    for si in stringList:
-        try:
-            key = wikipedia.page(si)
-            resource = key.url[30:]
-            array.append(resource)
-        except:
-            pass
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        array = executor.map(callWikipediaPage, stringList)
 
     reduceHTTPErrorContent(array)
     return list(dict.fromkeys(array))
 
 
-def getResourceNameFromWikipedia(data):
+def callWikipediaPage(data):
     try:
-        key = wikipedia.page(data)
-        resource = key.url[30:]
-        return resource
+        return wikipedia.page(data).url[30:]
     except:
         pass
