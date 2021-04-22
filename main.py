@@ -54,19 +54,16 @@ while questionIndex < len(questions):
     if len(nameEntityList) > 0:
         print("Step 3: Resource Name finding")
         if flagResFromGoogleSearch == True:
-            # Making string
-            # stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
-            # print(f"string to pass: {stringList}")
             # Google search
             resourceList = resource_name.getResourceNameByGoogleSearch([ne.text for ne in nameEntityList])
             print(f"resource list (google search): {resourceList}")
-        else:
-            resourceList = resource_name.getResourceName(nameEntityList)
-            print(f"resource list (wiki search): {resourceList}")
-            flagResFromGoogleSearch = True
+        # else:
+        #     resourceList = resource_name.getResourceName(nameEntityList)
+        #     print(f"resource list (wiki search): {resourceList}")
+        #     flagResFromGoogleSearch = True
 
 
-    # if len(resourceList) == 0: # for having 429 error
+    # if len(resourceList) == 0:
     stringList = lookup_things.getResKeywordString(nameEntityList, keywordList)
     print(f"string to pass: {stringList}")
 
@@ -95,6 +92,7 @@ while questionIndex < len(questions):
     print(f"property list: {log_var_property_list}")
 
 
+    answer = ''
     if hasProperty:
         print("Step 5.0.1: Get Sparql Query IDs")
         questionType = question_type_extraction.findQuestionType(question)
@@ -122,8 +120,9 @@ while questionIndex < len(questions):
     else:
         print("No property found! Can't go forward without property")
         if log_question_list[len(log_question_list) - 1] != log_question_list[len(log_question_list) - 2]:
-            flagResFromGoogleSearch = False
-            continue
+            # flagResFromGoogleSearch = False
+            # continue
+            questionIndex = questionIndex + 1
         else:
             questionIndex = questionIndex + 1
 

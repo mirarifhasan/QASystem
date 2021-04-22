@@ -24,12 +24,13 @@ def getResourceName(nameEntityArray):
                 name_arr = [x.capitalize() for x in name_arr]
                 array.append('_'.join(name_arr))
 
-    reduceHTTPErrorContent(array)
+    reduceHTTPErrorContent(list(filter(None, array)))
     return list(dict.fromkeys(array))
 
 
 def reduceHTTPErrorContent(array):
-    array = [i for i in array if '%' not in i]
+    pass
+    # array = [i for i in array if '%' not in i]
 
 
 def getResourceNameFromFetchedURL(link):
@@ -81,7 +82,7 @@ def getResourceNameWithString(stringList):
     with ThreadPoolExecutor(max_workers=10) as executor:
         array = executor.map(callWikipediaPage, stringList)
 
-    reduceHTTPErrorContent(array)
+    reduceHTTPErrorContent(list(filter(None, array)))
     return list(dict.fromkeys(array))
 
 

@@ -586,13 +586,20 @@ def get_query_result(propertyList, resourceList, queryIDs, question_type):
                 sqls.append(make_one_res_sql(propertyList, resourceList, query, order_for_type_which))
             elif noOfRes == 2:
                 sqls.append(make_two_res_sql(propertyList, resourceList, query, [3, 2, 1]))
-        elif question_type == 'what' or question_type == 'who':
+        elif question_type == 'who':
             if noOfRes == 0:
                 sqls.append(make_zero_res_sql(propertyList, query, order_for_type_what))
             elif noOfRes == 1:
                 sqls.append(make_one_res_sql(propertyList, resourceList, query, order_for_type_what))
             elif noOfRes == 2:
                 sqls.append(make_two_res_sql(propertyList, resourceList, query, order_for_type_what))
+        elif question_type == 'what':
+            if noOfRes == 1:
+                sqls.append(make_one_res_sql(propertyList, resourceList, query, order_for_type_what))
+            elif noOfRes == 2:
+                sqls.append(make_two_res_sql(propertyList, resourceList, query, order_for_type_what))
+            elif noOfRes == 0:
+                sqls.append(make_zero_res_sql(propertyList, query, order_for_type_what))
         elif question_type == 'when':
             if noOfRes == 0:
                 sqls.append(make_zero_res_sql(propertyList, query, order_for_type_when))
