@@ -234,7 +234,8 @@ def makeTwoResSql(propertyList, resourceList, query):
                                         elif query[i] == 'dbo/dbp:':
                                             if (query[i + 1] == 'res:' or query[i - 1] == 'res:') and dboDbpCount == 0:
                                                 sql = sql + " " + prop1.propertyType + ":" + prop1.property
-                                            elif (query[i + 1] == 'res:' or query[i - 1] == 'res:') and dboDbpCount == 1:
+                                            elif (query[i + 1] == 'res:' or query[
+                                                i - 1] == 'res:') and dboDbpCount == 1:
                                                 sql = sql + " " + prop2.propertyType + ":" + prop2.property
                                             else:
                                                 sql = sql + " " + propLast.propertyType + ":" + propLast.property
@@ -540,7 +541,8 @@ def make_two_res_sql(propertyList, resourceList, query, order_serial):
                                                     elif query[i] == 'res:' and dboDbpCount == 1:
                                                         sql = sql + " res:" + resource2
                                                     elif query[i] == 'dbo/dbp:':
-                                                        if (query[i + 1] == 'res:' or query[i - 1] == 'res:') and dboDbpCount == 0:
+                                                        if (query[i + 1] == 'res:' or query[
+                                                            i - 1] == 'res:') and dboDbpCount == 0:
                                                             sql = sql + " " + prop1.propertyType + ":" + prop1.property
                                                         elif (query[i + 1] == 'res:' or query[
                                                             i - 1] == 'res:') and dboDbpCount == 1:
@@ -639,17 +641,22 @@ def get_query_result(propertyList, resourceList, queryIDs, question_type):
 
 def getAnswerBySPQRQL(sql):
     print(sql)
-    sparql.setQuery(constant.prefix + sql)
-    try:
-        sparql.setReturnFormat(JSON)
-        results = sparql.query().convert()
-        if 'ASK' in sql:
-            print(">\n")
-            return results['boolean']
-        else:
-            tempResultArray = []
-            for result in results["results"]["bindings"]:
-                tempResultArray.append(result["label"]["value"])
-            return tempResultArray
-    except:
-        pass
+    noOfTry = 3
+
+    while True and noOfTry > 0:
+        noOfTry = noOfTry - 1
+        sparql.setQuery(constant.prefix + sql)
+        try:
+            sparql.setReturnFormat(JSON)
+            results = sparql.query().convert()
+            if 'ASK' in sql:
+                print(">\n")
+                return results['boolean']
+            else:
+                tempResultArray = []
+                for result in results["results"]["bindings"]:
+                    tempResultArray.append(result["label"]["value"])
+                if (tempResultArray is not None) or (tempResultArray is None and noOfTry == 0):
+                    return tempResultArray
+        except:
+            pass

@@ -16,7 +16,7 @@ import datetime
 
 # questions = input.getUserQuestion()
 
-questions, expectedResource, expectedProperty, expectedAnswer = logWorks.getInputQ()
+qNo, questions, expectedResource, expectedProperty, expectedAnswer = logWorks.getInputQ()
 
 log_question_list = []
 
@@ -130,8 +130,8 @@ while questionIndex < len(questions):
     if 'answer' in vars() and 'sqls' in vars():
         if len(sqls) > 200:
             sqls = sqls[:200]
-        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), qNo[questionIndex-1], question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
     else:
-        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), qNo[questionIndex-1], question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
     print('\n\n\n')
 

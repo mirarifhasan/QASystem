@@ -16,18 +16,18 @@ def getActualProperty(keywordList, propertyList):
     minSimilarity = constant.minSimilarity
     actualProperty = []
 
-    nlp = spacy.load(constant.lang)
-    merge_nps = nlp.create_pipe("merge_noun_chunks")
-    nlp.add_pipe(merge_nps)
+    # nlp = spacy.load(constant.lang)
+    # merge_nps = nlp.create_pipe("merge_noun_chunks")
+    # nlp.add_pipe(merge_nps)
 
     for propertyListSingleRes in propertyList:
         array = []
 
         for property in propertyListSingleRes:
             for keyword in keywordList:
-                keyword = nlp(keyword)
-                propertyLabel = nlp(property.label)
-                propertyProperty = nlp(property.property)
+                keyword = constant.nlp(keyword)
+                propertyLabel = constant.nlp(property.label)
+                propertyProperty = constant.nlp(property.property)
 
                 wordSimilarity = keyword.similarity(propertyLabel)
                 if keyword.similarity(propertyProperty) > wordSimilarity:

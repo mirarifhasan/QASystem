@@ -14,6 +14,7 @@ def getInputQ():
     data = quesGSheet.get_all_records()
 
     questions = []
+    qNo = []
     expectedAnswer = []
     expectedResource = []
     expectedProperty = []
@@ -21,14 +22,22 @@ def getInputQ():
     for i in range(0, len(data), 1):
         questions.append(data[i].get('Question'))
         try:
+            qNo.append(data[i].get('Q No'))
+        except:
+            qNo.append(None)
+        try:
             expectedResource.append(data[i].get('Expected Resource'))
-            expectedProperty.append(data[i].get('Expected Property'))
-            expectedAnswer.append(data[i].get('Expected Answer'))
         except:
             expectedResource.append(None)
+        try:
+            expectedProperty.append(data[i].get('Expected Property'))
+        except:
             expectedProperty.append(None)
+        try:
+            expectedAnswer.append(data[i].get('Expected Answer'))
+        except:
             expectedAnswer.append(None)
-    return questions, expectedResource, expectedProperty, expectedAnswer
+    return qNo, questions, expectedResource, expectedProperty, expectedAnswer
 
 
 def saveOneLog(content):
