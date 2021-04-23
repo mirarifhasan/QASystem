@@ -47,4 +47,13 @@ def getNameEntity(question):
                     if nameEntity.text not in [ne.text for ne in array]:
                         array.append(nameEntity)
 
+    notinarray = ["Who", "who", "Which", "which","What", "what", "When", "when", "Where", "where", "How", "how", "Show", "List","Give", "show", "list","give", "you", "You", "me"]
+    for ar in array:
+        for a in notinarray:
+            x= ar.text.find(a)
+            if x!= -1:
+                array.remove(ar)
+                break
+
+
     return array
