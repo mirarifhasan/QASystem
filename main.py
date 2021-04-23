@@ -68,7 +68,8 @@ while questionIndex < len(questions):
     print(f"string to pass: {stringList}")
 
     # resourceList = resource_name.getResourceNameWithString(stringList)
-    resourceList = list(dict.fromkeys(list(chain.from_iterable([resource_name.getResourceNameWithString(stringList), resourceList]))))
+    #resourceList = list(dict.fromkeys(list(chain.from_iterable([resource_name.getResourceNameWithString(stringList), resourceList]))))
+    resourceList = list(dict.fromkeys(list(chain.from_iterable([resource_name.getResourceNameByGoogleSearch(stringList), resourceList]))))
     print(f"resource list (google + string): {resourceList}")
 
 

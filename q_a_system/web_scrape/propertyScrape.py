@@ -14,7 +14,7 @@ class Property:
 
 def getPageProperties(urls):
     propertyArray = []
-    notAllowedProperty = ['abstract', 'comment', 'isPrimaryTopicOf', 'primaryTopic', 'sameAs', 'seeAlso', 'thumbnail', 'wasDerivedFrom', 'websiteTitle', 'wikiPageDisambiguates', 'wikiPageRedirects', 'wikiPageExternalLink', 'wikiPageID', 'wikiPageLength', 'wikiPageUsesTemplate', 'wikiPageRevisionID', 'wikiPageWikiLink']
+    notAllowedProperty = ['type','abstract', 'comment', 'isPrimaryTopicOf', 'primaryTopic', 'sameAs', 'seeAlso', 'thumbnail', 'wasDerivedFrom', 'websiteTitle', 'wikiPageDisambiguates', 'wikiPageRedirects', 'wikiPageExternalLink', 'wikiPageID', 'wikiPageLength', 'wikiPageUsesTemplate', 'wikiPageRevisionID', 'wikiPageWikiLink']
 
     for url in urls:
         baseUrl = 'http://dbpedia.org/page/'

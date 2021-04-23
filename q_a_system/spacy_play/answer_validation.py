@@ -76,6 +76,14 @@ def answerValidation(answerArray, questionType):
                                     if token.label_ == questionType or token.label_ in ('ORG', 'PRODUCT', 'PERSON'):
                                         flag1 = 1
                                         # return ' '.join(url_answer.split('_')) # answer is splited by space
+                        else:
+                            sentence = constant.nlp(i)
+                            for token in sentence.ents:
+                                print(token.text, token.label_)
+                                if token.label_ == questionType or token.label_ in ('ORG', 'PRODUCT', 'PERSON'):
+                                    return i
+
+
                     if a:
                         flag2 = 1
                         # return ' '.join(a) + "(partially)"
@@ -181,7 +189,7 @@ def answerValidation(answerArray, questionType):
 
             if questionType == 'LIST':
                 for answerGroup in answerArray:
-                    if len(answerGroup) > 0:
+                    if len(answerGroup) > 1 and '' not in answerGroup:
                         for i in answerGroup:
                             if i.startswith('http') == True:
                                 url_answer = i.split('/')[-1]
