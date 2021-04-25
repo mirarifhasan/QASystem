@@ -2,8 +2,8 @@
 Answer type can be date, location, number, person, resource, list
 """
 
-from q_a_system.global_pack import constant
-#import spacy
+#from q_a_system.global_pack import constant
+import spacy
 from q_a_system.spacy_play import parts_of_speech
 
 
@@ -12,13 +12,15 @@ def printAnswerType(ques, keyword):
     pos, tag = parts_of_speech.printAllWordDetails(ques)
     if (pos == 'AUX' and tag== 'VBP'):
         plural=1
-    #nlp = spacy.load('en_core_web_lg')
-    # question = nlp(ques)
-    question = constant.nlp(ques)
+    if (pos == 'NOUN' and tag== 'NNS'):
+        plural=1
+    nlp = spacy.load('en_core_web_lg')
+    question = nlp(ques)
+    #question = constant.nlp(ques)
     qu = ques.split(' ')
     number = ["height", "elevation", "peak", "population", "temperature","score"]
     date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
-    location = ["location", "place","universities","country", "company", "companies", "city"]
+    location = ["location", "place","universities","country", "company", "companies", "city", "river", "school"]
     name = ["nicknames", "birth", "name", "nicknames", "name?"]
 
     questionWord = parts_of_speech.tokenize(question)
@@ -53,6 +55,9 @@ def printAnswerType(ques, keyword):
                     break
                 elif (q in name):
                     questionType = 'PERSON'
+                    for i in qu:
+                        if i in location:
+                            questionType = 'LOCATION'
                     break
 
     elif arr[0] in ['How']:
@@ -66,20 +71,23 @@ def printAnswerType(ques, keyword):
     elif arr[0] in ['In', 'On','To','For','At', 'By', 'From']:
         arr2 = questionWord[1].split(' ')
         if arr2[0] in ['which', 'what']:
-            questionType = 'RESOURCE'
-            for q in qu:
-                if (q in number):
-                    questionType = 'NUMBER'
-                    break
-                elif (q in date):
-                    questionType = 'DATE'
-                    break
-                elif (q in location):
-                    questionType = 'LOCATION'
-                    break
-                elif (q in name):
-                    questionType = 'PERSON'
-                    break
+            if plural == 1:
+                questionType = 'LIST'
+            else:
+                questionType = 'RESOURCE'
+                for q in qu:
+                    if (q in number):
+                        questionType = 'NUMBER'
+                        break
+                    elif (q in date):
+                        questionType = 'DATE'
+                        break
+                    elif (q in location):
+                        questionType = 'LOCATION'
+                        break
+                    elif (q in name):
+                        questionType = 'PERSON'
+                        break
 
     elif arr[0] in ['Show', 'List','Give']:
         if keyword in location:
@@ -90,4 +98,4 @@ def printAnswerType(ques, keyword):
         questionType = 'YES/NO'
 
     return questionType
-#print(printAnswerType("Which companies produce hovercrafts?",['companies', 'produce', 'hovercrafts']))
+#print(printAnswerType("What is the name of the school where Obama’s wife studied?",['companies', 'produce', 'hovercrafts']))

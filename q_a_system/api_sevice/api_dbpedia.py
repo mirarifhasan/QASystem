@@ -567,7 +567,7 @@ def get_query_result(propertyList, resourceList, queryIDs, question_type):
     answerArray = []
 
     queries = mysql_operations.getAllSparqlQuery(queryIDs)
-    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse=False)  # ASC [reverse false]; DESC [reverse true]
+    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse=True)  # ASC [reverse false]; DESC [reverse true]
 
     sqls = []
 

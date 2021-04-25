@@ -1,4 +1,4 @@
-from q_a_system.global_pack import constant
+#from q_a_system.global_pack import constant
 
 import spacy
 
@@ -46,14 +46,20 @@ def getNameEntity(question):
 
                     if nameEntity.text not in [ne.text for ne in array]:
                         array.append(nameEntity)
-
-    notinarray = ["Who", "who", "Which", "which","What", "what", "When", "when", "Where", "where", "How", "how", "Show", "List","Give", "show", "list","give", "you", "You", "me"]
+    notinarray = ["Who", "who", "Which", "which","What", "what", "When", "when", "Where", "where", "How", "how", "Show", "List","Give", "show", "list","give", "you", "You", "me", "ow", "OW"]
+    n=[]
     for ar in array:
         for a in notinarray:
             x= ar.text.find(a)
-            if x!= -1:
-                array.remove(ar)
+            if x != -1:
+                n.append(ar)
                 break
 
+    for nn in n:
+        array.remove(nn)
 
     return array
+
+'''x=  getNameEntity("Which movies starboth Liz Taylor and Richard Burton?")
+for xx in x:
+    print(xx.text)'''

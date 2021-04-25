@@ -1,9 +1,10 @@
 import re
 
 from q_a_system.global_pack import constant
+from q_a_system.spacy_play import parts_of_speech
+import spacy
 
-
-def answerValidation(answerArray, questionType):
+def answerValidation(answerArray, questionType,question):
     dummy_ans_arr = []
     for item in answerArray:
         if item is None:
@@ -58,39 +59,77 @@ def answerValidation(answerArray, questionType):
         grouparray = []
         flag1 = 0
         flag2 = 0
+        singular =0
         if questionType == 'PERSON':
-            for answerGroup in answerArray:
-                if len(answerGroup) > 0:
-                    for i in answerGroup:
-                        if i.startswith('http') == True:
-                            url_answer = i.split('/')[-1]
-                            a = url_answer.split('_')
-                            # a= ' '.join(a)
-                            print(a)
-                            grouparray.append(' '.join(a))
-                            for i in a:
-                                sentence = constant.nlp(i)
+            pos, tag = parts_of_speech.printAllWordDetails(question)
+            if (pos == 'AUX' and tag == 'VBZ'):
+                singular = 1
+            if singular == 1:
+                for answerGroup in answerArray:
+                    if len(answerGroup) ==1:
+                        for i in answerGroup:
+                            if i.startswith('http') == True:
+                                url_answer = i.split('/')[-1]
 
+                                a = url_answer.split('_')
+                                a= ' '.join(a)
+                                print(a)
+                                grouparray.append(' '.join(a))
+
+                                #sentence = constant.nlp(a)
+                                nlp = spacy.load('en_core_web_lg')
+                                sentence = nlp(a)
+                                for token in sentence.ents:
+                                    print(token.text, token.label_)
+                                    if token.label_ == questionType or token.label_ in ('PERSON'):
+                                        return a
+                                        #flag1 = 1
+                                        # return ' '.join(url_answer.split('_')) # answer is splited by space
+                            else:
+                                sentence = constant.nlp(i)
+                                for token in sentence.ents:
+                                    print(token.text, token.label_)
+                                    if token.label_ == questionType or token.label_ in ('PERSON'):
+                                        return i
+
+
+
+                #return ', '.join((grouparray)) + "(partially)"
+
+
+            else:
+                for answerGroup in answerArray:
+                    if len(answerGroup) > 0:
+                        for i in answerGroup:
+                            if i.startswith('http') == True:
+                                url_answer = i.split('/')[-1]
+                                a = url_answer.split('_')
+                                # a= ' '.join(a)
+                                print(a)
+                                grouparray.append(' '.join(a))
+                                for i in a:
+                                    sentence = constant.nlp(i)
+
+                                    for token in sentence.ents:
+                                        print(token.text, token.label_)
+                                        if token.label_ == questionType or token.label_ in ('ORG', 'PRODUCT', 'PERSON'):
+                                            flag1 = 1
+                                            # return ' '.join(url_answer.split('_')) # answer is splited by space
+                            else:
+                                sentence = constant.nlp(i)
                                 for token in sentence.ents:
                                     print(token.text, token.label_)
                                     if token.label_ == questionType or token.label_ in ('ORG', 'PRODUCT', 'PERSON'):
-                                        flag1 = 1
-                                        # return ' '.join(url_answer.split('_')) # answer is splited by space
-                        else:
-                            sentence = constant.nlp(i)
-                            for token in sentence.ents:
-                                print(token.text, token.label_)
-                                if token.label_ == questionType or token.label_ in ('ORG', 'PRODUCT', 'PERSON'):
-                                    return i
+                                        return i
 
 
-                    if a:
-                        flag2 = 1
-                        # return ' '.join(a) + "(partially)"
-                    if flag1 == 1:
-                        return ', '.join((grouparray))
-                    elif flag2 == 1:
-                        return ', '.join((grouparray)) + "(partially)"
+                        if a:
+                            flag2 = 1
+                            # return ' '.join(a) + "(partially)"
+                        if flag1 == 1:
+                            return ', '.join((grouparray))
+                        elif flag2 == 1:
+                            return ', '.join((grouparray)) + "(partially)"
 
         # person - where
         a = []
@@ -189,7 +228,17 @@ def answerValidation(answerArray, questionType):
 
             if questionType == 'LIST':
                 for answerGroup in answerArray:
+                    qu = question.split(' ')
                     if len(answerGroup) > 1 and '' not in answerGroup:
+                        for i in answerGroup:
+                            if i.startswith('http') == True:
+                                url_answer = i.split('/')[-1]
+                                a = url_answer.split('_')
+                                # a= ' '.join(a)
+                                print(a)
+                                grouparray.append(' '.join(a))
+                        return ', '.join((grouparray))
+                    elif len(answerGroup) >0 and qu[0] == "Show":
                         for i in answerGroup:
                             if i.startswith('http') == True:
                                 url_answer = i.split('/')[-1]

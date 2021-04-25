@@ -109,7 +109,7 @@ while questionIndex < len(questions):
         print("Expected Answer Type : " + questionType)
 
         print("Step 7: Answer type validation")
-        answer = answer_validation.answerValidation(answerArray, questionType)
+        answer = answer_validation.answerValidation(answerArray, questionType, question)
         print("Actual Answer: " + answer)
 
         if answer == "No answer" and log_question_list[len(log_question_list) - 1] != log_question_list[len(log_question_list) - 2]:
