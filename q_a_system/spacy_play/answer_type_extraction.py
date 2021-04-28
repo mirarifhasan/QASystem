@@ -22,10 +22,9 @@ def printAnswerType(ques, keyword):
     date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
     location = ["location", "place","universities","country", "company", "companies", "city", "river", "school"]
     name = ["nicknames", "birth", "name", "nicknames", "name?"]
-
+    num_how= ["few", "little", "much", "many", "often", "tall","short"]
     questionWord = parts_of_speech.tokenize(question)
     arr = questionWord[0].split(' ')
-
 
 
     questionType = "null"
@@ -61,7 +60,7 @@ def printAnswerType(ques, keyword):
                     break
 
     elif arr[0] in ['How']:
-        if len(arr)>1 and arr[1] in ["few", "little", "much", "many", "often", "tall"]:
+        if (len(arr)>1 and arr[1] in num_how) or (len(arr)==1 and questionWord[1] in num_how):
             questionType = "NUMBER"
         elif len(arr)>1 and arr[1] in ["Young", "Old", "Long"]:
             questionType = "DATE"
@@ -98,4 +97,4 @@ def printAnswerType(ques, keyword):
         questionType = 'YES/NO'
 
     return questionType
-#print(printAnswerType("What is the name of the school where Obama’s wife studied?",['companies', 'produce', 'hovercrafts']))
+#print(printAnswerType("How short is the shortest active NBA player?",['companies', 'produce', 'hovercrafts']))
