@@ -46,7 +46,8 @@ def getNameEntity(question):
 
                     if nameEntity.text not in [ne.text for ne in array]:
                         array.append(nameEntity)
-    notinarray = ["Who", "who", "Which", "which","What", "what", "When", "when", "Where", "where", "How", "how", "Show", "List","Give", "show", "list","give", "you", "You", "me", "ow", "OW"]
+
+    notinarray = ["Who", "who", "Which", "which","What", "what", "When", "when", "Where", "where", "How", "how", "Show", "List","Give", "show", "list","give", "you", "You", "ow", "OW"]
     n=[]
     for ar in array:
         for a in notinarray:
@@ -60,6 +61,6 @@ def getNameEntity(question):
 
     return array
 
-'''x=  getNameEntity("Which movies starboth Liz Taylor and Richard Burton?")
+'''x=  getNameEntity("Give the name of skateboarders.")
 for xx in x:
     print(xx.text)'''

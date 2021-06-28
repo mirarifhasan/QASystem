@@ -48,7 +48,10 @@ def getActualProperty(keywordList, propertyList):
         array.sort(key=lambda x: x.similarity, reverse=True)
         actualProperty.append(array)
 
-    return actualProperty
+
+
+
+
 
 
 def addAdditionalSet(keywordListByDD):
@@ -56,5 +59,8 @@ def addAdditionalSet(keywordListByDD):
     for k in keywordListByDD:
         array.append(propertyScrape.Property('dbo', k))
         array.append(propertyScrape.Property('dbp', k))
+
+
+
 
     return array

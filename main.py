@@ -70,6 +70,7 @@ while questionIndex < len(questions):
     # resourceList = resource_name.getResourceNameWithString(stringList)
     #resourceList = list(dict.fromkeys(list(chain.from_iterable([resource_name.getResourceNameWithString(stringList), resourceList]))))
     resourceList = list(dict.fromkeys(list(chain.from_iterable([resource_name.getResourceNameByGoogleSearch(stringList), resourceList]))))
+    #resourceList = list(dict.fromkeys(list(chain.from_iterable([ resourceList, resource_name.getResourceNameByGoogleSearch(stringList)]))))
     print(f"resource list (google + string): {resourceList}")
 
 
@@ -133,6 +134,6 @@ while questionIndex < len(questions):
             sqls = sqls[:200]
         threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), qNo[questionIndex-1], question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], answer, expectedAnswer[questionIndex-1], "\n".join(sqls)],)).start()
     else:
-        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), qNo[questionIndex-1], question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1]], None,)).start()
+        threading.Thread(target=logWorks.saveOneLog, args=([str(datetime.datetime.now()), qNo[questionIndex-1], question, str([x.text for x in nameEntityList]), str(stringList), str(resourceList), expectedResource[questionIndex-1], str(keywordList), log_var_property_list, expectedProperty[questionIndex-1], None, expectedAnswer[questionIndex-1], None],)).start()
     print('\n\n\n')
 

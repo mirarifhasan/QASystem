@@ -1,10 +1,12 @@
 import re
 
-from q_a_system.global_pack import constant
+#from q_a_system.global_pack import constant
 from q_a_system.spacy_play import parts_of_speech
 import spacy
 
 def answerValidation(answerArray, questionType,question):
+    lang = 'en_core_web_lg'
+    nlp = spacy.load(lang)
     dummy_ans_arr = []
     for item in answerArray:
         if item is None:
@@ -19,11 +21,16 @@ def answerValidation(answerArray, questionType,question):
                 try:
                     if len(answerGroup) > 0:
                         for i in answerGroup:
-                            sentence = constant.nlp(i)
+                            i =i.replace("+","")
+                            sentence =nlp(i)
                             for token in sentence.ents:
                                 print(token.text, token.label_)
                                 if token.label_ in ('PERCENT', 'MONEY', 'QUANTITY', 'ORDINAL', 'CARDINAL'):
-                                    return ' '.join(answerGroup)
+                                    if (question.find("How many people ") != -1 and (int(i)> 1000) ):
+                                        return ' '.join(answerGroup)
+                                    elif (question.find("How many") != -1 and (int(i)> 1) ):
+                                        return ' '.join(answerGroup)
+
                 except:
                     pass
 
@@ -42,7 +49,10 @@ def answerValidation(answerArray, questionType,question):
                 if len(answerGroup) > 0 and answerGroup[0].startswith('http') == False:
                     dateRegex1 = re.compile('\d\d\d\d-\d\d-\d\d')
                     dateRegex2 = re.compile('[a-z]..\d\d\d\d')
+                    dateRegex5 = re.compile('[a-z]..I')
                     if dateRegex1.search(answerGroup[0]):
+                        return answerGroup[0]
+                    if dateRegex5.search(answerGroup[0]):
                         return answerGroup[0]
                     elif dateRegex2.search(answerGroup[0]):
                         return "".join(re.findall('\d+', answerGroup[0]))
@@ -86,7 +96,7 @@ def answerValidation(answerArray, questionType,question):
                                         #flag1 = 1
                                         # return ' '.join(url_answer.split('_')) # answer is splited by space
                             else:
-                                sentence = constant.nlp(i)
+                                sentence = nlp(i)
                                 for token in sentence.ents:
                                     print(token.text, token.label_)
                                     if token.label_ == questionType or token.label_ in ('PERSON'):
@@ -108,7 +118,7 @@ def answerValidation(answerArray, questionType,question):
                                 print(a)
                                 grouparray.append(' '.join(a))
                                 for i in a:
-                                    sentence = constant.nlp(i)
+                                    sentence = nlp(i)
 
                                     for token in sentence.ents:
                                         print(token.text, token.label_)
@@ -116,7 +126,7 @@ def answerValidation(answerArray, questionType,question):
                                             flag1 = 1
                                             # return ' '.join(url_answer.split('_')) # answer is splited by space
                             else:
-                                sentence = constant.nlp(i)
+                                sentence = nlp(i)
                                 for token in sentence.ents:
                                     print(token.text, token.label_)
                                     if token.label_ == questionType or token.label_ in ('ORG', 'PRODUCT', 'PERSON'):
@@ -148,7 +158,7 @@ def answerValidation(answerArray, questionType,question):
                                 print(a)
                                 grouparray.append(' '.join(a))
                                 for i in a:
-                                    sentence = constant.nlp(i)
+                                    sentence = nlp(i)
 
                                     for token in sentence.ents:
                                         print(token.text, token.label_)
@@ -173,7 +183,7 @@ def answerValidation(answerArray, questionType,question):
                 continue
 
             if len(answerGroup) > 0:
-                sentence = constant.nlp(answerGroup[0])
+                sentence = nlp(answerGroup[0])
 
                 for token in sentence.ents:
                     print(token.text, token.label_)
@@ -208,8 +218,10 @@ def answerValidation(answerArray, questionType,question):
                                 print(a)
                                 grouparray.append(' '.join(a))
                                 for i in a:
-                                    sentence = constant.nlp(i)
 
+                                    i = i.replace("+", "")
+
+                                    sentence = nlp(i)
                                     for token in sentence.ents:
                                         print(token.text, token.label_)
                                         if token.label_ == questionType or token.label_ in (
@@ -217,6 +229,7 @@ def answerValidation(answerArray, questionType,question):
                                                 'LANGUAGE'):
                                             flag1 = 1
                                             # return ' '.join(url_answer.split('_')) # answer is splited by space
+
 
                         if a:
                             flag2 = 1
@@ -251,8 +264,14 @@ def answerValidation(answerArray, questionType,question):
         # return ', '.join(answerArray[0]) + "(partially)"   #answerArray[0][0]
         # todo: design a better solution
         try:
-            return answerArray[0][0] + "(partially)"
+            k=-1
+            for answer in answerArray:
+                k= k+1
+                if len(answer) > 0:
+                    return answerArray[k][0] + "(partially)"
+
         except:
             return 'ERR: I GUESS IT\'S EMPTY ANSWER ARRAY'
     else:
         return "No answer"
+#print(answerValidation([['+92'], ['http://dbpedia.org/resource/Telephone_numbers_in_Pakistan'] ], "RESOURCE",  "What is the calling code of Pakistan?") )

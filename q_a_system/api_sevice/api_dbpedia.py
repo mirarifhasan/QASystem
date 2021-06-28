@@ -281,7 +281,7 @@ def getQueryResult(propertyList, resourceList, queryIDs):
     answerArray = []
 
     queries = mysql_operations.getAllSparqlQuery(queryIDs)
-    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse=True)  # ASC [reverse false]; DESC [reverse true]
+    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse= False)  # ASC [reverse false]; DESC [reverse true]
 
     sqls = []
 
@@ -567,7 +567,7 @@ def get_query_result(propertyList, resourceList, queryIDs, question_type):
     answerArray = []
 
     queries = mysql_operations.getAllSparqlQuery(queryIDs)
-    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse=True)  # ASC [reverse false]; DESC [reverse true]
+    queries = sorted(queries, key=lambda x: (x[1], x[2]), reverse= False)  # ASC [reverse false]; DESC [reverse true]
 
     sqls = []
 
@@ -579,7 +579,7 @@ def get_query_result(propertyList, resourceList, queryIDs, question_type):
         order_for_type_which = [3, 2, 1]
         order_for_type_what = [1, 2, 3]
         order_for_type_who = [1, 2, 3]
-        order_for_type_where = [1]
+        order_for_type_where = [1,2]
         order_for_type_when = [1]
         if question_type == 'which':
             if noOfRes == 0:

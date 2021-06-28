@@ -13,7 +13,7 @@ def findQuestionType(ques):
         word = arr[0].lower()
     elif arr[0].lower() in ['show', 'give']:
         word = "list"
-    elif arr[0].lower() in ['in', 'on', 'to'] and (arr2[0].lower() in ['which', 'what']):
+    elif arr[0].lower() in ['in', 'on', 'to','by'] and (arr2[0].lower() in ['which', 'what','whom']):
         word = arr2[0].lower()
     elif arr[0].lower() in ['do', 'does', 'did']:
         word = arr[0].lower()

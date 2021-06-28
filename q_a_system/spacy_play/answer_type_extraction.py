@@ -20,7 +20,7 @@ def printAnswerType(ques, keyword):
     qu = ques.split(' ')
     number = ["height", "elevation", "peak", "population", "temperature","score"]
     date = ["birthdate", "deathDate", "date", "year", "born", "die","day"]
-    location = ["location", "place","universities","country", "company", "companies", "city", "river", "school"]
+    location = ["location", "place","universities","country", "company", "companies", "city", "river", "school", "University", "country's"]
     name = ["nicknames", "birth", "name", "nicknames", "name?"]
     num_how= ["few", "little", "much", "many", "often", "tall","short"]
     questionWord = parts_of_speech.tokenize(question)
@@ -42,6 +42,11 @@ def printAnswerType(ques, keyword):
             questionType='LIST'
         else:
             questionType = 'RESOURCE'
+            '''for token in question.ents:
+                print(token.text, token.label_)
+                if token.label_ == questionType or token.label_ in ('FAC', 'ORG', 'GPE', 'LOC'):
+                    questionType = "LOCATION"
+                    break '''
             for q in qu:
                 if (q in number):
                     questionType = 'NUMBER'
@@ -87,6 +92,8 @@ def printAnswerType(ques, keyword):
                     elif (q in name):
                         questionType = 'PERSON'
                         break
+        if arr2[0] in ['whom']:
+            questionType = 'PERSON'
 
     elif arr[0] in ['Show', 'List','Give']:
         if keyword in location:
